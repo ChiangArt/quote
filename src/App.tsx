@@ -38,7 +38,7 @@ function App() {
       razonSocial: "",
       ruc: "",
       direccion: "",
-      tipoCambio: "3.75",
+      tipoCambio: "",
       correoAsesor: "",
       nombreAsesor: "",
       telefonoAsesor: "",
