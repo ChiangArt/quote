@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+@page {
+  size: A4 portrait;
+  margin: 10mm;
+}
+
+@media print {
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  img {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  html,
+  body {
+    background: white !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .print\:hidden {
+    display: none !important;
+  }
+
+  #pdf-root {
+    display: block !important;
+    width: 190mm !important;
+    max-width: 190mm !important;
+    min-width: 190mm !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: white !important;
+  }
+
+  .pdf-page {
+    width: 190mm !important;
+    min-height: 277mm !important;
+    background: white !important;
+    page-break-after: always !important;
+    break-after: page !important;
+    overflow: visible !important;
+  }
+
+  .pdf-page:last-child {
+    page-break-after: auto !important;
+    break-after: auto !important;
+  }
+
+  .no-break,
+  tr {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+}
