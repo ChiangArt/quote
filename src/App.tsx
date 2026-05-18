@@ -40,8 +40,8 @@ function App() {
       direccion: "",
       tipoCambio: "3.75",
       correoAsesor: "",
-      nombreAsesor: "Yaris Rodriguez",
-      telefonoAsesor: "926162680",
+      nombreAsesor: "",
+      telefonoAsesor: "",
     }),
     fechaISO: new Date().toISOString().slice(0, 10),
   }));
