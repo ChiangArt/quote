@@ -16,7 +16,7 @@ function App() {
   const logoUrl = logoTemporal;
   const [uiMessage, setUiMessage] = useState<string | null>(null);
   const [sellerCode, setSellerCode] = useState(() =>
-    loadFromStorage("cotizador.sellerCode", "YAR"),
+    loadFromStorage("cotizador.sellerCode", ""),
   );
   const [quoteRandom] = useState(() =>
     Math.floor(10000 + Math.random() * 90000),
