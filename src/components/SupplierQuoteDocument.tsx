@@ -47,7 +47,7 @@ export function SupplierQuoteDocument({
           />
 
           <div className="mt-3 text-[11px] font-bold">
-            SOLICITUD DE COTIZACIÓN A PROVEEDOR
+            SOLICITUD DE COTIZACIÓN A PROVEEDOR: MIROMINA
           </div>
 
           <SupplierItemsTable
