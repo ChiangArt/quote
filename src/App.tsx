@@ -82,9 +82,9 @@ function App() {
     getSavedQuotes(),
   );
 
-  const [catalogValues, setCatalogValues] = useState<
-    Record<string, { supplierPriceUsd?: string; isEditing?: boolean }>
-  >(() => loadFromStorage("cotizador.catalogValues", {}));
+  // const [catalogValues, setCatalogValues] = useState<
+  //   Record<string, { supplierPriceUsd?: string; isEditing?: boolean }>
+  // >(() => loadFromStorage("cotizador.catalogValues", {}));
 
   const quoteNumber = useMemo(
     () => buildQuoteNumber(sellerCode, quoteRandom),
@@ -141,40 +141,40 @@ function App() {
     setSavedQuotes(getSavedQuotes());
   }
 
-  function handleUpdateCatalogValue(
-    code: string,
-    patch: { supplierPriceUsd?: string; isEditing?: boolean },
-  ) {
-    setCatalogValues((prev) => ({
-      ...prev,
-      [code]: {
-        supplierPriceUsd: prev[code]?.supplierPriceUsd ?? "",
-        isEditing: prev[code]?.isEditing ?? false,
-        ...patch,
-      },
-    }));
+  // function handleUpdateCatalogValue(
+  //   code: string,
+  //   patch: { supplierPriceUsd?: string; isEditing?: boolean },
+  // ) {
+  //   setCatalogValues((prev) => ({
+  //     ...prev,
+  //     [code]: {
+  //       supplierPriceUsd: prev[code]?.supplierPriceUsd ?? "",
+  //       isEditing: prev[code]?.isEditing ?? false,
+  //       ...patch,
+  //     },
+  //   }));
 
-    if (patch.supplierPriceUsd !== undefined) {
-      const supplierPriceUsd = Number(patch.supplierPriceUsd || 0);
+  //   if (patch.supplierPriceUsd !== undefined) {
+  //     const supplierPriceUsd = Number(patch.supplierPriceUsd || 0);
 
-      setItems((prev) =>
-        prev.map((it) => {
-          if (it.productCode !== code) return it;
+  //     setItems((prev) =>
+  //       prev.map((it) => {
+  //         if (it.productCode !== code) return it;
 
-          const unitPriceUsd = calculateClientPrice(
-            supplierPriceUsd,
-            it.profitPercent,
-          );
+  //         const unitPriceUsd = calculateClientPrice(
+  //           supplierPriceUsd,
+  //           it.profitPercent,
+  //         );
 
-          return {
-            ...it,
-            supplierPriceUsd,
-            unitPriceUsd,
-          };
-        }),
-      );
-    }
-  }
+  //         return {
+  //           ...it,
+  //           supplierPriceUsd,
+  //           unitPriceUsd,
+  //         };
+  //       }),
+  //     );
+  //   }
+  // }
 
   function handleSaveQuote() {
     const quote: SavedQuote = {
@@ -243,8 +243,7 @@ function App() {
       return;
     }
 
-    const v = catalogValues[product.code];
-    const supplierPriceUsd = Number(v?.supplierPriceUsd) || 0;
+    const supplierPriceUsd = 0;
     const profitPercent = DEFAULT_PROFIT_PERCENT;
     const unitPriceUsd = calculateClientPrice(supplierPriceUsd, profitPercent);
     const weightTn = Number(product.weightTn ?? 0);
@@ -338,9 +337,9 @@ function App() {
     client.tipoCambio,
   ]);
 
-  useEffect(() => {
-    saveToStorage("cotizador.catalogValues", catalogValues);
-  }, [catalogValues]);
+  // useEffect(() => {
+  //   saveToStorage("cotizador.catalogValues", catalogValues);
+  // }, [catalogValues]);
 
   return (
     <>
@@ -489,17 +488,6 @@ function App() {
               <ProductCatalog
                 products={filteredCatalog}
                 onAdd={handleAddProduct}
-                values={catalogValues}
-                onChangeValues={handleUpdateCatalogValue}
-                onToggleEdit={(code, next) =>
-                  setCatalogValues((prev) => ({
-                    ...prev,
-                    [code]: {
-                      supplierPriceUsd: prev[code]?.supplierPriceUsd,
-                      isEditing: next,
-                    },
-                  }))
-                }
               />
             </div>
           </section>
@@ -582,10 +570,40 @@ function App() {
                           {(it.weightTn * it.qty).toFixed(6)}
                         </td>
 
-                        <td className="border border-slate-300 bg-slate-50 px-2 py-1 text-right font-semibold text-slate-700">
-                          {it.supplierPriceUsd > 0
-                            ? it.supplierPriceUsd.toFixed(2)
-                            : "0.00"}
+                        <td className="border border-slate-300 px-2 py-1 text-right">
+                          <input
+                            type="text"
+                            inputMode="decimal"
+                            className="w-full rounded-none border border-slate-300 bg-white px-2 py-1 text-right text-xs outline-none focus:border-slate-500"
+                            defaultValue={it.supplierPriceUsd || ""}
+                            onInput={(e) => {
+                              const input = e.currentTarget;
+                              let value = input.value;
+
+                              value = value.replace(/[^0-9.]/g, "");
+
+                              const parts = value.split(".");
+                              if (parts.length > 2) {
+                                value =
+                                  parts[0] + "." + parts.slice(1).join("");
+                              }
+
+                              input.value = value;
+                            }}
+                            onBlur={(e) => {
+                              const value = e.target.value;
+                              const supplierPriceUsd =
+                                value === "" ? 0 : parseFloat(value);
+
+                              handleUpdateItem(it.id, {
+                                supplierPriceUsd,
+                                unitPriceUsd: calculateClientPrice(
+                                  supplierPriceUsd,
+                                  it.profitPercent,
+                                ),
+                              });
+                            }}
+                          />
                         </td>
 
                         <td className="border border-slate-300 px-2 py-1 text-right">
