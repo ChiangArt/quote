@@ -67,6 +67,7 @@ export function QuoteItemsTable({ items, startIndex = 0, totals }: Props) {
 
 function ItemRow({ item, number }: { item: QuoteItem; number: number }) {
   const rowTotal = item.qty * item.unitPriceUsd;
+  const rowWeightTn = item.weightTn * item.qty;
 
   return (
     <tr>
@@ -74,7 +75,7 @@ function ItemRow({ item, number }: { item: QuoteItem; number: number }) {
       <td className={td}>{item.randomCode}</td>
       <td className={`${td} leading-snug`}>{item.name}</td>
       <td className={`${td} text-right`}>{item.qty}</td>
-      <td className={`${td} text-right`}>{formatNumber(item.weightTn, 6)}</td>
+      <td className={`${td} text-right`}>{formatNumber(rowWeightTn, 6)}</td>
       <td className={`${td} text-right`}>
         {formatMoneyUsd(item.unitPriceUsd)}
       </td>
@@ -99,9 +100,7 @@ function TotalsRows({ totals }: { totals: QuoteTotals }) {
           {formatNumber(totals.totalWeightTn, 3)}
         </td>
 
-        <td className={`${tdTotal} text-right`}>
-          Subtotal
-        </td>
+        <td className={`${tdTotal} text-right`}>Subtotal</td>
 
         <td className={`${tdTotal} text-right`}>
           {formatMoneyUsd(totals.subtotalUsd)}

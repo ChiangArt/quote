@@ -50,7 +50,7 @@ export function SupplierItemsTable({ items, startIndex = 0, totals }: Props) {
                 <td className={`${td} text-right`}>{item.qty}</td>
 
                 <td className={`${td} text-right`}>
-                  {formatNumber(item.weightTn, 6)}
+                  {formatNumber(item.weightTn * item.qty, 6)}
                 </td>
               </tr>
             ))

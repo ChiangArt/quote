@@ -44,7 +44,7 @@ function App() {
   const [catalogQuery, setCatalogQuery] = useState("");
   const [uiMessage, setUiMessage] = useState<{
     text: string;
-    type: "success" | "error" | "warning" | "info";
+    type: "success" | "error" | "info";
   } | null>(null);
   const [sellerCode, setSellerCode] = useState(() =>
     loadFromStorage("cotizador.sellerCode", ""),
@@ -98,7 +98,10 @@ function App() {
     );
 
     const totalWeightTn = items.reduce(
-      (acc, it) => acc + (Number.isFinite(it.weightTn) ? it.weightTn : 0),
+      (acc, it) =>
+        acc +
+        (Number.isFinite(it.weightTn) ? it.weightTn : 0) *
+          (Number.isFinite(it.qty) ? it.qty : 0),
       0,
     );
 
@@ -174,14 +177,6 @@ function App() {
   }
 
   function handleSaveQuote() {
-    if (!items.length) {
-      setUiMessage({
-        text: "Agrega al menos un producto antes de guardar.",
-        type: "warning",
-      });
-      return;
-    }
-
     const quote: SavedQuote = {
       id: quoteNumber,
       createdAt: new Date().toISOString(),
@@ -356,9 +351,7 @@ function App() {
               ? "border border-emerald-300 bg-emerald-500"
               : uiMessage.type === "error"
                 ? "border border-red-300 bg-red-500"
-                : uiMessage.type === "warning"
-                  ? "border border-amber-300 bg-amber-500"
-                  : "border border-sky-300 bg-sky-500"
+                : "border border-sky-300 bg-sky-500"
           }`}
         >
           <div className="flex items-start justify-between gap-4 px-4 py-3 text-sm font-semibold text-white">
@@ -368,9 +361,7 @@ function App() {
                   ? "✓"
                   : uiMessage.type === "error"
                     ? "✕"
-                    : uiMessage.type === "warning"
-                      ? "!"
-                      : "i"}
+                    : "i"}
               </span>
 
               <span>{uiMessage.text}</span>
@@ -588,7 +579,7 @@ function App() {
                         </td>
 
                         <td className="border border-slate-300 px-2 py-1 text-right">
-                          {it.weightTn}
+                          {(it.weightTn * it.qty).toFixed(6)}
                         </td>
 
                         <td className="border border-slate-300 bg-slate-50 px-2 py-1 text-right font-semibold text-slate-700">
