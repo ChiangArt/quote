@@ -592,15 +592,20 @@ function App() {
                             }}
                             onBlur={(e) => {
                               const value = e.target.value;
+
                               const supplierPriceUsd =
                                 value === "" ? 0 : parseFloat(value);
 
-                              handleUpdateItem(it.id, {
-                                supplierPriceUsd,
-                                unitPriceUsd: calculateClientPrice(
+                              const unitPriceUsd = Number(
+                                calculateClientPrice(
                                   supplierPriceUsd,
                                   it.profitPercent,
-                                ),
+                                ).toFixed(2),
+                              );
+
+                              handleUpdateItem(it.id, {
+                                supplierPriceUsd,
+                                unitPriceUsd,
                               });
                             }}
                           />
