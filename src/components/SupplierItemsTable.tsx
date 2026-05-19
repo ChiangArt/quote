@@ -22,7 +22,7 @@ export function SupplierItemsTable({ items, startIndex = 0, totals }: Props) {
             </th>
 
             <th className={`${th} text-left`} style={{ width: 70 }}>
-              Código proveedor
+              Código
             </th>
 
             <th className={`${th} text-left`}>Producto</th>
