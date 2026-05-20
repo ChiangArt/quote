@@ -34,6 +34,48 @@ function calculateClientPrice(supplierPriceUsd: number, profitPercent: number) {
   return supplierPriceUsd + supplierPriceUsd * (profitPercent / 100);
 }
 
+function isSupplierPriceExpired(updatedAt?: string, validDays = 5) {
+  if (!updatedAt) return false;
+
+  const updated = new Date(updatedAt);
+  const today = new Date();
+
+  const diffDays =
+    (today.getTime() - updated.getTime()) / (1000 * 60 * 60 * 24);
+
+  return diffDays > validDays;
+}
+
+function getSupplierPriceStatus(updatedAt?: string, validDays = 5) {
+  if (!updatedAt) {
+    return {
+      text: "Sin precio actualizado",
+      className: "text-slate-500",
+    };
+  }
+
+  const updated = new Date(updatedAt);
+  const today = new Date();
+
+  const diffDays = Math.floor(
+    (today.getTime() - updated.getTime()) / (1000 * 60 * 60 * 24),
+  );
+
+  const remainingDays = validDays - diffDays;
+
+  if (remainingDays <= 0) {
+    return {
+      text: `Vencido. Última actualización: ${updatedAt}`,
+      className: "text-red-600",
+    };
+  }
+
+  return {
+    text: `Actualizado: ${updatedAt} | Vigencia: ${validDays} días | Restan: ${remainingDays} día(s)`,
+    className: remainingDays <= 1 ? "text-amber-600" : "text-emerald-600",
+  };
+}
+
 function App() {
   const logoUrl = logoTemporal;
 
@@ -81,6 +123,20 @@ function App() {
   const [savedQuotes, setSavedQuotes] = useState<SavedQuote[]>(() =>
     getSavedQuotes(),
   );
+
+  const [mirominaPrices, setMirominaPrices] = useState<
+    Record<string, { price: number; updatedAt: string; validDays: number }>
+  >(() => loadFromStorage("cotizador.mirominaPrices", {}));
+
+  const [priceModal, setPriceModal] = useState<{
+    itemId: string;
+    productCode: string;
+    productName: string;
+    currentPrice: number;
+    profitPercent: number;
+  } | null>(null);
+
+  const [modalPriceValue, setModalPriceValue] = useState("");
 
   // const [catalogValues, setCatalogValues] = useState<
   //   Record<string, { supplierPriceUsd?: string; isEditing?: boolean }>
@@ -176,6 +232,10 @@ function App() {
   //   }
   // }
 
+  useEffect(() => {
+    saveToStorage("cotizador.mirominaPrices", mirominaPrices);
+  }, [mirominaPrices]);
+
   function handleSaveQuote() {
     const quote: SavedQuote = {
       id: quoteNumber,
@@ -243,7 +303,12 @@ function App() {
       return;
     }
 
-    const supplierPriceUsd = 0;
+    const savedPrice = mirominaPrices[product.code];
+
+    const supplierPriceUsd = savedPrice?.price ?? 0;
+    const supplierPriceUpdatedAt = savedPrice?.updatedAt ?? "";
+    const supplierPriceValidDays = savedPrice?.validDays ?? 5;
+
     const profitPercent = DEFAULT_PROFIT_PERCENT;
     const unitPriceUsd = calculateClientPrice(supplierPriceUsd, profitPercent);
     const weightTn = Number(product.weightTn ?? 0);
@@ -257,12 +322,17 @@ function App() {
           typeof crypto !== "undefined" && "randomUUID" in crypto
             ? crypto.randomUUID()
             : `${Date.now()}-${Math.random().toString(16).slice(2)}`,
+
         randomCode: randomShortCode(),
         productCode: product.code,
         name: product.name,
         qty: 1,
         weightTn,
+
         supplierPriceUsd,
+        supplierPriceUpdatedAt,
+        supplierPriceValidDays,
+
         profitPercent,
         unitPriceUsd,
       },
@@ -283,6 +353,8 @@ function App() {
         | "supplierPriceUsd"
         | "profitPercent"
         | "unitPriceUsd"
+        | "supplierPriceUpdatedAt"
+        | "supplierPriceValidDays"
       >
     >,
   ) {
@@ -571,44 +643,83 @@ function App() {
                         </td>
 
                         <td className="border border-slate-300 px-2 py-1 text-right">
+                          <div className="mb-1">
+                            <div
+                              className={`text-[10px] font-bold ${
+                                getSupplierPriceStatus(
+                                  it.supplierPriceUpdatedAt,
+                                  it.supplierPriceValidDays,
+                                ).className
+                              }`}
+                            >
+                              Actualizado:{" "}
+                              {it.supplierPriceUpdatedAt || "Sin actualizar"}
+                            </div>
+                          </div>
+
                           <input
                             type="text"
                             inputMode="decimal"
-                            className="w-full rounded-none border border-slate-300 bg-white px-2 py-1 text-right text-xs outline-none focus:border-slate-500"
-                            defaultValue={it.supplierPriceUsd || ""}
-                            onInput={(e) => {
-                              const input = e.currentTarget;
-                              let value = input.value;
-
-                              value = value.replace(/[^0-9.]/g, "");
-
-                              const parts = value.split(".");
-                              if (parts.length > 2) {
-                                value =
-                                  parts[0] + "." + parts.slice(1).join("");
-                              }
-
-                              input.value = value;
-                            }}
-                            onBlur={(e) => {
-                              const value = e.target.value;
-
-                              const supplierPriceUsd =
-                                value === "" ? 0 : parseFloat(value);
-
-                              const unitPriceUsd = Number(
-                                calculateClientPrice(
-                                  supplierPriceUsd,
-                                  it.profitPercent,
-                                ).toFixed(2),
-                              );
-
-                              handleUpdateItem(it.id, {
-                                supplierPriceUsd,
-                                unitPriceUsd,
-                              });
-                            }}
+                            readOnly
+                            title={`Última actualización: ${
+                              it.supplierPriceUpdatedAt || "Sin actualizar"
+                            }`}
+                            className={`w-full cursor-not-allowed rounded-none border px-2 py-1 text-right text-xs outline-none ${
+                              isSupplierPriceExpired(
+                                it.supplierPriceUpdatedAt,
+                                it.supplierPriceValidDays,
+                              )
+                                ? "border-red-500 bg-red-50"
+                                : "border-slate-300 bg-slate-100"
+                            }`}
+                            value={
+                              it.supplierPriceUsd
+                                ? it.supplierPriceUsd.toFixed(2)
+                                : ""
+                            }
                           />
+                          <div
+                            className={`text-[10px] ${
+                              getSupplierPriceStatus(
+                                it.supplierPriceUpdatedAt,
+                                it.supplierPriceValidDays,
+                              ).className
+                            }`}
+                          >
+                            Vigencia: {it.supplierPriceValidDays || 5} días |
+                            Restan:{" "}
+                            {Math.max(
+                              0,
+                              (it.supplierPriceValidDays || 5) -
+                                Math.floor(
+                                  (new Date().getTime() -
+                                    new Date(
+                                      it.supplierPriceUpdatedAt || new Date(),
+                                    ).getTime()) /
+                                    (1000 * 60 * 60 * 24),
+                                ),
+                            )}
+                            día(s)
+                          </div>
+                          <button
+                            type="button"
+                            className="mt-1 rounded-none border border-slate-300 bg-white px-2 py-1 text-[10px] font-bold text-slate-700 hover:bg-slate-100"
+                            onClick={() => {
+                              setPriceModal({
+                                itemId: it.id,
+                                productCode: it.productCode,
+                                productName: it.name,
+                                currentPrice: it.supplierPriceUsd,
+                                profitPercent: it.profitPercent,
+                              });
+
+                              setModalPriceValue(
+                                String(it.supplierPriceUsd || ""),
+                              );
+                            }}
+                          >
+                            Actualizar precio
+                          </button>
                         </td>
 
                         <td className="border border-slate-300 px-2 py-1 text-right">
@@ -736,6 +847,114 @@ function App() {
           </section>
         </main>
       </div>
+
+      {priceModal ? (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4 print:hidden">
+          <div className="w-full max-w-md border border-slate-300 bg-white p-5 shadow-2xl">
+            <div className="mb-3">
+              <div className="text-base font-extrabold text-slate-900">
+                Actualizar precio Miromina
+              </div>
+
+              <div className="mt-1 text-xs text-slate-600">
+                {priceModal.productCode} - {priceModal.productName}
+              </div>
+
+              <div className="mt-2 text-[11px] text-slate-500">
+                Precio actual: USD {priceModal.currentPrice.toFixed(2)}
+              </div>
+            </div>
+
+            <label className="mb-1 block text-xs font-bold text-slate-700">
+              Nuevo precio Miromina
+            </label>
+
+            <input
+              autoFocus
+              type="text"
+              inputMode="decimal"
+              className="w-full rounded-none border border-slate-300 px-3 py-2 text-right text-sm outline-none focus:border-slate-600"
+              value={modalPriceValue}
+              onChange={(e) => {
+                let value = e.target.value;
+
+                value = value.replace(/[^0-9.]/g, "");
+
+                const parts = value.split(".");
+                if (parts.length > 2) {
+                  value = parts[0] + "." + parts.slice(1).join("");
+                }
+
+                setModalPriceValue(value);
+              }}
+            />
+
+            <div className="mt-3 text-xs text-slate-600">
+              Al guardar, se actualizará el precio interno, la fecha de
+              actualización y la vigencia de 5 días. Este mensaje es solo
+              interno y no aparece en el PDF del cliente.
+            </div>
+
+            <div className="mt-5 flex justify-end gap-2">
+              <button
+                type="button"
+                className="rounded-none border border-slate-300 bg-white px-4 py-2 text-xs font-bold text-slate-700 hover:bg-slate-100"
+                onClick={() => {
+                  setPriceModal(null);
+                  setModalPriceValue("");
+                }}
+              >
+                Cancelar
+              </button>
+
+              <button
+                type="button"
+                className="rounded-none border border-slate-900 bg-slate-900 px-4 py-2 text-xs font-bold text-white hover:bg-slate-700"
+                onClick={() => {
+                  if (!priceModal) return;
+
+                  const supplierPriceUsd = Number(modalPriceValue);
+
+                  if (!Number.isFinite(supplierPriceUsd)) {
+                    alert("Ingrese un precio válido.");
+                    return;
+                  }
+
+                  const today = new Date().toISOString().slice(0, 10);
+
+                  const unitPriceUsd = Number(
+                    calculateClientPrice(
+                      supplierPriceUsd,
+                      priceModal.profitPercent,
+                    ).toFixed(2),
+                  );
+
+                  handleUpdateItem(priceModal.itemId, {
+                    supplierPriceUsd,
+                    unitPriceUsd,
+                    supplierPriceUpdatedAt: today,
+                    supplierPriceValidDays: 5,
+                  });
+
+                  setMirominaPrices((prev) => ({
+                    ...prev,
+                    [priceModal.productCode]: {
+                      price: supplierPriceUsd,
+                      updatedAt: today,
+                      validDays: 5,
+                    },
+                  }));
+
+                  setPriceModal(null);
+                  setModalPriceValue("");
+                }}
+              >
+                Guardar actualización
+              </button>
+            </div>
+          </div>
+        </div>
+      ) : null}
     </>
   );
 }
