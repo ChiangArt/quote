@@ -2,7 +2,7 @@ export function BankDetails() {
   return (
     <div className="no-break">
       <div className="mb-1 text-[11px] font-bold">
-        DATOS BANCARIOS — ACEROS ALDAMAR S.A.C.
+        DATOS BANCARIOS — GRUPO ALDAMAR S.A.C.
       </div>
 
       {/* INTERBANK */}
