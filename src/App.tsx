@@ -14,8 +14,8 @@ import {
 } from "./utils/storage";
 import logoTemporal from "./assets/logo_temporal.png";
 import { SupplierQuoteDocument } from "./components/SupplierQuoteDocument";
-import { PRODUCTS } from "./data/products";
 import { PurchaseOrderDocument } from "./components/PurchaseOrderDocument";
+import { PRODUCTS } from "./data/products";
 
 const IGV_RATE = 0.18;
 const DEFAULT_PROFIT_PERCENT = 5;
