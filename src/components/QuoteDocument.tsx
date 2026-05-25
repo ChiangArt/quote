@@ -37,6 +37,7 @@ function chunkItems(items: QuoteItem[]) {
 
   return pages;
 }
+
 export function QuoteDocument({
   logoUrl,
   quoteNumber,
@@ -50,13 +51,18 @@ export function QuoteDocument({
   items: QuoteItem[];
   totals: QuoteTotals;
 }) {
-  const fechaVencimientoISO = addDaysISO(client.fechaISO, 1);
+  // Vigencia de la cotización: 10 días
+  const fechaVencimientoISO = addDaysISO(client.fechaISO, 10);
+
   const pages = chunkItems(items);
+
+  const tipoCambio = Number(client.tipoCambio || 0);
 
   return (
     <div className="bg-white text-slate-900">
       {pages.map((pageItems, pageIndex) => {
         const isLastPage = pageIndex === pages.length - 1;
+
         return (
           <div
             key={pageIndex}
@@ -73,7 +79,17 @@ export function QuoteDocument({
 
             <ClientSection client={client} quoteNumber={quoteNumber} />
 
-            <div className="mt-3 text-[11px] font-bold">
+            {/* Tipo de cambio más grande, en negrita y más cerca al cuadro de items */}
+            <div className="mt-6 mb-1 flex justify-end">
+              <div className="py-2.5 text-right text-[13px] font-extrabold text-slate-900">
+                TIPO DE CAMBIO:{" "}
+                <span className="text-[13px]">
+                  {tipoCambio ? tipoCambio.toFixed(3) : "0.000"}
+                </span>
+              </div>
+            </div>
+
+            <div className="mt-1 text-[11px] font-bold">
               DETALLE DE COTIZACIÓN
             </div>
 
@@ -91,7 +107,8 @@ export function QuoteDocument({
                   nombre={client.nombreAsesor}
                   telefono={client.telefonoAsesor}
                   correo={client.correoAsesor}
-                />{" "}
+                />
+
                 <CommercialConditions />
                 <BankDetails />
                 <NotesSection />

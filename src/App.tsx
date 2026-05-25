@@ -34,7 +34,7 @@ function calculateClientPrice(supplierPriceUsd: number, profitPercent: number) {
   return supplierPriceUsd + supplierPriceUsd * (profitPercent / 100);
 }
 
-function isSupplierPriceExpired(updatedAt?: string, validDays = 5) {
+function isSupplierPriceExpired(updatedAt?: string, validDays = 10) {
   if (!updatedAt) return false;
 
   const updated = new Date(updatedAt);
@@ -46,7 +46,7 @@ function isSupplierPriceExpired(updatedAt?: string, validDays = 5) {
   return diffDays > validDays;
 }
 
-function getSupplierPriceStatus(updatedAt?: string, validDays = 5) {
+function getSupplierPriceStatus(updatedAt?: string, validDays = 10) {
   if (!updatedAt) {
     return {
       text: "Sin precio actualizado",
@@ -307,7 +307,7 @@ function App() {
 
     const supplierPriceUsd = savedPrice?.price ?? 0;
     const supplierPriceUpdatedAt = savedPrice?.updatedAt ?? "";
-    const supplierPriceValidDays = savedPrice?.validDays ?? 5;
+    const supplierPriceValidDays = savedPrice?.validDays ?? 10;
 
     const profitPercent = DEFAULT_PROFIT_PERCENT;
     const unitPriceUsd = calculateClientPrice(supplierPriceUsd, profitPercent);
@@ -686,11 +686,11 @@ function App() {
                               ).className
                             }`}
                           >
-                            Vigencia: {it.supplierPriceValidDays || 5} días |
+                            Vigencia: {it.supplierPriceValidDays || 10} días |
                             Restan:{" "}
                             {Math.max(
                               0,
-                              (it.supplierPriceValidDays || 5) -
+                              (it.supplierPriceValidDays || 10) -
                                 Math.floor(
                                   (new Date().getTime() -
                                     new Date(
@@ -891,7 +891,7 @@ function App() {
 
             <div className="mt-3 text-xs text-slate-600">
               Al guardar, se actualizará el precio interno, la fecha de
-              actualización y la vigencia de 5 días. Este mensaje es solo
+              actualización y la vigencia de 10 días. Este mensaje es solo
               interno y no aparece en el PDF del cliente.
             </div>
 
@@ -933,7 +933,7 @@ function App() {
                     supplierPriceUsd,
                     unitPriceUsd,
                     supplierPriceUpdatedAt: today,
-                    supplierPriceValidDays: 5,
+                    supplierPriceValidDays: 10,
                   });
 
                   setMirominaPrices((prev) => ({
@@ -941,7 +941,7 @@ function App() {
                     [priceModal.productCode]: {
                       price: supplierPriceUsd,
                       updatedAt: today,
-                      validDays: 5,
+                      validDays: 10,
                     },
                   }));
 

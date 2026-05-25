@@ -33,10 +33,7 @@ export function ClientSection({
             <span className="font-semibold">N° Cotización:</span>{' '}
             <span className="font-extrabold">{quoteNumber}</span>
           </div>
-          <div>
-            <span className="font-semibold">Tipo de cambio:</span>{' '}
-            {client.tipoCambio || 0}
-          </div>
+          
         </div>
       </div>
     </div>
