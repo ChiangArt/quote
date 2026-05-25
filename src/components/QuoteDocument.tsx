@@ -81,9 +81,9 @@ export function QuoteDocument({
 
             {/* Tipo de cambio más grande, en negrita y más cerca al cuadro de items */}
             <div className="mt-6 mb-1 flex justify-end">
-              <div className="py-2.5 text-right text-[13px] font-extrabold text-slate-900">
+              <div className="py-2.5 text-right text-[15px] font-extrabold text-slate-900">
                 TIPO DE CAMBIO:{" "}
-                <span className="text-[13px]">
+                <span className="text-[15px]">
                   {tipoCambio ? tipoCambio.toFixed(3) : "0.000"}
                 </span>
               </div>
