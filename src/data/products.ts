@@ -21,6 +21,131 @@ export const PRODUCTS: Product[] = [
     name: "BARRA DE CONSTRUCCION ASTM A615/A706 GR60 8MM X 9M",
     weightTn: 0.003448,
   },
+    {
+    code: "1291",
+    name: "ALAMBRE NEGRO RECOCIDO B #16 F-100",
+    weightTn: 0.099766,
+  },
+  {
+    code: "11564",
+    name: "PLANCHA LAC A709 GR50 75X1500X3000MM P.T.",
+    weightTn: 2.649333,
+  },
+  {
+    code: "7443",
+    name: "PLANCHA ANTIABRASIVA NM500 3/8´´X4´X8´ P.T.",
+    weightTn: 0.2224,
+  },
+  {
+    code: "7445",
+    name: "PLANCHA ANTIABRASIVA NM500 5/8´´X4´X8´ P.T.",
+    weightTn: 0.3706,
+  },
+  {
+    code: "5037",
+    name: "TUBO ACERO CUADRADO LAC A500 GRA 100X2.0X6.0M P.T.",
+    weightTn: 0.037106,
+  },
+  {
+    code: "10765",
+    name: "TUBO REDONDO GALVANIZADO A500 GRA Ø1/2´´(ØE 21.3)X1.5X6M P.T.",
+    weightTn: 0.004395,
+  },
+  {
+    code: "10771",
+    name: "TUBO REDONDO GALVANIZADO A500 GRA Ø3/4´´(ØE26.7)X1.2X6M P.T.",
+    weightTn: 0.004528,
+  },
+  {
+    code: "10808",
+    name: "TUBO REDONDO GALVANIZADO A500 GRA Ø2´´(ØE60.3)X1.5X6M P.T.",
+    weightTn: 0.013051,
+  },
+  {
+    code: "10812",
+    name: "TUBO REDONDO GALVANIZADO A500 GRA Ø2´´(ØE60.3)X2.0X6M P.T.",
+    weightTn: 0.017253,
+  },
+  {
+    code: "10818",
+    name: "TUBO REDONDO GALVANIZADO A500 GRA Ø2 1/2´´(ØE73.0)X2.0X6M P.T.",
+    weightTn: 0.021012,
+  },
+  {
+    code: "10828",
+    name: "TUBO REDONDO GALVANIZADO A500 GRA Ø3´´(ØE88.9)X2.5X6M P.T.",
+    weightTn: 0.031727,
+  },
+  {
+    code: "10698",
+    name: "TUBO RECTANGULAR GALVANIZADO A500 GRA 50X150X2.5X6M P.T.",
+    weightTn: 0.0461,
+  },
+  {
+    code: "11571",
+    name: "EJE SAE 1020 Ø32MM X 4.04M",
+    weightTn: 0.026,
+  },
+  {
+    code: "11570",
+    name: "EJE SAE 1020 Ø32MM X 4.05M",
+    weightTn: 0.026,
+  },
+  {
+    code: "11569",
+    name: "EJE SAE 1020 Ø32MM X 4.45M",
+    weightTn: 0.028,
+  },
+  {
+    code: "11568",
+    name: "EJE SAE 1020 Ø32MM X 4.65M",
+    weightTn: 0.029,
+  },
+  {
+    code: "11567",
+    name: "EJE SAE 1020 Ø32MM X 5.1M",
+    weightTn: 0.032,
+  },
+  {
+    code: "11573",
+    name: "EJE SAE 1045 CALIBRADO 3 1/2´´ X 5.00 M",
+    weightTn: 0.179,
+  },
+  {
+    code: "11574",
+    name: "EJE SAE 1045 CALIBRADO 3 1/2´´ X 5.15 M",
+    weightTn: 0.184,
+  },
+  {
+    code: "11572",
+    name: "EJE SAE 1045 CALIBRADO 3 1/2´´ X 5.25 M",
+    weightTn: 0.188,
+  },
+  {
+    code: "5768",
+    name: "BARRA ACERO REDONDA LISA A36 Ø3 1/2´´X6M",
+    weightTn: 0.292357,
+  },
+  {
+    code: "3044",
+    name: "BARRA CUADRADA LISA A36 9MMX6M",
+    weightTn: 0.003817,
+  },
+  {
+    code: "3383",
+    name: "PLATINA A36 6MM X 4´´ X 6M",
+    weightTn: 0.028667,
+  },
+  {
+    code: "2896",
+    name: "VIGA H A36 W-6´´ X 12LBS/PIE X 20´ P.T.",
+    weightTn: 0.109,
+  },
+  {
+    code: "11270",
+    name: "VIGA H A36 W-8´´ X 35LBS/PIE X 20´ P.T.",
+    weightTn: 0.317,
+  },
   {
     code: "6354",
     name: "BARRA DE CONSTRUCCION ASTM A615/A706 GR60 12MM X 9M",
