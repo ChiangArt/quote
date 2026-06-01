@@ -1,9 +1,10 @@
 import type { QuoteItem } from "../types";
+import { roundMoney } from "../utils/number";
 
 const IGV_RATE = 0.18;
 
 function formatMoney(value: number) {
-  return value > 0 ? value.toFixed(2) : "";
+  return value > 0 ? roundMoney(value).toFixed(2) : "";
 }
 
 function formatWeight(value: number) {
@@ -26,14 +27,16 @@ export function PurchaseOrderItemsTable({
     0,
   );
 
-  const subtotalUsd = items.reduce(
-    (acc, item) => acc + item.qty * item.supplierPriceUsd,
-    0,
+  const subtotalUsd = roundMoney(
+    items.reduce(
+      (acc, item) => acc + roundMoney(item.qty * item.supplierPriceUsd),
+      0,
+    ),
   );
 
-  const igvUsd = subtotalUsd * IGV_RATE;
-  const totalUsd = subtotalUsd + igvUsd;
-  const totalPen = totalUsd * exchangeRate;
+  const igvUsd = roundMoney(subtotalUsd * IGV_RATE);
+  const totalUsd = roundMoney(subtotalUsd + igvUsd);
+  const totalPen = roundMoney(totalUsd * exchangeRate);
 
   return (
     <table className="mt-2 w-full border-collapse text-[10px]">
@@ -52,7 +55,7 @@ export function PurchaseOrderItemsTable({
       <tbody>
         {items.map((item, index) => {
           const rowWeight = item.qty * item.weightTn;
-          const rowTotal = item.qty * item.supplierPriceUsd;
+          const rowTotal = roundMoney(item.qty * item.supplierPriceUsd);
 
           return (
             <tr key={item.id}>

@@ -16,6 +16,7 @@ import logoTemporal from "./assets/logo_temporal.png";
 import { SupplierQuoteDocument } from "./components/SupplierQuoteDocument";
 import { PurchaseOrderDocument } from "./components/PurchaseOrderDocument";
 import { PRODUCTS } from "./data/products";
+import { roundMoney } from "./utils/number";
 
 const IGV_RATE = 0.18;
 const DEFAULT_PROFIT_PERCENT = 5;
@@ -31,7 +32,15 @@ function generateQuoteRandom() {
 }
 
 function calculateClientPrice(supplierPriceUsd: number, profitPercent: number) {
-  return supplierPriceUsd + supplierPriceUsd * (profitPercent / 100);
+  return roundMoney(supplierPriceUsd * (1 + profitPercent / 100));
+}
+
+function normalizeQuoteItem(item: QuoteItem): QuoteItem {
+  return {
+    ...item,
+    supplierPriceUsd: roundMoney(item.supplierPriceUsd),
+    unitPriceUsd: roundMoney(item.unitPriceUsd),
+  };
 }
 
 function isSupplierPriceExpired(updatedAt?: string, validDays = 10) {
@@ -126,7 +135,21 @@ function App() {
 
   const [mirominaPrices, setMirominaPrices] = useState<
     Record<string, { price: number; updatedAt: string; validDays: number }>
-  >(() => loadFromStorage("cotizador.mirominaPrices", {}));
+  >(() => {
+    const storedPrices = loadFromStorage<
+      Record<string, { price: number; updatedAt: string; validDays: number }>
+    >("cotizador.mirominaPrices", {});
+
+    return Object.fromEntries(
+      Object.entries(storedPrices).map(([code, value]) => [
+        code,
+        {
+          ...value,
+          price: roundMoney(value.price),
+        },
+      ]),
+    );
+  });
 
   const [priceModal, setPriceModal] = useState<{
     itemId: string;
@@ -161,14 +184,13 @@ function App() {
       0,
     );
 
-    const subtotalUsd = items.reduce(
-      (acc, it) => acc + it.qty * it.unitPriceUsd,
-      0,
+    const subtotalUsd = roundMoney(
+      items.reduce((acc, it) => acc + roundMoney(it.qty * it.unitPriceUsd), 0),
     );
 
-    const igvUsd = subtotalUsd * IGV_RATE;
-    const totalUsd = subtotalUsd + igvUsd;
-    const totalPen = totalUsd * (Number(client.tipoCambio) || 0);
+    const igvUsd = roundMoney(subtotalUsd * IGV_RATE);
+    const totalUsd = roundMoney(subtotalUsd + igvUsd);
+    const totalPen = roundMoney(totalUsd * (Number(client.tipoCambio) || 0));
 
     return {
       totalQty,
@@ -243,7 +265,7 @@ function App() {
       quoteNumber,
       sellerCode,
       client,
-      items,
+      items: items.map(normalizeQuoteItem),
     };
 
     saveQuoteToStorage(quote);
@@ -270,7 +292,7 @@ function App() {
   function handleLoadQuote(quote: SavedQuote) {
     setSellerCode(quote.sellerCode);
     setClient(quote.client);
-    setItems(quote.items);
+    setItems(quote.items.map(normalizeQuoteItem));
 
     const numberPart = Number(quote.quoteNumber.split("-").pop());
 
@@ -305,7 +327,7 @@ function App() {
 
     const savedPrice = mirominaPrices[product.code];
 
-    const supplierPriceUsd = savedPrice?.price ?? 0;
+    const supplierPriceUsd = roundMoney(savedPrice?.price ?? 0);
     const supplierPriceUpdatedAt = savedPrice?.updatedAt ?? "";
     const supplierPriceValidDays = savedPrice?.validDays ?? 10;
 
@@ -358,8 +380,22 @@ function App() {
       >
     >,
   ) {
+    const normalizedPatch = { ...patch };
+
+    if (normalizedPatch.supplierPriceUsd !== undefined) {
+      normalizedPatch.supplierPriceUsd = roundMoney(
+        normalizedPatch.supplierPriceUsd,
+      );
+    }
+
+    if (normalizedPatch.unitPriceUsd !== undefined) {
+      normalizedPatch.unitPriceUsd = roundMoney(normalizedPatch.unitPriceUsd);
+    }
+
     setItems((prev) =>
-      prev.map((it) => (it.id === id ? { ...it, ...patch } : it)),
+      prev.map((it) =>
+        it.id === id ? normalizeQuoteItem({ ...it, ...normalizedPatch }) : it,
+      ),
     );
   }
 
@@ -674,7 +710,7 @@ function App() {
                             }`}
                             value={
                               it.supplierPriceUsd
-                                ? it.supplierPriceUsd.toFixed(2)
+                                ? roundMoney(it.supplierPriceUsd).toFixed(2)
                                 : ""
                             }
                           />
@@ -714,7 +750,9 @@ function App() {
                               });
 
                               setModalPriceValue(
-                                String(it.supplierPriceUsd || ""),
+                                it.supplierPriceUsd
+                                  ? roundMoney(it.supplierPriceUsd).toFixed(2)
+                                  : "",
                               );
                             }}
                           >
@@ -734,7 +772,7 @@ function App() {
                         </td>
 
                         <td className="border border-slate-300 px-2 py-1 text-right font-bold">
-                          {it.unitPriceUsd.toFixed(2)}
+                          {roundMoney(it.unitPriceUsd).toFixed(2)}
                         </td>
 
                         <td className="border border-slate-300 px-2 py-1 text-right">
@@ -861,7 +899,7 @@ function App() {
               </div>
 
               <div className="mt-2 text-[11px] text-slate-500">
-                Precio actual: USD {priceModal.currentPrice.toFixed(2)}
+                Precio actual: USD {roundMoney(priceModal.currentPrice).toFixed(2)}
               </div>
             </div>
 
@@ -878,11 +916,16 @@ function App() {
               onChange={(e) => {
                 let value = e.target.value;
 
-                value = value.replace(/[^0-9.]/g, "");
+                value = value.replace(/,/g, ".").replace(/[^0-9.]/g, "");
 
                 const parts = value.split(".");
                 if (parts.length > 2) {
                   value = parts[0] + "." + parts.slice(1).join("");
+                }
+
+                if (value.includes(".")) {
+                  const [integerPart, decimalPart = ""] = value.split(".");
+                  value = `${integerPart}.${decimalPart.slice(0, 2)}`;
                 }
 
                 setModalPriceValue(value);
@@ -913,7 +956,7 @@ function App() {
                 onClick={() => {
                   if (!priceModal) return;
 
-                  const supplierPriceUsd = Number(modalPriceValue);
+                  const supplierPriceUsd = roundMoney(Number(modalPriceValue));
 
                   if (!Number.isFinite(supplierPriceUsd)) {
                     alert("Ingrese un precio válido.");
@@ -922,11 +965,9 @@ function App() {
 
                   const today = new Date().toISOString().slice(0, 10);
 
-                  const unitPriceUsd = Number(
-                    calculateClientPrice(
-                      supplierPriceUsd,
-                      priceModal.profitPercent,
-                    ).toFixed(2),
+                  const unitPriceUsd = calculateClientPrice(
+                    supplierPriceUsd,
+                    priceModal.profitPercent,
                   );
 
                   handleUpdateItem(priceModal.itemId, {
@@ -939,7 +980,7 @@ function App() {
                   setMirominaPrices((prev) => ({
                     ...prev,
                     [priceModal.productCode]: {
-                      price: supplierPriceUsd,
+                      price: roundMoney(supplierPriceUsd),
                       updatedAt: today,
                       validDays: 10,
                     },

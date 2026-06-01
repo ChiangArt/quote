@@ -1,5 +1,10 @@
 import type { QuoteItem, QuoteTotals } from "../types";
-import { formatMoneyPen, formatMoneyUsd, formatNumber } from "../utils/number";
+import {
+  formatMoneyPen,
+  formatMoneyUsd,
+  formatNumber,
+  roundMoney,
+} from "../utils/number";
 
 type Props = {
   items: QuoteItem[];
@@ -66,7 +71,7 @@ export function QuoteItemsTable({ items, startIndex = 0, totals }: Props) {
 }
 
 function ItemRow({ item, number }: { item: QuoteItem; number: number }) {
-  const rowTotal = item.qty * item.unitPriceUsd;
+  const rowTotal = roundMoney(item.qty * item.unitPriceUsd);
   const rowWeightTn = item.weightTn * item.qty;
 
   return (
