@@ -12,6 +12,46 @@ export const PRODUCTS: Product[] = [
     weightTn: 45.785,
   },
   {
+  code: "1340",
+  name: "PLANCHA LAF A1008 1.00X1200X2400MM P.T.",
+  weightTn: 0.022608,
+},
+{
+  code: "2345",
+  name: "PLANCHA NAVAL A131 GR A 12.7 X1800X6000MM",
+  weightTn: 1.076696,
+},
+{
+  code: "2347",
+  name: "PLANCHA NAVAL A131 GR A 9.525 X1800X6000MM",
+  weightTn: 0.807525,
+},
+{
+  code: "2788",
+  name: "VIGA H A36 W-4´´ X 13LBS/PIE X 20´ P.T.",
+  weightTn: 0.1178,
+},
+{
+  code: "8760",
+  name: "PLANCHA GALVANIZADA 2.0X1200X2400MM P.T.",
+  weightTn: 0.045216,
+},
+{
+  code: "10715",
+  name: "TUBO CUADRADO GALVANIZADO A500 GRA 25X25X2.0X6M P.T.",
+  weightTn: 0.008833,
+},
+{
+  code: "10786",
+  name: "TUBO REDONDO GALVANIZADO A500 GRA Ø1´´(ØE33.4)X2.0X6M P.T.",
+  weightTn: 0.009292,
+},
+{
+  code: "10832",
+  name: "TUBO REDONDO GALVANIZADO A500 GRA Ø4´´(ØE114.3)X2.0X6M P.T.",
+  weightTn: 0.033234,
+},
+  {
     code: "2159",
     name: "BARRA ACERO CORRUGADO ASTM A615/A706 GR60 6MM P.T.",
     weightTn: 0.001938,
