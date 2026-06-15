@@ -12,45 +12,145 @@ export const PRODUCTS: Product[] = [
     weightTn: 45.785,
   },
   {
-  code: "1340",
-  name: "PLANCHA LAF A1008 1.00X1200X2400MM P.T.",
-  weightTn: 0.022608,
-},
-{
-  code: "2345",
-  name: "PLANCHA NAVAL A131 GR A 12.7 X1800X6000MM",
-  weightTn: 1.076696,
-},
-{
-  code: "2347",
-  name: "PLANCHA NAVAL A131 GR A 9.525 X1800X6000MM",
-  weightTn: 0.807525,
-},
-{
-  code: "2788",
-  name: "VIGA H A36 W-4´´ X 13LBS/PIE X 20´ P.T.",
-  weightTn: 0.1178,
-},
-{
-  code: "8760",
-  name: "PLANCHA GALVANIZADA 2.0X1200X2400MM P.T.",
-  weightTn: 0.045216,
-},
-{
-  code: "10715",
-  name: "TUBO CUADRADO GALVANIZADO A500 GRA 25X25X2.0X6M P.T.",
-  weightTn: 0.008833,
-},
-{
-  code: "10786",
-  name: "TUBO REDONDO GALVANIZADO A500 GRA Ø1´´(ØE33.4)X2.0X6M P.T.",
-  weightTn: 0.009292,
-},
-{
-  code: "10832",
-  name: "TUBO REDONDO GALVANIZADO A500 GRA Ø4´´(ØE114.3)X2.0X6M P.T.",
-  weightTn: 0.033234,
-},
+    code: "1340",
+    name: "PLANCHA LAF A1008 1.00X1200X2400MM P.T.",
+    weightTn: 0.022608,
+  },
+  {
+    code: "2345",
+    name: "PLANCHA NAVAL A131 GR A 12.7 X1800X6000MM",
+    weightTn: 1.076696,
+  },
+  {
+    code: "2347",
+    name: "PLANCHA NAVAL A131 GR A 9.525 X1800X6000MM",
+    weightTn: 0.807525,
+  },
+  {
+    code: "2788",
+    name: "VIGA H A36 W-4´´ X 13LBS/PIE X 20´ P.T.",
+    weightTn: 0.1178,
+  },
+  {
+    code: "8760",
+    name: "PLANCHA GALVANIZADA 2.0X1200X2400MM P.T.",
+    weightTn: 0.045216,
+  },
+  {
+    code: "10715",
+    name: "TUBO CUADRADO GALVANIZADO A500 GRA 25X25X2.0X6M P.T.",
+    weightTn: 0.008833,
+  },
+  {
+    code: "10786",
+    name: "TUBO REDONDO GALVANIZADO A500 GRA Ø1´´(ØE33.4)X2.0X6M P.T.",
+    weightTn: 0.009292,
+  },
+  {
+    code: "10832",
+    name: "TUBO REDONDO GALVANIZADO A500 GRA Ø4´´(ØE114.3)X2.0X6M P.T.",
+    weightTn: 0.033234,
+  },
+  {
+    code: "9475",
+    name: "BOBINA LAC 1.40X1199MM",
+    weightTn: 488.55,
+  },
+  {
+    code: "10201",
+    name: "BOBINA LAC 2.35X1200MM",
+    weightTn: 502.28,
+  },
+  {
+    code: "10204",
+    name: "BOBINA LAC 2.85X1200MM",
+    weightTn: 476.56,
+  },
+  {
+    code: "6747",
+    name: "TUBO ACERO LAC A500 GRA Ø2 1/2´´X2.0X6M P.T.",
+    weightTn: 0.021009,
+  },
+  {
+    code: "9255",
+    name: "TUBO ACERO CUADRADO LAC A500 GRA 100X3.0X6.0M P.T.",
+    weightTn: 0.055205,
+  },
+  {
+    code: "10743",
+    name: "TUBO CUADRADO GALVANIZADO A500 GRA 50X50X1.8X6M P.T.",
+    weightTn: 0.016485,
+  },
+  {
+    code: "11587",
+    name: "EJE SAE 1045 Ø50MM X 3.18M",
+    weightTn: 0.049,
+  },
+  {
+    code: "11586",
+    name: "EJE SAE 1045 Ø50MM X 3.4M",
+    weightTn: 0.052,
+  },
+  {
+    code: "11585",
+    name: "EJE SAE 1045 Ø50MM X 4.23M",
+    weightTn: 0.065,
+  },
+  {
+    code: "11584",
+    name: "EJE SAE 1045 Ø50MM X 4.32M",
+    weightTn: 0.066,
+  },
+  {
+    code: "11583",
+    name: "EJE SAE 1045 Ø50MM X 4.64M",
+    weightTn: 0.071,
+  },
+  {
+    code: "11582",
+    name: "EJE SAE 1045 Ø50MM X 4.65M",
+    weightTn: 0.071,
+  },
+  {
+    code: "11581",
+    name: "EJE SAE 1045 Ø50MM X 4.85M",
+    weightTn: 0.074,
+  },
+  {
+    code: "11580",
+    name: "EJE SAE 1045 Ø50MM X 4.9M",
+    weightTn: 0.075,
+  },
+  {
+    code: "11579",
+    name: "EJE SAE 1045 Ø50MM X 5.0M",
+    weightTn: 0.077,
+  },
+  {
+    code: "11578",
+    name: "EJE SAE 1045 Ø50MM X 5.15M",
+    weightTn: 0.079333,
+  },
+  {
+    code: "11558",
+    name: 'PLATINA A36 5.0MM X 1" X 6M.',
+    weightTn: 0.00598,
+  },
+  {
+    code: "2767",
+    name: "PLATINA A36 6.0MM X 1´´ X 6M",
+    weightTn: 0.007194,
+  },
+  {
+    code: "8984",
+    name: "RIEL 30KG(60LB) X 6M Q55",
+    weightTn: 0.180599,
+  },
+  {
+    code: "7702",
+    name: "VIGA H A572 GR50/A992 W-10´´X 22LBS/PIE X 20´ P.T.",
+    weightTn: 0.199,
+  },
   {
     code: "2159",
     name: "BARRA ACERO CORRUGADO ASTM A615/A706 GR60 6MM P.T.",
@@ -61,7 +161,7 @@ export const PRODUCTS: Product[] = [
     name: "BARRA DE CONSTRUCCION ASTM A615/A706 GR60 8MM X 9M",
     weightTn: 0.003448,
   },
-    {
+  {
     code: "1291",
     name: "ALAMBRE NEGRO RECOCIDO B #16 F-100",
     weightTn: 0.099766,
