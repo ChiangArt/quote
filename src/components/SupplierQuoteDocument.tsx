@@ -4,7 +4,7 @@ import { SupplierItemsTable } from "./SupplierItemsTable";
 import { addDaysISO } from "../utils/date";
 
 function chunkItems(items: QuoteItem[]) {
-  const ITEMS_PER_PAGE = 35;
+  const ITEMS_PER_PAGE = 28;
   const pages: QuoteItem[][] = [];
 
   for (let i = 0; i < items.length; i += ITEMS_PER_PAGE) {
@@ -46,7 +46,7 @@ export function SupplierQuoteDocument({
             totalPages={pages.length}
           />
 
-          <div className="mt-3 text-[11px] font-bold">
+          <div className="mt-3 text-xs font-bold">
             SOLICITUD DE COTIZACIÓN A PROVEEDOR: MIROMINA
           </div>
 

@@ -35,18 +35,18 @@ export function QuoteHeader({
             <span className="font-semibold">N°:</span>{' '}
             <span className="font-extrabold">{quoteNumber}</span>
           </div>
-          <div className="text-[11px] text-slate-700">
+          <div className="text-xs text-slate-700">
             Validez: <span className="font-semibold">1 día</span>
           </div>
           {pageNumber && totalPages && (
-            <div className="text-[11px] text-slate-700">
+            <div className="text-xs text-slate-700">
               Página: <span className="font-semibold">{pageNumber}</span> de <span className="font-semibold">{totalPages}</span>
             </div>
           )}
         </div>
       </div>
 
-      <div className="mt-2 grid grid-cols-2 gap-2 text-[11px] text-slate-800">
+      <div className="mt-2 grid grid-cols-2 gap-2 text-xs text-slate-800">
         <div className="leading-snug">
           <div>
             Oficina: URB. PORTALES DE JAVIER PRADO, CAL. INGLATERRA

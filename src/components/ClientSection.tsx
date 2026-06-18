@@ -10,7 +10,7 @@ export function ClientSection({
   return (
     <div className="mt-3 grid grid-cols-2 gap-2 text-xs">
       <div className="no-break">
-        <div className="mb-1 text-[11px] font-bold">DATOS DEL CLIENTE</div>
+        <div className="mb-1 text-xs font-bold">DATOS DEL CLIENTE</div>
         <div className="space-y-1">
           <div>
             <span className="font-semibold">Razón Social:</span>{' '}
@@ -27,7 +27,7 @@ export function ClientSection({
       </div>
 
       <div className="no-break text-right">
-        <div className="mb-1 text-[11px] font-bold">RESUMEN</div>
+        <div className="mb-1 text-xs font-bold">RESUMEN</div>
         <div className="space-y-1">
           <div>
             <span className="font-semibold">N° Cotización:</span>{' '}

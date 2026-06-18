@@ -11,7 +11,7 @@ const REQUESTED_BY = "ACEROS ALDAMAR S.A.C";
 const DELIVERY_ADDRESS =
   "Car. Ramiro Priale Mz A, Lt 10-B, Huachipa - Lurigancho - Lima";
 
-const ITEMS_PER_PAGE = 30;
+const ITEMS_PER_PAGE = 24;
 
 function chunkItems(items: QuoteItem[]) {
   const pages: QuoteItem[][] = [];
@@ -77,7 +77,7 @@ export function PurchaseOrderDocument({
               ORDEN DE COMPRA
             </div>
 
-            <div className="mt-4 flex items-start justify-between gap-8 text-[11px]">
+            <div className="mt-4 flex items-start justify-between gap-8 text-xs">
               <div className="grid grid-cols-[125px_1fr] gap-y-1">
                 <div className="font-bold">Proveedor</div>
                 <div>: {SUPPLIER_NAME}</div>
@@ -108,11 +108,11 @@ export function PurchaseOrderDocument({
                 </div>
               </div>
             </div>
-            <div className="mt-8 text-[11px]">
+            <div className="mt-8 text-xs">
               Sírvase por este medio a suministrarnos los siguientes materiales:
             </div>
 
-            <div className="mt-3 text-[11px] font-bold">
+            <div className="mt-3 text-xs font-bold">
               DETALLE DE PRODUCTOS
             </div>
 
@@ -124,7 +124,7 @@ export function PurchaseOrderDocument({
 
             {isLastPage && (
               <>
-                <div className="mt-6 grid grid-cols-[150px_1fr] gap-y-1 text-[11px]">
+                <div className="mt-6 grid grid-cols-[150px_1fr] gap-y-1 text-xs">
                   <div className="font-bold">FORMA DE PAGO</div>
                   <div>: {PAYMENT_METHOD}</div>
 
@@ -135,7 +135,7 @@ export function PurchaseOrderDocument({
                   <div>: {REQUESTED_BY}</div>
                 </div>
 
-                <div className="mt-6 grid grid-cols-[65px_1fr] border border-black text-[10px]">
+                <div className="mt-6 grid grid-cols-[65px_1fr] border border-black text-[11px]">
                   <div className="bg-sky-300 px-2 py-1 font-bold">DIR.</div>
 
                   <div className="bg-sky-300 px-2 py-1 text-center font-bold">
@@ -143,7 +143,7 @@ export function PurchaseOrderDocument({
                   </div>
                 </div>
 
-                <div className="mt-6 grid grid-cols-2 gap-8 text-center text-[10px]">
+                <div className="mt-6 grid grid-cols-2 gap-8 text-center text-[11px]">
                   <div>
                     <div className="mt-10 border-t border-slate-500 pt-1">
                       AUTORIZADO POR

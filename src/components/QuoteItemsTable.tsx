@@ -21,7 +21,7 @@ const tdGrand =
 export function QuoteItemsTable({ items, startIndex = 0, totals }: Props) {
   return (
     <div className="mt-2">
-      <table className="w-full table-fixed border-collapse text-[8.5px]">
+      <table className="w-full table-fixed border-collapse text-[10px]">
         <thead>
           <tr>
             <th className={`${th} text-right`} style={{ width: 24 }}>

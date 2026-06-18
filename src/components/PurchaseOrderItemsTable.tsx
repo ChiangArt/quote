@@ -39,7 +39,7 @@ export function PurchaseOrderItemsTable({
   const totalPen = roundMoney(totalUsd * exchangeRate);
 
   return (
-    <table className="mt-2 w-full border-collapse text-[10px]">
+    <table className="mt-2 w-full border-collapse text-[11px]">
       <thead>
         <tr className="bg-sky-200">
           <th className="border border-black px-1 py-1">N°</th>

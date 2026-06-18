@@ -9,7 +9,7 @@ export function AdvisorSection({
 }) {
   return (
     <div className="no-break">
-      <div className="mb-1 text-[11px] font-bold">ASESOR COMERCIAL</div>
+      <div className="mb-1 text-xs font-bold">ASESOR COMERCIAL</div>
 
       <div className="space-y-1 text-xs">
         <div>
