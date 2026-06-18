@@ -49,7 +49,7 @@ export function QuoteHeader({
       <div className="mt-2 grid grid-cols-2 gap-2 text-sm text-slate-800">
         <div className="leading-snug">
           <div>
-            Oficina: URB. PORTALES DE JAVIER PRADO, CAL. INGLATERRA
+            Oficina: URB. PORTALES DE JAVIER PRADO, CAL. INGLATERRA 224
           </div>
           <div>Teléfono: 991 047 687</div>
           <div>
