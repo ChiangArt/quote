@@ -20,33 +20,33 @@ export function QuoteHeader({
           <img
             src={logoUrl}
             alt="Logo"
-            className="h-16 w-28 object-contain"
+            className="h-25 w-30 object-contain"
           />
         </div>
 
         <div className="text-center leading-tight">
           <div className="text-base font-extrabold">ACEROS ALDAMAR S.A.C.</div>
-          <div className="text-xs font-semibold">RUC: 20615840221</div>
+          <div className="text-sm font-semibold">RUC: 20615840221</div>
         </div>
 
         <div className="text-right leading-tight">
           <div className="text-lg font-extrabold tracking-wide">COTIZACIÓN</div>
-          <div className="text-xs">
+          <div className="text-sm">
             <span className="font-semibold">N°:</span>{' '}
             <span className="font-extrabold">{quoteNumber}</span>
           </div>
-          <div className="text-xs text-slate-700">
+          <div className="text-sm text-slate-700">
             Validez: <span className="font-semibold">1 día</span>
           </div>
           {pageNumber && totalPages && (
-            <div className="text-xs text-slate-700">
+            <div className="text-sm text-slate-700">
               Página: <span className="font-semibold">{pageNumber}</span> de <span className="font-semibold">{totalPages}</span>
             </div>
           )}
         </div>
       </div>
 
-      <div className="mt-2 grid grid-cols-2 gap-2 text-xs text-slate-800">
+      <div className="mt-2 grid grid-cols-2 gap-2 text-sm text-slate-800">
         <div className="leading-snug">
           <div>
             Oficina: URB. PORTALES DE JAVIER PRADO, CAL. INGLATERRA

@@ -1,8 +1,8 @@
 export function CommercialConditions() {
   return (
     <div className="no-break">
-      <div className="mb-1 text-xs font-bold">CONDICIONES COMERCIALES</div>
-      <div className="space-y-1 text-xs">
+      <div className="mb-1 text-sm font-bold">CONDICIONES COMERCIALES</div>
+      <div className="space-y-1 text-sm">
         <div>
           <span className="font-semibold">Validez de oferta:</span> 1 día
         </div>

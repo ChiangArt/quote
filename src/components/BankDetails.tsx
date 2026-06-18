@@ -1,13 +1,13 @@
 export function BankDetails() {
   return (
     <div className="no-break">
-      <div className="mb-1 text-xs font-bold">
+      <div className="mb-1 text-sm font-bold">
         DATOS BANCARIOS — GRUPO ALDAMAR S.A.C.
       </div>
 
       {/* INTERBANK */}
-      <div className="mb-1 text-xs font-semibold">BANCO INTERBANK</div>
-      <table className="w-full border-collapse text-xs mb-2">
+      <div className="mb-1 text-sm font-semibold">BANCO INTERBANK</div>
+      <table className="w-full border-collapse text-sm mb-2">
         <thead>
           <tr>
             <th className="border border-slate-300 bg-slate-100 px-2 py-1 text-left">Tipo</th>
@@ -40,8 +40,8 @@ export function BankDetails() {
       </table>
 
       {/* BCP */}
-      <div className="mb-1 text-xs font-semibold">BANCO BCP</div>
-      <table className="w-full border-collapse text-xs">
+      <div className="mb-1 text-sm font-semibold">BANCO BCP</div>
+      <table className="w-full border-collapse text-sm">
         <thead>
           <tr>
             <th className="border border-slate-300 bg-slate-100 px-2 py-1 text-left">Tipo</th>

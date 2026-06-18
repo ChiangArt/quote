@@ -14,7 +14,7 @@ const tdTotal = "border border-slate-300 bg-slate-50 px-1.5 py-1 font-bold";
 export function SupplierItemsTable({ items, startIndex = 0, totals }: Props) {
   return (
     <div className="mt-2">
-      <table className="w-full table-fixed border-collapse text-[10px]">
+      <table className="w-full table-fixed border-collapse text-xs">
         <thead>
           <tr>
             <th className={`${th} text-right`} style={{ width: 24 }}>

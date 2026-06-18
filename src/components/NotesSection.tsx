@@ -1,8 +1,8 @@
 export function NotesSection() {
   return (
     <div className="no-break">
-      <div className="mb-1 text-xs font-bold">Nota:</div>
-      <ol className="list-decimal space-y-0.5 pl-5 text-xs">
+      <div className="mb-1 text-sm font-bold">Nota:</div>
+      <ol className="list-decimal space-y-0.5 pl-5 text-sm">
         <li>
           El cliente deberá coordinar con su ejecutivo de ventas el plazo de
           entrega de la mercadería.

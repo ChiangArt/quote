@@ -9,8 +9,8 @@ import { NotesSection } from "./NotesSection";
 import { addDaysISO } from "../utils/date";
 
 function chunkItems(items: QuoteItem[]) {
-  const FIRST_PAGES_ITEMS = 24;
-  const LAST_PAGE_MAX_ITEMS = 6;
+  const FIRST_PAGES_ITEMS = 18;
+  const LAST_PAGE_MAX_ITEMS = 5;
 
   if (items.length === 0) return [[]];
 

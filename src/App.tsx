@@ -161,9 +161,7 @@ function App() {
 
   const [modalPriceValue, setModalPriceValue] = useState("");
 
-  // const [catalogValues, setCatalogValues] = useState<
-  //   Record<string, { supplierPriceUsd?: string; isEditing?: boolean }>
-  // >(() => loadFromStorage("cotizador.catalogValues", {}));
+
 
   const quoteNumber = useMemo(
     () => buildQuoteNumber(sellerCode, quoteRandom),
@@ -219,40 +217,6 @@ function App() {
     setSavedQuotes(getSavedQuotes());
   }
 
-  // function handleUpdateCatalogValue(
-  //   code: string,
-  //   patch: { supplierPriceUsd?: string; isEditing?: boolean },
-  // ) {
-  //   setCatalogValues((prev) => ({
-  //     ...prev,
-  //     [code]: {
-  //       supplierPriceUsd: prev[code]?.supplierPriceUsd ?? "",
-  //       isEditing: prev[code]?.isEditing ?? false,
-  //       ...patch,
-  //     },
-  //   }));
-
-  //   if (patch.supplierPriceUsd !== undefined) {
-  //     const supplierPriceUsd = Number(patch.supplierPriceUsd || 0);
-
-  //     setItems((prev) =>
-  //       prev.map((it) => {
-  //         if (it.productCode !== code) return it;
-
-  //         const unitPriceUsd = calculateClientPrice(
-  //           supplierPriceUsd,
-  //           it.profitPercent,
-  //         );
-
-  //         return {
-  //           ...it,
-  //           supplierPriceUsd,
-  //           unitPriceUsd,
-  //         };
-  //       }),
-  //     );
-  //   }
-  // }
 
   useEffect(() => {
     saveToStorage("cotizador.mirominaPrices", mirominaPrices);

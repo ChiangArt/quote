@@ -4,7 +4,7 @@ import { SupplierItemsTable } from "./SupplierItemsTable";
 import { addDaysISO } from "../utils/date";
 
 function chunkItems(items: QuoteItem[]) {
-  const ITEMS_PER_PAGE = 28;
+  const ITEMS_PER_PAGE = 20;
   const pages: QuoteItem[][] = [];
 
   for (let i = 0; i < items.length; i += ITEMS_PER_PAGE) {
