@@ -142,6 +142,46 @@ export const PRODUCTS: Product[] = [
     weightTn: 0.007194,
   },
   {
+    code: "4262",
+    name: "PLANCHA LAC A709 GR50 12.0X2400X12000MM",
+    weightTn: 2.712944,
+  },
+  {
+    code: "6375",
+    name: "PLANCHA ZINCADA ONDULADA. 0.22X800X3600 MM P.T.",
+    weightTn: 0.0056,
+  },
+  {
+    code: "11603",
+    name: "COBERTURA ALUZINC NATURAL JJTR4 0.40X40MMX1.02MX4M",
+    weightTn: 0.001,
+  },
+  {
+    code: "5502",
+    name: "TUBO ACERO LAC A500 GRA Ø1 1/2´´X1.8X6.0M P.T.",
+    weightTn: 0.012385,
+  },
+  {
+    code: "10745",
+    name: "TUBO CUADRADO GALVANIZADO A500 GRA 50X50X2.0X6M P.T.",
+    weightTn: 0.018258,
+  },
+  {
+    code: "5529",
+    name: "TUBO CUADRADO GALVANIZADO 120 A500 GRA 50X50X2.5X6M P.T.",
+    weightTn: 0.023286,
+  },
+  {
+    code: "10759",
+    name: "TUBO CUADRADO GALVANIZADO A500 GRA 100X100X3.0X6M P.T.",
+    weightTn: 0.055216,
+  },
+  {
+    code: "4003",
+    name: "TUBO C/C A53/API5L GRB Ø6´´X4X6M",
+    weightTn: 0.097267,
+  },
+  {
     code: "8984",
     name: "RIEL 30KG(60LB) X 6M Q55",
     weightTn: 0.180599,
