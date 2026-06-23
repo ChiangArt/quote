@@ -95,7 +95,7 @@ export function PurchaseOrderDocument({
 
               <div className="flex flex-col gap-2 self-start">
                 <div className="flex items-center gap-2 rounded border border-yellow-500 bg-yellow-300 px-4 py-2">
-                  <span className="font-bold">Nro de cotizaciÃ³n</span>
+                  <span className="font-bold">Nro de cotización</span>
 
                   <span className="font-extrabold">{quoteNumber}</span>
                 </div>
