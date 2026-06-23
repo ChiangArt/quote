@@ -1,10 +1,10 @@
-import type { QuoteItem } from "../types";
-import { roundMoney } from "../utils/number";
+﻿import type { QuoteItem } from "../types";
+import { formatFixedTruncated } from "../utils/number";
 
 const IGV_RATE = 0.18;
 
 function formatMoney(value: number) {
-  return value > 0 ? roundMoney(value).toFixed(2) : "";
+  return value > 0 ? formatFixedTruncated(value, 3) : "";
 }
 
 function formatWeight(value: number) {
@@ -27,24 +27,22 @@ export function PurchaseOrderItemsTable({
     0,
   );
 
-  const subtotalUsd = roundMoney(
-    items.reduce(
-      (acc, item) => acc + roundMoney(item.qty * item.supplierPriceUsd),
-      0,
-    ),
+  const subtotalUsd = items.reduce(
+    (acc, item) => acc + item.qty * item.supplierPriceUsd,
+    0,
   );
 
-  const igvUsd = roundMoney(subtotalUsd * IGV_RATE);
-  const totalUsd = roundMoney(subtotalUsd + igvUsd);
-  const totalPen = roundMoney(totalUsd * exchangeRate);
+  const igvUsd = subtotalUsd * IGV_RATE;
+  const totalUsd = subtotalUsd + igvUsd;
+  const totalPen = totalUsd * exchangeRate;
 
   return (
     <table className="mt-2 w-full border-collapse text-xs">
       <thead>
         <tr className="bg-sky-200">
-          <th className="border border-black px-1 py-1">N°</th>
-          <th className="border border-black px-1 py-1">Código proveedor</th>
-          <th className="border border-black px-1 py-1">Descripción</th>
+          <th className="border border-black px-1 py-1">NÂ°</th>
+          <th className="border border-black px-1 py-1">CÃ³digo proveedor</th>
+          <th className="border border-black px-1 py-1">DescripciÃ³n</th>
           <th className="border border-black px-1 py-1">Cant.</th>
           <th className="border border-black px-1 py-1">Peso TN</th>
           <th className="border border-black px-1 py-1">Precio Miromina</th>
@@ -55,7 +53,7 @@ export function PurchaseOrderItemsTable({
       <tbody>
         {items.map((item, index) => {
           const rowWeight = item.qty * item.weightTn;
-          const rowTotal = roundMoney(item.qty * item.supplierPriceUsd);
+          const rowTotal = item.qty * item.supplierPriceUsd;
 
           return (
             <tr key={item.id}>
@@ -149,3 +147,4 @@ export function PurchaseOrderItemsTable({
     </table>
   );
 }
+

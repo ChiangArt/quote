@@ -1,4 +1,4 @@
-export function parseNumberLoose(value: string) {
+﻿export function parseNumberLoose(value: string) {
   const normalized = value
     .trim()
     .replace(/\s/g, '')
@@ -26,6 +26,17 @@ export function roundMoney(value: number) {
   return roundToDecimals(value, 2)
 }
 
+export function truncateToDecimals(value: number, digits = 3) {
+  if (!Number.isFinite(value)) return 0
+
+  const factor = 10 ** digits
+  return Math.trunc(value * factor) / factor
+}
+
+export function formatFixedTruncated(value: number, digits = 3) {
+  return truncateToDecimals(value, digits).toFixed(digits)
+}
+
 export function formatMoneyUsd(value: number) {
   return new Intl.NumberFormat('en-US', {
     style: 'currency',
@@ -49,3 +60,4 @@ export function formatNumber(value: number, digits = 3) {
     maximumFractionDigits: digits,
   }).format(Number.isFinite(value) ? value : 0)
 }
+

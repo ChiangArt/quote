@@ -1,12 +1,13 @@
-import type { ClientInfo, QuoteItem } from "../types";
+﻿import type { ClientInfo, QuoteItem } from "../types";
 import { QuoteHeader } from "./QuoteHeader";
 import { addDaysISO } from "../utils/date";
 import { PurchaseOrderItemsTable } from "./PurchaseOrderItemsTable";
+import { formatFixedTruncated } from "../utils/number";
 
 const SUPPLIER_NAME = "MIROMINA";
 const SUPPLIER_ATTENTION = "VERONICA";
 const PAYMENT_METHOD = "CONTADO";
-const CURRENCY_TYPE = "SOLES O DÓLARES";
+const CURRENCY_TYPE = "SOLES O DÃ“LARES";
 const REQUESTED_BY = "ACEROS ALDAMAR S.A.C";
 const DELIVERY_ADDRESS =
   "Car. Ramiro Priale Mz A, Lt 10-B, Huachipa - Lurigancho - Lima";
@@ -88,13 +89,13 @@ export function PurchaseOrderDocument({
                 <div className="font-bold">Fecha de pago</div>
                 <div>: {fechaPago}</div>
 
-                <div className="font-bold">Atención</div>
+                <div className="font-bold">AtenciÃ³n</div>
                 <div>: {SUPPLIER_ATTENTION}</div>
               </div>
 
               <div className="flex flex-col gap-2 self-start">
                 <div className="flex items-center gap-2 rounded border border-yellow-500 bg-yellow-300 px-4 py-2">
-                  <span className="font-bold">Nro de cotización</span>
+                  <span className="font-bold">Nro de cotizaciÃ³n</span>
 
                   <span className="font-extrabold">{quoteNumber}</span>
                 </div>
@@ -103,13 +104,13 @@ export function PurchaseOrderDocument({
                   <span className="font-bold">Tipo de cambio</span>
 
                   <span className="font-extrabold">
-                    {Number(client.tipoCambio || 0).toFixed(2)}
+                    {formatFixedTruncated(Number(client.tipoCambio) || 0, 3)}
                   </span>
                 </div>
               </div>
             </div>
             <div className="mt-8 text-sm">
-              Sírvase por este medio a suministrarnos los siguientes materiales:
+              SÃ­rvase por este medio a suministrarnos los siguientes materiales:
             </div>
 
             <div className="mt-3 text-sm font-bold">
@@ -164,3 +165,4 @@ export function PurchaseOrderDocument({
     </div>
   );
 }
+

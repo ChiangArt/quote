@@ -1,4 +1,4 @@
-import type { ClientInfo, QuoteItem, QuoteTotals } from "../types";
+﻿import type { ClientInfo, QuoteItem, QuoteTotals } from "../types";
 import { QuoteHeader } from "./QuoteHeader";
 import { ClientSection } from "./ClientSection";
 import { QuoteItemsTable } from "./QuoteItemsTable";
@@ -7,6 +7,7 @@ import { BankDetails } from "./BankDetails";
 import { AdvisorSection } from "./AdvisorSection";
 import { NotesSection } from "./NotesSection";
 import { addDaysISO } from "../utils/date";
+import { formatFixedTruncated } from "../utils/number";
 
 function chunkItems(items: QuoteItem[]) {
   const FIRST_PAGES_ITEMS = 18;
@@ -51,7 +52,7 @@ export function QuoteDocument({
   items: QuoteItem[];
   totals: QuoteTotals;
 }) {
-  // Vigencia de la cotización: 10 días
+  // Vigencia de la cotizaciÃ³n: 10 dÃ­as
   const fechaVencimientoISO = addDaysISO(client.fechaISO, 10);
 
   const pages = chunkItems(items);
@@ -79,18 +80,18 @@ export function QuoteDocument({
 
             <ClientSection client={client} quoteNumber={quoteNumber} />
 
-            {/* Tipo de cambio más grande, en negrita y más cerca al cuadro de items */}
+            {/* Tipo de cambio mÃ¡s grande, en negrita y mÃ¡s cerca al cuadro de items */}
             <div className="mt-6 mb-1 flex justify-end">
               <div className="py-2.5 text-right text-[15px] font-extrabold text-slate-900">
                 TIPO DE CAMBIO:{" "}
                 <span className="text-[15px]">
-                  {tipoCambio ? tipoCambio.toFixed(3) : "0.000"}
+                  {tipoCambio ? formatFixedTruncated(tipoCambio, 3) : "0.000"}
                 </span>
               </div>
             </div>
 
             <div className="mt-1 text-xs font-bold">
-              DETALLE DE COTIZACIÓN
+              DETALLE DE COTIZACIÃ“N
             </div>
 
             <QuoteItemsTable
@@ -120,3 +121,4 @@ export function QuoteDocument({
     </div>
   );
 }
+
