@@ -41,8 +41,8 @@ export function PurchaseOrderItemsTable({
       <thead>
         <tr className="bg-sky-200">
           <th className="border border-black px-1 py-1">NÂ°</th>
-          <th className="border border-black px-1 py-1">CÃ³digo proveedor</th>
-          <th className="border border-black px-1 py-1">DescripciÃ³n</th>
+          <th className="border border-black px-1 py-1">Codigo proveedor</th>
+          <th className="border border-black px-1 py-1">Descripción</th>
           <th className="border border-black px-1 py-1">Cant.</th>
           <th className="border border-black px-1 py-1">Peso TN</th>
           <th className="border border-black px-1 py-1">Precio Miromina</th>

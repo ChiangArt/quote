@@ -7,7 +7,7 @@ import { formatFixedTruncated } from "../utils/number";
 const SUPPLIER_NAME = "MIROMINA";
 const SUPPLIER_ATTENTION = "VERONICA";
 const PAYMENT_METHOD = "CONTADO";
-const CURRENCY_TYPE = "SOLES O DÃ“LARES";
+const CURRENCY_TYPE = "SOLES O DOLARES";
 const REQUESTED_BY = "ACEROS ALDAMAR S.A.C";
 const DELIVERY_ADDRESS =
   "Car. Ramiro Priale Mz A, Lt 10-B, Huachipa - Lurigancho - Lima";
@@ -89,7 +89,7 @@ export function PurchaseOrderDocument({
                 <div className="font-bold">Fecha de pago</div>
                 <div>: {fechaPago}</div>
 
-                <div className="font-bold">AtenciÃ³n</div>
+                <div className="font-bold">Atención</div>
                 <div>: {SUPPLIER_ATTENTION}</div>
               </div>
 
@@ -110,7 +110,7 @@ export function PurchaseOrderDocument({
               </div>
             </div>
             <div className="mt-8 text-sm">
-              SÃ­rvase por este medio a suministrarnos los siguientes materiales:
+              Si­rvase por este medio a suministrarnos los siguientes materiales:
             </div>
 
             <div className="mt-3 text-sm font-bold">

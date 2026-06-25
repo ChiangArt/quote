@@ -52,7 +52,7 @@ export function QuoteDocument({
   items: QuoteItem[];
   totals: QuoteTotals;
 }) {
-  // Vigencia de la cotizaciÃ³n: 10 dÃ­as
+  // Vigencia de la cotización: 10 di­as
   const fechaVencimientoISO = addDaysISO(client.fechaISO, 10);
 
   const pages = chunkItems(items);
@@ -80,7 +80,7 @@ export function QuoteDocument({
 
             <ClientSection client={client} quoteNumber={quoteNumber} />
 
-            {/* Tipo de cambio mÃ¡s grande, en negrita y mÃ¡s cerca al cuadro de items */}
+            {/* Tipo de cambio mas grande, en negrita y mas cerca al cuadro de items */}
             <div className="mt-6 mb-1 flex justify-end">
               <div className="py-2.5 text-right text-[15px] font-extrabold text-slate-900">
                 TIPO DE CAMBIO:{" "}
@@ -91,7 +91,7 @@ export function QuoteDocument({
             </div>
 
             <div className="mt-1 text-xs font-bold">
-              DETALLE DE COTIZACIÃ“N
+              DETALLE DE COTIZACIÓN
             </div>
 
             <QuoteItemsTable
