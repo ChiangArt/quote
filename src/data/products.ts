@@ -184,7 +184,7 @@ export const PRODUCTS: Product[] = [
   {
     code: "1050020",
     name: "SOLD. PUNTO AZUL E-6011-1/8 KG.",
-    weightTn: 0.004,
+    weightTn: 0.001,
   },
   {
     code: "8984",
