@@ -182,6 +182,11 @@ export const PRODUCTS: Product[] = [
     weightTn: 0.097267,
   },
   {
+    code: "1050020",
+    name: "SOLD. PUNTO AZUL E-6011-1/8 KG.",
+    weightTn: 0.004,
+  },
+  {
     code: "8984",
     name: "RIEL 30KG(60LB) X 6M Q55",
     weightTn: 0.180599,
