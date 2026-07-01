@@ -182,6 +182,51 @@ export const PRODUCTS: Product[] = [
     weightTn: 0.097267,
   },
   {
+    code: "11605",
+    name: "PLANCHA ANTIABRASIVA NM450 1/4´´X8´X12´ P.T.",
+    weightTn: 0.4505,
+  },
+  {
+    code: "4930",
+    name: "TUBO ACERO CUADRADO LAC A500 GRA 30X1.5X6.0M P.T.",
+    weightTn: 0.008145,
+  },
+  {
+    code: "6684",
+    name: "EJE SAE 1018 CALIBRADO 3/4´´(19.05)X 6.00",
+    weightTn: 0.013425,
+  },
+  {
+    code: "4192",
+    name: "EJE SAE 1018 CALIBRADO 2´´ X 6.00",
+    weightTn: 0.095375,
+  },
+  {
+    code: "2593",
+    name: "EJE SAE 1045 CALIBRADO 1 1/4´´ X 6.0",
+    weightTn: 0.03729,
+  },
+  {
+    code: "2594",
+    name: "EJE SAE 1045 CALIBRADO 1 1/2´´ X 6.0",
+    weightTn: 0.053695,
+  },
+  {
+    code: "2771",
+    name: "ANGULO A36 3/4´´ X 3/4´´ X 2.5MM X 6M",
+    weightTn: 0.004237,
+  },
+  {
+    code: "0645",
+    name: "ANGULO A36 4´´ X 4´´ X 1/2´´X6M",
+    weightTn: 0.11467,
+  },
+  {
+    code: "3888",
+    name: "PLATINA A36 3/8´´ X 5´´ X 6M",
+    weightTn: 0.055556,
+  },
+  {
     code: "1050020",
     name: "SOLD. PUNTO AZUL E-6011-1/8 KG.",
     weightTn: 0.001,
