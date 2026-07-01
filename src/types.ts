@@ -1,6 +1,11 @@
   export type Product = {
     code: string;
     name: string;
+    supplier?: string;
+    unit?: string;
+    pricePenNoIgv?: number;
+    priceUsdNoIgv?: number;
+    exchangeRate?: number;
     weightTn: number;
   };
 
