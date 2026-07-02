@@ -317,6 +317,26 @@ export const PRODUCTS: Product[] = [
     weightTn: 0.00008,
   },
   {
+    code: "FERV-PLAR001",
+    name: "PANEL TERMOACUSTICO K5 ASA UPVC ROJO 1.5MM X 1075MM X 3600MM",
+    weightTn: 0.0114,
+  },
+  {
+    code: "FERV-PLAR006",
+    name: "PANEL TERMOACUSTICO K5 UPVC AZUL 1.5MM X 1075MM X 3600MM",
+    weightTn: 0.0114,
+  },
+  {
+    code: "FERV-PLAR005",
+    name: "PANEL TERMOACUSTICO K5 ASA UPVC AZUL 1.5MM X 1075MM X 6000MM",
+    weightTn: 0.01818,
+  },
+  {
+    code: "FERV-PLAR002",
+    name: "PANEL TERMOACUSTICO K5 ASA UPVC ROJO 1.5MM X 1075MM X 6000MM",
+    weightTn: 0.0185,
+  },
+  {
     code: "FERV-09010013",
     name: "CODO SOLD. SCH-40 - 90°-4",
     weightTn: 0.00385,
