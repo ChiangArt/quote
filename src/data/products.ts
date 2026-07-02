@@ -312,6 +312,51 @@ export const PRODUCTS: Product[] = [
     weightTn: 0.001,
   },
   {
+    code: "FERV-09010011",
+    name: "CODO SOLD. SCH-40 - 90°-3/4",
+    weightTn: 0.00008,
+  },
+  {
+    code: "FERV-09010013",
+    name: "CODO SOLD. SCH-40 - 90°-4",
+    weightTn: 0.00385,
+  },
+  {
+    code: "FERV-09010005",
+    name: "CODO SOLD. SCH-40 - 90°-1.1/2",
+    weightTn: 0.00026,
+  },
+  {
+    code: "FERV-09010006",
+    name: "CODO SOLD. SCH-40 - 90°-1.1/4",
+    weightTn: 0.00024,
+  },
+  {
+    code: "FERV-09010010",
+    name: "CODO SOLD. SCH-40 - 90°-2",
+    weightTn: 0.00045,
+  },
+  {
+    code: "FERV-09010007",
+    name: "CODO SOLD. SCH-40 - 90°-1/2",
+    weightTn: 0.00006,
+  },
+  {
+    code: "FERV-09010025",
+    name: "TAPON CAP. SOLDABLE 4",
+    weightTn: 0,
+  },
+  {
+    code: "FERV-09010026",
+    name: "TAPON CAP. SOLDABLE 6",
+    weightTn: 0,
+  },
+  {
+    code: "FERV-09010012",
+    name: "CODO SOLD. SCH-40 - 90°-3",
+    weightTn: 0.002,
+  },
+  {
     code: "10828",
     name: "TUBO REDONDO GALVANIZADO A500 GRA Ø3´´(ØE88.9)X2.5X6M P.T.",
     weightTn: 0.031727,
