@@ -322,6 +322,206 @@ export const PRODUCTS: Product[] = [
     weightTn: 0.0114,
   },
   {
+    code: "FERV-01050020",
+    name: "SOLD. PUNTO AZUL E-6011-1/8 KG.",
+    weightTn: 0.001,
+  },
+  {
+    code: "FERV-01050021",
+    name: "SOLD. PUNTO AZUL E-6011-3/32 KG.",
+    weightTn: 0.001,
+  },
+  {
+    code: "FERV-15070044",
+    name: "PLANCHA LAF. (0.85) 1220 X 2400 (P.I)",
+    weightTn: 0.0195,
+  },
+  {
+    code: "FERV-20030119",
+    name: "TUBO RECT. NEGRO 3 X 2 X 2.5 X 6 MTS (75 X 50) (P.N) (CELESTE)",
+    weightTn: 0.0295,
+  },
+  {
+    code: "FERV-01050025",
+    name: "SOLD. SUPERCITO E-7018 3/32 KG.",
+    weightTn: 0.001,
+  },
+  {
+    code: "FERV-01050009",
+    name: "SOLD. CELLOCORD-AP E-6011-1/8 KG.",
+    weightTn: 0.001,
+  },
+  {
+    code: "FERV-08010002",
+    name: "TORNILLO AUTOPERFORANTE 1 X 12 (CIENTO)",
+    weightTn: 0.0005,
+  },
+  {
+    code: "FERV-08010004",
+    name: "TORNILLO AUTOPERFORANTE 1.1/2 X 12 (CIENTO)",
+    weightTn: 0.0005,
+  },
+  {
+    code: "FERV-08010008",
+    name: "TORNILLO AUTOPERFORANTE 3 X 12 (CIENTO)",
+    weightTn: 0.0005,
+  },
+  {
+    code: "FERV-08010007",
+    name: "TORNILLO AUTOPERFORANTE 2 X 12 (CIENTO)",
+    weightTn: 0.0005,
+  },
+  {
+    code: "FERV-08010010",
+    name: "TORNILLO AUTOPERFORANTE 3/4 X 12 (CIENTO)",
+    weightTn: 0.0005,
+  },
+  {
+    code: "FERV-01030036",
+    name: "DISCO DE CORTE 4.1/2 X (1.0MM) - DRAXOR",
+    weightTn: 0.0005,
+  },
+  {
+    code: "FERV-01030037",
+    name: "DISCO DE CORTE 7 (1.6) (DRAXOR)",
+    weightTn: 0.0005,
+  },
+  {
+    code: "FERV-01030053",
+    name: "DISCO DE CORTE 14 - DRAXOR",
+    weightTn: 0.0005,
+  },
+  {
+    code: "FERV-01030055",
+    name: "DISCO FLAP DRAXOR 4.1/2 X 7/8-GRANO 40",
+    weightTn: 0.0005,
+  },
+  {
+    code: "FERV-01030054",
+    name: "DISCO FLAP DRAXOR 4.1/2 X 7/8-GRANO 60",
+    weightTn: 0.0005,
+  },
+  {
+    code: "FERV-01030056",
+    name: "DISCO FLAP DRAXOR 4.1/2 X 7/8-GRANO 80",
+    weightTn: 0.0005,
+  },
+  {
+    code: "FERV-09010023",
+    name: "CODO SOLD. SCH-40 - 45°-3/4",
+    weightTn: 0,
+  },
+  {
+    code: "FERV-09010022",
+    name: "CODO SOLD. SCH-40 - 45°-1/2",
+    weightTn: 0.00014,
+  },
+  {
+    code: "FERV-09010004",
+    name: "CODO SOLD. SCH-40 - 45°-2",
+    weightTn: 0.00023,
+  },
+  {
+    code: "FERV-09010001",
+    name: "CODO SOLD. SCH-40 - 45°-1.1/2",
+    weightTn: 0.00013,
+  },
+  {
+    code: "FERV-09010002",
+    name: "CODO SOLD. SCH-40 - 45°-1.1/4",
+    weightTn: 0.00012,
+  },
+  {
+    code: "FERV-09010003",
+    name: "CODO SOLD. SCH-40 - 45°-1",
+    weightTn: 0.00007,
+  },
+  {
+    code: "FERV-09010015",
+    name: "CODO SOLD. SCH-40 - 90°-6",
+    weightTn: 0.0107,
+  },
+  {
+    code: "FERV-09010013",
+    name: "CODO SOLD. SCH-40 - 90°-4",
+    weightTn: 0.00385,
+  },
+  {
+    code: "FERV-09010012",
+    name: "CODO SOLD. SCH-40 - 90°-3",
+    weightTn: 0.002,
+  },
+  {
+    code: "FERV-09010010",
+    name: "CODO SOLD. SCH-40 - 90°-2",
+    weightTn: 0.00045,
+  },
+  {
+    code: "FERV-09010005",
+    name: "CODO SOLD. SCH-40 - 90°-1.1/2",
+    weightTn: 0.00026,
+  },
+  {
+    code: "FERV-09010006",
+    name: "CODO SOLD. SCH-40 - 90°-1.1/4",
+    weightTn: 0.00024,
+  },
+  {
+    code: "FERV-09010008",
+    name: "CODO SOLD. SCH-40 - 90°-1",
+    weightTn: 0.00013,
+  },
+  {
+    code: "FERV-09010011",
+    name: "CODO SOLD. SCH-40 - 90°-3/4",
+    weightTn: 0.00008,
+  },
+  {
+    code: "FERV-09010007",
+    name: "CODO SOLD. SCH-40 - 90°-1/2",
+    weightTn: 0.00006,
+  },
+  {
+    code: "FERV-09010026",
+    name: "TAPON CAP. SOLDABLE 6",
+    weightTn: 0,
+  },
+  {
+    code: "FERV-09010025",
+    name: "TAPON CAP. SOLDABLE 4",
+    weightTn: 0,
+  },
+  {
+    code: "FERV-09010024",
+    name: "TAPON CAP. SOLDABLE 3",
+    weightTn: 0,
+  },
+  {
+    code: "FERV-09010020",
+    name: "TAPON CAP. SOLDABLE 3/4",
+    weightTn: 0.00004,
+  },
+  {
+    code: "FERV-09010019",
+    name: "TAPON CAP. SOLDABLE 2",
+    weightTn: 0.00022,
+  },
+  {
+    code: "FERV-09010016",
+    name: "TAPON CAP. SOLDABLE 1.1/2",
+    weightTn: 0.00014,
+  },
+  {
+    code: "FERV-09010017",
+    name: "TAPON CAP. SOLDABLE 1.1/4",
+    weightTn: 0.00011,
+  },
+  {
+    code: "FERV-09010018",
+    name: "TAPON CAP. SOLDABLE 1",
+    weightTn: 0.00011,
+  },
+  {
     code: "FERV-PLAR006",
     name: "PANEL TERMOACUSTICO K5 UPVC AZUL 1.5MM X 1075MM X 3600MM",
     weightTn: 0.0114,
