@@ -517,6 +517,16 @@ export const PRODUCTS: Product[] = [
     weightTn: 0.00011,
   },
   {
+"code": "FERV-03000082",
+"name": "COBERTURA ALUZINC ROJO 0.40MM RAL - 3020 TR4 LARGO 6.00 MT",
+"weightTn": 0.02358
+},
+{
+"code": "FERV-19010068",
+"name": "TUBO CUAD. GALV. 4 X 2.0 X 6 MTS (100MM) (P.N) (NEGRO)",
+"weightTn": 0.03822
+},
+  {
     code: "FERV-09010018",
     name: "TAPON CAP. SOLDABLE 1",
     weightTn: 0.00011,
