@@ -177,6 +177,21 @@ export const PRODUCTS: Product[] = [
     weightTn: 0.055216,
   },
   {
+    code: "FERV-08010002",
+    name: "TORNILLO AUTOPERFORANTE 1 X 12 (CIENTO)",
+    weightTn: 0.0005,
+  },
+  {
+    code: "1066",
+    name: "PLANCHA LAC A36 9.0X1200X2400MM P.T.",
+    weightTn: 0.203481,
+  },
+  {
+    code: "10825",
+    name: "TUBO REDONDO GALVANIZADO A500 GRA Ø3´´(ØE88.9)X2.0X6M P.T.",
+    weightTn: 0.005,
+  },
+  {
     code: "4003",
     name: "TUBO C/C A53/API5L GRB Ø6´´X4X6M",
     weightTn: 0.097267,
@@ -517,15 +532,15 @@ export const PRODUCTS: Product[] = [
     weightTn: 0.00011,
   },
   {
-"code": "FERV-03000082",
-"name": "COBERTURA ALUZINC ROJO 0.40MM RAL - 3020 TR4 LARGO 6.00 MT",
-"weightTn": 0.02358
-},
-{
-"code": "FERV-19010068",
-"name": "TUBO CUAD. GALV. 4 X 2.0 X 6 MTS (100MM) (P.N) (NEGRO)",
-"weightTn": 0.03822
-},
+    code: "FERV-03000082",
+    name: "COBERTURA ALUZINC ROJO 0.40MM RAL - 3020 TR4 LARGO 6.00 MT",
+    weightTn: 0.02358,
+  },
+  {
+    code: "FERV-19010068",
+    name: "TUBO CUAD. GALV. 4 X 2.0 X 6 MTS (100MM) (P.N) (NEGRO)",
+    weightTn: 0.03822,
+  },
   {
     code: "FERV-09010018",
     name: "TAPON CAP. SOLDABLE 1",
