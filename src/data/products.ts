@@ -187,6 +187,18 @@ export const PRODUCTS: Product[] = [
     weightTn: 0.203481,
   },
   {
+    code: "18010036",
+    name: "TUBO CUAD. ELECT. 3/4 X 0.8 X 6 MTS (ROSADO)",
+    unit: "Uni",
+    weightTn: 0.00278,
+  },
+  {
+    code: "03000092",
+    name: "COBERTURA ALUZINC ROJO 0.45MM RAL-3020",
+    unit: "mt",
+    weightTn: 0.00442,
+  },
+  {
     code: "10825",
     name: "TUBO REDONDO GALVANIZADO A500 GRA Ø3´´(ØE88.9)X2.0X6M P.T.",
     weightTn: 0.005,
