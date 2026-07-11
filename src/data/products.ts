@@ -725,6 +725,11 @@ export const PRODUCTS: Product[] = [
     weightTn: 0.004808,
   },
   {
+  "code": "03000062",
+  "name": "COBERTURA ALUZINC ROJO 0.35MM RAL-3020 MODELO TR4",
+  "weightTn": 0.00344
+},
+  {
     code: "6355",
     name: "BARRA DE CONSTRUCCION ASTM A615/A706 GR60 1/2 X 9M",
     weightTn: 0.008621,
