@@ -198,6 +198,11 @@ export const PRODUCTS: Product[] = [
     unit: "mt",
     weightTn: 0.00442,
   },
+    {
+    "code": "5927",
+    "name": "TUBO RECTANGULAR GALV 120 LAC A500 GRA 25X50X2.0X6M P.T.",
+    "weightTn": 0.013952
+  },
   {
     code: "10825",
     name: "TUBO REDONDO GALVANIZADO A500 GRA Ø3´´(ØE88.9)X2.0X6M P.T.",
