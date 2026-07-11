@@ -198,10 +198,10 @@ export const PRODUCTS: Product[] = [
     unit: "mt",
     weightTn: 0.00442,
   },
-    {
-    "code": "5927",
-    "name": "TUBO RECTANGULAR GALV 120 LAC A500 GRA 25X50X2.0X6M P.T.",
-    "weightTn": 0.013952
+  {
+    code: "5927",
+    name: "TUBO RECTANGULAR GALV 120 LAC A500 GRA 25X50X2.0X6M P.T.",
+    weightTn: 0.013952,
   },
   {
     code: "10825",
@@ -725,10 +725,10 @@ export const PRODUCTS: Product[] = [
     weightTn: 0.004808,
   },
   {
-  "code": "03000062",
-  "name": "COBERTURA ALUZINC ROJO 0.35MM RAL-3020 MODELO TR4",
-  "weightTn": 0.00344
-},
+    code: "03000062",
+    name: "COBERTURA ALUZINC ROJO 0.35MM RAL-3020 MODELO TR4",
+    weightTn: 0.02064,
+  },
   {
     code: "6355",
     name: "BARRA DE CONSTRUCCION ASTM A615/A706 GR60 1/2 X 9M",
