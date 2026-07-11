@@ -51,7 +51,7 @@ export function QuoteHeader({
           <div>
             Oficina: URB. PORTALES DE JAVIER PRADO, CAL. INGLATERRA 224
           </div>
-          <div>Teléfono: 991 047 687</div>
+          <div>Teléfono: 993 005 717</div>
           <div>
             Web: <span className="font-semibold">www.acerosaldamar.com</span>
           </div>
