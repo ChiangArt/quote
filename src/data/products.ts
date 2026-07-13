@@ -725,6 +725,11 @@ export const PRODUCTS: Product[] = [
     weightTn: 0.004808,
   },
   {
+  code: "2775",
+  name: "ANGULO A36 2´´ X 2´´ X 4.5MM X 6M",
+  weightTn: 0.020833,
+},
+  {
     code: "03000062",
     name: "COBERTURA ALUZINC ROJO 0.35MM RAL-3020 MODELO TR4",
     weightTn: 0.02064,
