@@ -725,10 +725,20 @@ export const PRODUCTS: Product[] = [
     weightTn: 0.004808,
   },
   {
-  code: "2775",
-  name: "ANGULO A36 2´´ X 2´´ X 4.5MM X 6M",
-  weightTn: 0.020833,
-},
+    code: "2775",
+    name: "ANGULO A36 2´´ X 2´´ X 4.5MM X 6M",
+    weightTn: 0.020833,
+  },
+  {
+    code: "FERV-13010020",
+    name: "ANGULO 3/16 X 2 X 6 MTS (P.I)",
+    weightTn: 0.02151,
+  },
+  {
+    code: "FERV-14000004",
+    name: "ANGULO 3/16 X 2 X 6 MTS (P.N)",
+    weightTn: 0.02151,
+  },
   {
     code: "03000062",
     name: "COBERTURA ALUZINC ROJO 0.35MM RAL-3020 MODELO TR4",
