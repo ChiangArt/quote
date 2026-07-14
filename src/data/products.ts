@@ -741,7 +741,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     code: "FERV-19030145",
-    name: "TUBO RED. GALV. 2 X 2.0 X 6 MTS (60MM) (P.N) (NEGRO)",
+    name: "TUBO RED. GALV. 2 X 2.0 X 6 MTS (60MM) (P.N)",
     weightTn: 0.01759,
   },
   {
