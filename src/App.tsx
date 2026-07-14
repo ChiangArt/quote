@@ -217,16 +217,27 @@ function App() {
   }, [client.tipoCambio, items]);
 
   const filteredCatalog = useMemo(() => {
-    const q = normalizeCatalogSearch(catalogQuery);
+    const rawQuery = catalogQuery.trim();
+    const q = normalizeCatalogSearch(rawQuery);
 
     if (!q) return PRODUCTS;
 
+    const isCodeSearch = /\d/.test(rawQuery) && /^[a-z0-9-]+$/i.test(rawQuery);
+
+    if (isCodeSearch) {
+      const normalizedCode = rawQuery.toLowerCase();
+
+      return PRODUCTS.filter(
+        (product) => product.code.toLowerCase() === normalizedCode,
+      );
+    }
+
     const searchTerms = q.split(" ");
 
-    return PRODUCTS.filter((p) => {
-      const searchableProduct = normalizeCatalogSearch(`${p.code} ${p.name}`);
+    return PRODUCTS.filter((product) => {
+      const searchableName = normalizeCatalogSearch(product.name);
 
-      return searchTerms.every((term) => searchableProduct.includes(term));
+      return searchTerms.every((term) => searchableName.includes(term));
     });
   }, [catalogQuery]);
 
