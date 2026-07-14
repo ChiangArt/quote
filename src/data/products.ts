@@ -740,6 +740,11 @@ export const PRODUCTS: Product[] = [
     weightTn: 0.02151,
   },
   {
+    code: "FERV-19030145",
+    name: "TUBO RED. GALV. 2 X 2.0 X 6 MTS (60MM) (P.N) (NEGRO)",
+    weightTn: 0.01759,
+  },
+  {
     code: "03000062",
     name: "COBERTURA ALUZINC ROJO 0.35MM RAL-3020 MODELO TR4",
     weightTn: 0.02064,
