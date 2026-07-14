@@ -37,6 +37,12 @@ export const PRODUCTS: Product[] = [
     weightTn: 0.01075,
   },
   {
+    code: "TNG30103901",
+    name: "TUBO RECTANGULAR LAC 3 X 2 X 3.0 X 6M",
+    unit: "Uni",
+    weightTn: 0.03358,
+  },
+  {
     code: "10696",
     name: "TUBO RECTANGULAR GALVANIZADO A500 GRA 50X150X2.0X6M P.T.",
     weightTn: 0.037106,
