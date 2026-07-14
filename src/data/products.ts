@@ -17,29 +17,29 @@ export const PRODUCTS: Product[] = [
     weightTn: 0.022608,
   },
   {
-    "code": "5125",
-    "name": "PLANCHA LAC A709 GR50 25.0X1200X2400MM P.T.",
-    "weightTn": 0.56525
+    code: "5125",
+    name: "PLANCHA LAC A709 GR50 25.0X1200X2400MM P.T.",
+    weightTn: 0.56525,
   },
   {
-    "code": "8578",
-    "name": "BOBINA GALVANIZADA 1.70X1200MM",
-    "weightTn": 415.167
+    code: "8578",
+    name: "BOBINA GALVANIZADA 1.70X1200MM",
+    weightTn: 415.167,
   },
   {
-    "code": "4953",
-    "name": "TUBO CUADRADO GALV. 120 LAC A500 GRA 30X30X1.5X6M P.T.",
-    "weightTn": 0.008409
+    code: "4953",
+    name: "TUBO CUADRADO GALV. 120 LAC A500 GRA 30X30X1.5X6M P.T.",
+    weightTn: 0.008409,
   },
   {
-    "code": "5921",
-    "name": "TUBO CUADRADO GALV 120 A500 GRA 1 1/2´´X1 1/2´´X1.5X6M P.T.",
-    "weightTn": 0.01075
+    code: "5921",
+    name: "TUBO CUADRADO GALV 120 A500 GRA 1 1/2´´X1 1/2´´X1.5X6M P.T.",
+    weightTn: 0.01075,
   },
   {
-    "code": "10696",
-    "name": "TUBO RECTANGULAR GALVANIZADO A500 GRA 50X150X2.0X6M P.T.",
-    "weightTn": 0.037106
+    code: "10696",
+    name: "TUBO RECTANGULAR GALVANIZADO A500 GRA 50X150X2.0X6M P.T.",
+    weightTn: 0.037106,
   },
   {
     code: "2345",

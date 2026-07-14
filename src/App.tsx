@@ -44,6 +44,14 @@ function normalizeCatalogSearch(value: string) {
     .replace(/[^a-z0-9]+/g, " ")
     .trim();
 }
+function normalizeProductCode(value: string) {
+  return value.toLowerCase().replace(/[^a-z0-9]/g, "");
+}
+
+const CATALOG_PRODUCTS = Array.from(
+  new Map(PRODUCTS.map((product) => [normalizeProductCode(product.code), product])).values(),
+);
+
 
 function normalizeQuoteItem(item: QuoteItem): QuoteItem {
   return {
@@ -220,25 +228,49 @@ function App() {
     const rawQuery = catalogQuery.trim();
     const q = normalizeCatalogSearch(rawQuery);
 
-    if (!q) return PRODUCTS;
+    if (!q) return CATALOG_PRODUCTS;
 
-    const isCodeSearch = /\d/.test(rawQuery) && /^[a-z0-9-]+$/i.test(rawQuery);
+    const normalizedQueryCode = normalizeProductCode(rawQuery);
+    const exactCodeMatches = CATALOG_PRODUCTS.filter(
+      (product) => normalizeProductCode(product.code) === normalizedQueryCode,
+    );
 
-    if (isCodeSearch) {
-      const normalizedCode = rawQuery.toLowerCase();
+    // A code always takes precedence, including formats such as
+    // "FERV 08010002" or "ferv-08010002".
+    if (exactCodeMatches.length) return exactCodeMatches;
 
-      return PRODUCTS.filter(
-        (product) => product.code.toLowerCase() === normalizedCode,
-      );
-    }
+    const searchTerms = q.split(" ").filter(Boolean);
 
-    const searchTerms = q.split(" ");
-
-    return PRODUCTS.filter((product) => {
+    return CATALOG_PRODUCTS.map((product) => {
       const searchableName = normalizeCatalogSearch(product.name);
+      const nameWords = searchableName.split(" ");
+      const searchableCode = normalizeCatalogSearch(product.code);
+      const matchesAllTerms = searchTerms.every(
+        (term) =>
+          searchableCode.includes(term) ||
+          nameWords.some((word) => word === term || word.startsWith(term)),
+      );
 
-      return searchTerms.every((term) => searchableName.includes(term));
-    });
+      if (!matchesAllTerms) return null;
+
+      const exactWordMatches = searchTerms.filter((term) =>
+        nameWords.includes(term),
+      ).length;
+      const startsWithQuery = searchableName.startsWith(q) ? 1 : 0;
+      const codeStartsWithQuery = normalizeProductCode(product.code).startsWith(
+        normalizedQueryCode,
+      )
+        ? 1
+        : 0;
+
+      return {
+        product,
+        score: codeStartsWithQuery * 100 + startsWithQuery * 10 + exactWordMatches,
+      };
+    })
+      .filter((match): match is { product: Product; score: number } => match !== null)
+      .sort((a, b) => b.score - a.score || a.product.name.localeCompare(b.product.name))
+      .map(({ product }) => product);
   }, [catalogQuery]);
 
   function refreshSavedQuotes() {
