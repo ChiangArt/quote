@@ -85,8 +85,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     code: "12345",
-    name: "COBERTURA ALUZINC ROJO 0.45MM RAL-3020",
-    unit: "mt",
+    name: "COBERTURA ALUZINC ROJO 0.45MM RAL-3020 4MTR",
     weightTn: 0.00442,
   },
   {
