@@ -75,7 +75,7 @@ export function QuoteDocument({
 
             <ClientSection client={client} quoteNumber={quoteNumber} />
 
-            {currency === "usd" ? (
+            {currency === "usd" || currency === "pen" ? (
               <div className="mt-6 mb-1 flex justify-end">
                 <div className="py-2.5 text-right text-[15px] font-extrabold text-slate-900">
                   TIPO DE CAMBIO:{" "}

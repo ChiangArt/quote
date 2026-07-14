@@ -806,7 +806,7 @@ function App() {
                   targetRef={docRef}
                   fileName={`CLIENTE-${quoteNumber}.pdf`}
                   disabled={!items.length}
-                  label="Cotización para Cliente"
+                  label="Cotización en dólares"
                 />
 
                 <PdfDownloadButton
