@@ -72,6 +72,23 @@ export const PRODUCTS: Product[] = [
     unit: "m",
     weightTn: 0.00431,
   },
+
+  {
+    code: "AS2460",
+    name: "THINNER ACRILICO AUTOMOTRIZ REF. X 2.8LT - ANYPSA",
+    weightTn: 0,
+  },
+  {
+    code: "AS3998",
+    name: "BASE AL ACEITE C/VARIOS X 1GL - ANYPSA",
+    weightTn: 0,
+  },
+  {
+    code: "12345",
+    name: "COBERTURA ALUZINC ROJO 0.45MM RAL-3020",
+    unit: "mt",
+    weightTn: 0.00442,
+  },
   {
     code: "CAC00512921",
     name: "AUTOPERFORANTE ZINCADO DAMASK #10 X 1 X ENVASE 500 UNIDADES",
