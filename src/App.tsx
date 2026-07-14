@@ -35,6 +35,16 @@ function calculateClientPrice(supplierPriceUsd: number, profitPercent: number) {
   return roundMoney(supplierPriceUsd * (1 + profitPercent / 100));
 }
 
+function normalizeCatalogSearch(value: string) {
+  return value
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/Â/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim();
+}
+
 function normalizeQuoteItem(item: QuoteItem): QuoteItem {
   return {
     ...item,
@@ -91,6 +101,7 @@ function App() {
   const docRef = useRef<HTMLDivElement | null>(null);
   const supplierDocRef = useRef<HTMLDivElement | null>(null);
   const purchaseOrderDocRef = useRef<HTMLDivElement | null>(null);
+  const solesDocRef = useRef<HTMLDivElement | null>(null);
 
   const [catalogQuery, setCatalogQuery] = useState("");
   const [uiMessage, setUiMessage] = useState<{
@@ -188,7 +199,10 @@ function App() {
 
     const igvUsd = roundMoney(subtotalUsd * IGV_RATE);
     const totalUsd = roundMoney(subtotalUsd + igvUsd);
-    const totalPen = roundMoney(totalUsd * (Number(client.tipoCambio) || 0));
+    const exchangeRate = Number(client.tipoCambio) || 0;
+    const subtotalPen = roundMoney(subtotalUsd * exchangeRate);
+    const igvPen = roundMoney(igvUsd * exchangeRate);
+    const totalPen = roundMoney(totalUsd * exchangeRate);
 
     return {
       totalQty,
@@ -196,20 +210,23 @@ function App() {
       subtotalUsd,
       igvUsd,
       totalUsd,
+      subtotalPen,
+      igvPen,
       totalPen,
     };
   }, [client.tipoCambio, items]);
 
   const filteredCatalog = useMemo(() => {
-    const q = catalogQuery.trim().toLowerCase();
+    const q = normalizeCatalogSearch(catalogQuery);
 
     if (!q) return PRODUCTS;
 
-    return PRODUCTS.filter((p) => {
-      const nameMatch = p.name.toLowerCase().includes(q);
-      const codeMatch = String(p.code).toLowerCase().includes(q);
+    const searchTerms = q.split(" ");
 
-      return nameMatch || codeMatch;
+    return PRODUCTS.filter((p) => {
+      const searchableProduct = normalizeCatalogSearch(`${p.code} ${p.name}`);
+
+      return searchTerms.every((term) => searchableProduct.includes(term));
     });
   }, [catalogQuery]);
 
@@ -793,6 +810,13 @@ function App() {
                 />
 
                 <PdfDownloadButton
+                  targetRef={solesDocRef}
+                  fileName={`CLIENTE-SOLES-${quoteNumber}.pdf`}
+                  disabled={!items.length}
+                  label="Cotización solo soles"
+                />
+
+                <PdfDownloadButton
                   targetRef={supplierDocRef}
                   fileName={`PROVEEDOR-${quoteNumber}.pdf`}
                   disabled={!items.length}
@@ -823,6 +847,17 @@ function App() {
                 </div>
 
                 <div style={{ display: "none" }}>
+                  <div ref={solesDocRef}>
+                    <QuoteDocument
+                      logoUrl={logoUrl}
+                      quoteNumber={quoteNumber}
+                      client={client}
+                      items={items}
+                      totals={totals}
+                      currency="pen"
+                    />
+                  </div>
+
                   <div ref={supplierDocRef}>
                     <SupplierQuoteDocument
                       logoUrl={logoUrl}

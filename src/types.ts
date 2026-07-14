@@ -41,6 +41,8 @@ export type QuoteItem = {
     subtotalUsd: number;
     igvUsd: number;
     totalUsd: number;
+    subtotalPen: number;
+    igvPen: number;
     totalPen: number;
   };
 

@@ -1,4 +1,4 @@
-﻿import type { ClientInfo, QuoteItem, QuoteTotals } from "../types";
+import type { ClientInfo, QuoteItem, QuoteTotals } from "../types";
 import { QuoteHeader } from "./QuoteHeader";
 import { ClientSection } from "./ClientSection";
 import { QuoteItemsTable } from "./QuoteItemsTable";
@@ -14,10 +14,7 @@ function chunkItems(items: QuoteItem[]) {
   const LAST_PAGE_MAX_ITEMS = 5;
 
   if (items.length === 0) return [[]];
-
-  if (items.length <= FIRST_PAGES_ITEMS) {
-    return [items];
-  }
+  if (items.length <= FIRST_PAGES_ITEMS) return [items];
 
   const pages: QuoteItem[][] = [];
   let index = 0;
@@ -28,7 +25,6 @@ function chunkItems(items: QuoteItem[]) {
   }
 
   const remaining = items.length - index;
-
   if (remaining <= FIRST_PAGES_ITEMS) {
     pages.push(items.slice(index));
   } else {
@@ -45,18 +41,17 @@ export function QuoteDocument({
   client,
   items,
   totals,
+  currency = "usd",
 }: {
   logoUrl: string;
   quoteNumber: string;
   client: ClientInfo;
   items: QuoteItem[];
   totals: QuoteTotals;
+  currency?: "usd" | "pen";
 }) {
-  // Vigencia de la cotización: 10 di­as
   const fechaVencimientoISO = addDaysISO(client.fechaISO, 10);
-
   const pages = chunkItems(items);
-
   const tipoCambio = Number(client.tipoCambio || 0);
 
   return (
@@ -80,19 +75,18 @@ export function QuoteDocument({
 
             <ClientSection client={client} quoteNumber={quoteNumber} />
 
-            {/* Tipo de cambio mas grande, en negrita y mas cerca al cuadro de items */}
-            <div className="mt-6 mb-1 flex justify-end">
-              <div className="py-2.5 text-right text-[15px] font-extrabold text-slate-900">
-                TIPO DE CAMBIO:{" "}
-                <span className="text-[15px]">
-                  {tipoCambio ? formatFixedTruncated(tipoCambio, 3) : "0.000"}
-                </span>
+            {currency === "usd" ? (
+              <div className="mt-6 mb-1 flex justify-end">
+                <div className="py-2.5 text-right text-[15px] font-extrabold text-slate-900">
+                  TIPO DE CAMBIO:{" "}
+                  <span className="text-[15px]">
+                    {tipoCambio ? formatFixedTruncated(tipoCambio, 3) : "0.000"}
+                  </span>
+                </div>
               </div>
-            </div>
+            ) : null}
 
-            <div className="mt-1 text-xs font-bold">
-              DETALLE DE COTIZACIÓN
-            </div>
+            <div className="mt-1 text-xs font-bold">DETALLE DE COTIZACIÓN</div>
 
             <QuoteItemsTable
               items={pageItems}
@@ -100,6 +94,8 @@ export function QuoteDocument({
                 .slice(0, pageIndex)
                 .reduce((acc, page) => acc + page.length, 0)}
               totals={isLastPage ? totals : undefined}
+              currency={currency}
+              exchangeRate={tipoCambio}
             />
 
             {isLastPage && (
@@ -109,7 +105,6 @@ export function QuoteDocument({
                   telefono={client.telefonoAsesor}
                   correo={client.correoAsesor}
                 />
-
                 <CommercialConditions />
                 <BankDetails />
                 <NotesSection />
@@ -121,4 +116,3 @@ export function QuoteDocument({
     </div>
   );
 }
-
