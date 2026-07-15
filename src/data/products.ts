@@ -125,6 +125,12 @@ export const PRODUCTS: Product[] = [
     weightTn: 0.0138,
   },
   {
+    code: "20030097",
+    name: "TUBO RECT. NEGRO 2 X 1 X 3.0 X 6 MTS (50 X 25) (P.I) (NARANJA)",
+    unit: "Uni",
+    weightTn: 0.0198,
+  },
+  {
     code: "2345",
     name: "PLANCHA NAVAL A131 GR A 12.7 X1800X6000MM",
     weightTn: 1.076696,
