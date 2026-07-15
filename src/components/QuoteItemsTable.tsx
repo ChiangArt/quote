@@ -1,4 +1,4 @@
-import type { QuoteItem, QuoteTotals } from "../types";
+﻿import type { QuoteItem, QuoteTotals } from "../types";
 import {
   formatMoneyPen,
   formatMoneyUsd,
@@ -33,7 +33,7 @@ export function QuoteItemsTable({
         <thead>
           <tr>
             <th className={`${th} text-right`} style={{ width: 24 }}>#</th>
-            <th className={`${th} text-left`} style={{ width: 70 }}>Cod. Cliente</th>
+            <th className={`${th} text-left`} style={{ width: 70 }}>Código</th>
             <th className={`${th} text-left`}>Producto</th>
             <th className={`${th} text-right`} style={{ width: 42 }}>Cant.</th>
             <th className={`${th} text-right`} style={{ width: 60 }}>Peso TN</th>
@@ -90,7 +90,7 @@ function ItemRow({
   return (
     <tr>
       <td className={`${td} text-right`}>{number}</td>
-      <td className={td}>{item.randomCode}</td>
+      <td className={td}>{item.productCode}</td>
       <td className={`${td} leading-snug`}>{item.name}</td>
       <td className={`${td} text-right`}>{item.qty}</td>
       <td className={`${td} text-right`}>{formatNumber(rowWeightTn, 6)}</td>
