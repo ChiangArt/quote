@@ -131,6 +131,12 @@ export const PRODUCTS: Product[] = [
     weightTn: 0.0198,
   },
   {
+    code: "20010165",
+    name: "TUBO RED. LAC. 2 X 3.0 X 6.0 MTS (60MM) (P.N) (AMARILLO)",
+    unit: "Uni",
+    weightTn: 0.02544,
+  },
+  {
     code: "2345",
     name: "PLANCHA NAVAL A131 GR A 12.7 X1800X6000MM",
     weightTn: 1.076696,
