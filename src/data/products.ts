@@ -113,6 +113,42 @@ export const PRODUCTS: Product[] = [
     weightTn: 0.037106,
   },
   {
+    code: "01020006",
+    name: "BISAGRAS EJE 3/8 X 4 (02 ALAS)",
+    unit: "Uni",
+    weightTn: 0.00016,
+  },
+  {
+    code: "01020007",
+    name: "BISAGRAS EJE 3/8 X 4 (03 ALAS)",
+    unit: "Uni",
+    weightTn: 0.00016,
+  },
+  {
+    code: "14000002",
+    name: "ANGULO 1/8 X 2 X 6 MTS (P.N)",
+    unit: "Uni",
+    weightTn: 0.01473,
+  },
+  {
+    code: "19010002",
+    name: "TUBO CUAD. GALV. 1 X 2.0 X 6 MTS (25MM) (P.N) (NEGRO)",
+    unit: "Uni",
+    weightTn: 0.0091,
+  },
+  {
+    code: "13050025",
+    name: "PLATINA 1/8 X 2 X 6 MTS (P.I)",
+    unit: "Uni",
+    weightTn: 0.00741,
+  },
+  {
+    code: "18000006",
+    name: "PLATINA 1/8 X 2 X 6 MTS (P.N)",
+    unit: "Uni",
+    weightTn: 0.00741,
+  },
+  {
     code: "20010324",
     name: "TUBO RED. LAC. 3/4 X 2.0 X 6.0 MTS (26.7MM) (P.I) (VERDE)",
     unit: "Uni",
