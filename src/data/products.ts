@@ -88,6 +88,7 @@ export const PRODUCTS: Product[] = [
     name: "COBERTURA ALUZINC ROJO 0.45MM RAL-3020 4MTR",
     weightTn: 0.00442,
   },
+
   {
     code: "CAC00512921",
     name: "AUTOPERFORANTE ZINCADO DAMASK #10 X 1 X ENVASE 500 UNIDADES",
@@ -110,6 +111,18 @@ export const PRODUCTS: Product[] = [
     code: "10696",
     name: "TUBO RECTANGULAR GALVANIZADO A500 GRA 50X150X2.0X6M P.T.",
     weightTn: 0.037106,
+  },
+  {
+    code: "20010324",
+    name: "TUBO RED. LAC. 3/4 X 2.0 X 6.0 MTS (26.7MM) (P.I) (VERDE)",
+    unit: "Uni",
+    weightTn: 0.00732,
+  },
+  {
+    code: "20020090",
+    name: "TUBO CUAD. NEGRO 2 X 1.5 X 6 MTS (50 X 50) (P.I) (AMARILLO)",
+    unit: "Uni",
+    weightTn: 0.0138,
   },
   {
     code: "2345",
