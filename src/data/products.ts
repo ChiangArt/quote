@@ -6862,7 +6862,7 @@ export const PRODUCTS: Product[] = [
     weightTn: 0.009202,
   },
   {
-    code: "080B0004",
+    code: "08080004",
     name: "TR4-POLICARBONATO (1 MM) 1.00 X 11.80 - TRANSPARENTE",
     unit: "Uni",
     weightTn: 0.01781,
