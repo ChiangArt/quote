@@ -18,6 +18,21 @@ export const PRODUCTS: Product[] = [
     weightTn: 0.022608,
   },
   {
+    code: "10525",
+    name: "PLANCHA LAC A709 GR50 16X3000X6000MM P.T.",
+    weightTn: 2.261,
+  },
+  {
+    code: "4937",
+    name: "TUBO ACERO RECTANGULAR LAC A500 GRA 50X150X2.0X6.0M P.T.",
+    weightTn: 0.037086,
+  },
+  {
+    code: "10820",
+    name: "TUBO REDONDO GALVANIZADO A500 GRA Ø2 1/2´´(ØE73.0)X2.5X6M P.T.",
+    weightTn: 0.02608,
+  },
+  {
     code: "5125",
     name: "PLANCHA LAC A709 GR50 25.0X1200X2400MM P.T.",
     weightTn: 0.56525,
