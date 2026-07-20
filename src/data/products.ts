@@ -32,29 +32,29 @@ export const PRODUCTS: Product[] = [
     name: "TUBO REDONDO GALVANIZADO A500 GRA Ø2 1/2´´(ØE73.0)X2.5X6M P.T.",
     weightTn: 0.02608,
   },
-   {
-    "code": "0300129",
-    "name": "COBERTURA ALUZINC AZUL 0.50MM RAL-5002",
-    "unit": "m",
-    "weightTn": 0.00491
+  {
+    code: "0300129",
+    name: "COBERTURA ALUZINC AZUL 0.50MM RAL-5002",
+    unit: "m",
+    weightTn: 0.00491,
   },
   {
-    "code": "18010019",
-    "name": "TUBO CUAD. ELECT. 1 1/4 X 1.2 X 6 MTS (AZUL)",
-    "unit": "Uni",
-    "weightTn": 0.00697
+    code: "18010019",
+    name: "TUBO CUAD. ELECT. 1 1/4 X 1.2 X 6 MTS (AZUL)",
+    unit: "Uni",
+    weightTn: 0.00697,
   },
   {
-    "code": "18010013",
-    "name": "TUBO CUAD. ELECT. 1 1/2 X 1.2 X 6 MTS (AZUL)",
-    "unit": "Uni",
-    "weightTn": 0.0084
+    code: "18010013",
+    name: "TUBO CUAD. ELECT. 1 1/2 X 1.2 X 6 MTS (AZUL)",
+    unit: "Uni",
+    weightTn: 0.0084,
   },
   {
-    "code": "18030012",
-    "name": "TUBO RECT. ELECT. 2 X 1 X 1.2 X 6 MTS (AZUL)",
-    "unit": "Uni",
-    "weightTn": 0.0084
+    code: "18030012",
+    name: "TUBO RECT. ELECT. 2 X 1 X 1.2 X 6 MTS (AZUL)",
+    unit: "Uni",
+    weightTn: 0.0084,
   },
   {
     code: "5125",
@@ -402,7 +402,7 @@ export const PRODUCTS: Product[] = [
   {
     code: "10825",
     name: "TUBO REDONDO GALVANIZADO A500 GRA Ø3´´(ØE88.9)X2.0X6M P.T.",
-    weightTn: 0.005,
+    weightTn: 0.004527,
   },
   {
     code: "4003",
