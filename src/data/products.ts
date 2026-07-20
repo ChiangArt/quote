@@ -368,6 +368,11 @@ export const PRODUCTS: Product[] = [
     weightTn: 0.023286,
   },
   {
+    code: "0300123",
+    name: "COBERTURA ALUZINC AZUL 0.40MM RAL-5002",
+    weightTn: 0.02751,
+  },
+  {
     code: "10759",
     name: "TUBO CUADRADO GALVANIZADO A500 GRA 100X100X3.0X6M P.T.",
     weightTn: 0.055216,
