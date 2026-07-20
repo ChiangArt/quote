@@ -368,6 +368,12 @@ export const PRODUCTS: Product[] = [
     weightTn: 0.023286,
   },
   {
+    code: "19010059",
+    name: "TUBO CUADRADO GALVANIZADO 75X75X2.0X6M P.N. NEGRO",
+    unit: "Uni",
+    weightTn: 0.02851,
+  },
+  {
     code: "0300123",
     name: "COBERTURA ALUZINC AZUL 0.40MM RAL-5002",
     weightTn: 0.02751,
