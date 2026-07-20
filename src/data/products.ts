@@ -374,6 +374,11 @@ export const PRODUCTS: Product[] = [
     weightTn: 0.02851,
   },
   {
+  code: "03000092",
+  name: "COBERTURA ALUZINC ROJO 0.45MM RAL-3020 MODELO CR5 X 4.50M Largo 4.50 mt",
+  weightTn: 0.01989,
+},
+  {
     code: "0300123",
     name: "COBERTURA ALUZINC AZUL 0.40MM RAL-5002",
     weightTn: 0.02751,
