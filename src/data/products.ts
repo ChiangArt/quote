@@ -402,7 +402,7 @@ export const PRODUCTS: Product[] = [
   {
     code: "10825",
     name: "TUBO REDONDO GALVANIZADO A500 GRA Ø3´´(ØE88.9)X2.0X6M P.T.",
-    weightTn: 0.004527,
+    weightTn: 0.025717,
   },
   {
     code: "4003",
