@@ -386,31 +386,26 @@ export const PRODUCTS: Product[] = [
   {
     code: "00002",
     name: "DISCO DE SIERRA STANLEY 7-1/4 X 40D",
-    unit: "Uni",
     weightTn: 0,
   },
   {
     code: "00003",
-    name: "DISCO DE DESBASTE BRIKER 7 X 1/4 X 7/8",
-    unit: "Uni",
+    name: "DISCO DE CORTE BRIKER 7 X 1/16 X 7/8",
     weightTn: 0,
   },
   {
     code: "00004",
     name: "DISCO DE CORTE BRIKER 14 X 7/64 X 1",
-    unit: "Uni",
     weightTn: 0,
   },
   {
     code: "00005",
     name: "DISCO DE CORTE BRIKER 4 1/2 X 3/64 X 7/8",
-    unit: "Uni",
     weightTn: 0,
   },
   {
     code: "00006",
     name: "DISCO FLAP BRIKER 4 1/2 X 7/8 G040 A",
-    unit: "Uni",
     weightTn: 0,
   },
   {
