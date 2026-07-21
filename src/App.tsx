@@ -35,23 +35,200 @@ function calculateClientPrice(supplierPriceUsd: number, profitPercent: number) {
   return roundMoney(supplierPriceUsd * (1 + profitPercent / 100));
 }
 
+const SUPPLIER_PREFIXES = [
+  "miromina",
+  "coroimport",
+  "fervi",
+  "ferv",
+  "fer",
+  "met",
+  "tps",
+] as const;
+
+const SEARCH_STOP_WORDS = new Set([
+  "codigo",
+  "cod",
+  "producto",
+  "productos",
+  "proveedor",
+  "stock",
+  "de",
+  "del",
+  "la",
+  "el",
+  "los",
+  "las",
+  "para",
+  "por",
+  ...SUPPLIER_PREFIXES,
+]);
+
+const SEARCH_UNIT_WORDS = new Set([
+  "x",
+  "mm",
+  "cm",
+  "m",
+  "mt",
+  "mts",
+  "metro",
+  "metros",
+  "pulg",
+  "pulgada",
+  "pulgadas",
+]);
+
+function normalizeSearchBase(value: string) {
+  return (
+    value
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/Â/g, "")
+      .replace(/[Øø]/g, " diam ")
+      .replace(/[×*]/g, "x")
+      .replace(/[´`’′″“”"]/g, "")
+      .replace(/,/g, ".")
+      .toLowerCase()
+      // 2.0, 2.00 y 2 deben comportarse igual al buscar.
+      .replace(/(\d+)\.0+(?=\D|$)/g, "$1")
+  );
+}
+
 function normalizeCatalogSearch(value: string) {
-  return value
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .replace(/Â/g, "")
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, " ")
+  return normalizeSearchBase(value)
+    .replace(/[^a-z0-9.]+/g, " ")
+    .replace(/\s+/g, " ")
     .trim();
 }
+
 function normalizeProductCode(value: string) {
-  return value.toLowerCase().replace(/[^a-z0-9]/g, "");
+  return normalizeSearchBase(value).replace(/[^a-z0-9]/g, "");
 }
 
-const CATALOG_PRODUCTS = Array.from(
-  new Map(PRODUCTS.map((product) => [normalizeProductCode(product.code), product])).values(),
-);
+function stripKnownSupplierPrefix(value: string) {
+  let result = value;
+  let removedPrefix = true;
 
+  while (removedPrefix) {
+    removedPrefix = false;
+
+    for (const prefix of SUPPLIER_PREFIXES) {
+      if (result.startsWith(prefix) && result.length > prefix.length) {
+        result = result.slice(prefix.length);
+        removedPrefix = true;
+        break;
+      }
+    }
+  }
+
+  return result;
+}
+
+function normalizeSearchCompact(value: string) {
+  return (
+    normalizeSearchBase(value)
+      // Las unidades no deben impedir coincidencias como 2x4x2 y 2x4x2mm.
+      .replace(/(\d)(?:mm|cm|m|mt|mts|metros?|pulgadas?|pulg)\b/g, "$1")
+      .replace(/\b(?:mm|cm|m|mt|mts|metros?|pulgadas?|pulg)\b/g, "")
+      .replace(/[^a-z0-9]/g, "")
+  );
+}
+
+function getSearchTerms(value: string) {
+  return (
+    normalizeCatalogSearch(value)
+      // Divide medidas escritas juntas: 2x4x2mm -> 2, 4, 2.
+      .replace(/(\d)\s*x\s*(?=\d)/g, "$1 ")
+      .replace(/(\d)(mm|cm|m|mt|mts)\b/g, "$1 $2")
+      .split(" ")
+      .map((term) => term.trim())
+      .filter(
+        (term) =>
+          term.length > 0 &&
+          !SEARCH_STOP_WORDS.has(term) &&
+          !SEARCH_UNIT_WORDS.has(term),
+      )
+  );
+}
+
+function levenshteinDistance(left: string, right: string) {
+  if (left === right) return 0;
+  if (!left.length) return right.length;
+  if (!right.length) return left.length;
+
+  const previous = Array.from(
+    { length: right.length + 1 },
+    (_, index) => index,
+  );
+
+  for (let leftIndex = 1; leftIndex <= left.length; leftIndex += 1) {
+    const current = [leftIndex];
+
+    for (let rightIndex = 1; rightIndex <= right.length; rightIndex += 1) {
+      const insertion = current[rightIndex - 1] + 1;
+      const deletion = previous[rightIndex] + 1;
+      const substitution =
+        previous[rightIndex - 1] +
+        (left[leftIndex - 1] === right[rightIndex - 1] ? 0 : 1);
+
+      current[rightIndex] = Math.min(insertion, deletion, substitution);
+    }
+
+    previous.splice(0, previous.length, ...current);
+  }
+
+  return previous[right.length];
+}
+
+function fuzzyWordMatches(term: string, word: string) {
+  if (term === word || word.startsWith(term) || word.includes(term)) {
+    return true;
+  }
+
+  // Los números y códigos no deben aproximarse para evitar falsos positivos.
+  if (term.length < 4 || /\d/.test(term)) return false;
+
+  const allowedDistance = term.length >= 8 ? 2 : 1;
+  return levenshteinDistance(term, word) <= allowedDistance;
+}
+
+function getCodeCandidates(rawQuery: string) {
+  const compactRawQuery = normalizeProductCode(rawQuery);
+
+  const queryWithoutNoiseWords = normalizeCatalogSearch(rawQuery)
+    .split(" ")
+    .filter(
+      (term) =>
+        term.length > 0 &&
+        !SEARCH_STOP_WORDS.has(term) &&
+        !SEARCH_UNIT_WORDS.has(term),
+    )
+    .join("");
+
+  return Array.from(
+    new Set([
+      compactRawQuery,
+      stripKnownSupplierPrefix(compactRawQuery),
+      queryWithoutNoiseWords,
+      stripKnownSupplierPrefix(queryWithoutNoiseWords),
+    ]),
+  ).filter((candidate) => candidate.length >= 2);
+}
+
+// Solo elimina filas completamente repetidas.
+// No elimina productos diferentes únicamente porque compartan el mismo código.
+const CATALOG_PRODUCTS = Array.from(
+  new Map(
+    PRODUCTS.map((product) => [
+      [
+        normalizeProductCode(product.code),
+        normalizeCatalogSearch(product.name),
+        product.unit ?? "",
+        String(product.weightTn ?? ""),
+      ].join("::"),
+      product,
+    ]),
+  ).values(),
+);
 
 function normalizeQuoteItem(item: QuoteItem): QuoteItem {
   return {
@@ -180,8 +357,6 @@ function App() {
 
   const [modalPriceValue, setModalPriceValue] = useState("");
 
-
-
   const quoteNumber = useMemo(
     () => buildQuoteNumber(sellerCode, quoteRandom),
     [sellerCode, quoteRandom],
@@ -226,57 +401,112 @@ function App() {
 
   const filteredCatalog = useMemo(() => {
     const rawQuery = catalogQuery.trim();
-    const q = normalizeCatalogSearch(rawQuery);
 
-    if (!q) return CATALOG_PRODUCTS;
+    if (!rawQuery) return CATALOG_PRODUCTS;
 
-    const normalizedQueryCode = normalizeProductCode(rawQuery);
-    const exactCodeMatches = CATALOG_PRODUCTS.filter(
-      (product) => normalizeProductCode(product.code) === normalizedQueryCode,
-    );
-
-    // A code always takes precedence, including formats such as
-    // "FERV 08010002" or "ferv-08010002".
-    if (exactCodeMatches.length) return exactCodeMatches;
-
-    const searchTerms = q.split(" ").filter(Boolean);
+    const normalizedQuery = normalizeCatalogSearch(rawQuery);
+    const compactQuery = normalizeSearchCompact(rawQuery);
+    const codeCandidates = getCodeCandidates(rawQuery);
+    const searchTerms = getSearchTerms(rawQuery);
 
     return CATALOG_PRODUCTS.map((product) => {
+      const productCode = normalizeProductCode(product.code);
+      const searchableText = normalizeCatalogSearch(
+        `${product.code} ${product.name} ${product.unit ?? ""}`,
+      );
       const searchableName = normalizeCatalogSearch(product.name);
-      const nameWords = searchableName.split(" ");
-      const searchableCode = normalizeCatalogSearch(product.code);
-      const matchesAllTerms = searchTerms.every(
-        (term) =>
-          searchableCode.includes(term) ||
-          nameWords.some((word) => word === term || word.startsWith(term)),
+      const searchableWords = searchableText.split(" ").filter(Boolean);
+      const searchableCompact = normalizeSearchCompact(
+        `${product.code} ${product.name} ${product.unit ?? ""}`,
       );
 
-      if (!matchesAllTerms) return null;
+      let score = 0;
 
-      const exactWordMatches = searchTerms.filter((term) =>
-        nameWords.includes(term),
+      for (const candidate of codeCandidates) {
+        if (candidate === productCode) {
+          score = Math.max(score, 10_000);
+          continue;
+        }
+
+        // Permite FERV-08010002 cuando el catálogo guarda 08010002.
+        if (
+          candidate.length > productCode.length &&
+          candidate.endsWith(productCode)
+        ) {
+          score = Math.max(score, 9_500);
+          continue;
+        }
+
+        // Permite escribir solamente el comienzo o una parte del código.
+        if (candidate.length >= 3 && productCode.startsWith(candidate)) {
+          score = Math.max(score, 8_500);
+          continue;
+        }
+
+        if (candidate.length >= 3 && productCode.includes(candidate)) {
+          score = Math.max(score, 7_500);
+        }
+      }
+
+      const exactPhraseMatch =
+        normalizedQuery.length > 0 && searchableText.includes(normalizedQuery);
+
+      const compactMatch =
+        compactQuery.length >= 3 && searchableCompact.includes(compactQuery);
+
+      const matchesAllTerms =
+        searchTerms.length > 0 &&
+        searchTerms.every((term) => {
+          const compactTerm = normalizeProductCode(term);
+
+          if (
+            productCode.includes(compactTerm) ||
+            searchableText.includes(term) ||
+            searchableCompact.includes(compactTerm)
+          ) {
+            return true;
+          }
+
+          return searchableWords.some((word) => fuzzyWordMatches(term, word));
+        });
+
+      if (
+        score === 0 &&
+        !exactPhraseMatch &&
+        !compactMatch &&
+        !matchesAllTerms
+      ) {
+        return null;
+      }
+
+      if (exactPhraseMatch) score += 5_000;
+      if (compactMatch) score += 4_000;
+      if (searchableName.startsWith(normalizedQuery)) score += 1_000;
+
+      const exactTermMatches = searchTerms.filter(
+        (term) =>
+          searchableWords.includes(term) ||
+          productCode.includes(normalizeProductCode(term)),
       ).length;
-      const startsWithQuery = searchableName.startsWith(q) ? 1 : 0;
-      const codeStartsWithQuery = normalizeProductCode(product.code).startsWith(
-        normalizedQueryCode,
-      )
-        ? 1
-        : 0;
 
-      return {
-        product,
-        score: codeStartsWithQuery * 100 + startsWithQuery * 10 + exactWordMatches,
-      };
+      score += exactTermMatches * 100;
+
+      return { product, score };
     })
-      .filter((match): match is { product: Product; score: number } => match !== null)
-      .sort((a, b) => b.score - a.score || a.product.name.localeCompare(b.product.name))
+      .filter(
+        (match): match is { product: Product; score: number } => match !== null,
+      )
+      .sort(
+        (left, right) =>
+          right.score - left.score ||
+          left.product.name.localeCompare(right.product.name),
+      )
       .map(({ product }) => product);
   }, [catalogQuery]);
 
   function refreshSavedQuotes() {
     setSavedQuotes(getSavedQuotes());
   }
-
 
   useEffect(() => {
     saveToStorage("cotizador.mirominaPrices", mirominaPrices);
@@ -941,7 +1171,8 @@ function App() {
               </div>
 
               <div className="mt-2 text-[11px] text-slate-500">
-                Precio actual: USD {roundMoney(priceModal.currentPrice).toFixed(2)}
+                Precio actual: USD{" "}
+                {roundMoney(priceModal.currentPrice).toFixed(2)}
               </div>
             </div>
 
