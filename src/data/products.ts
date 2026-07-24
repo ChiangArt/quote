@@ -263,6 +263,11 @@ export const PRODUCTS: Product[] = [
     weightTn: 0.00883,
   },
   {
+    code: "20030116",
+    name: "TUBO RECT. NEGRO 3 X 2 X 2.0 X 6 MTS (75 X 50) (P.N) (NEGRO)",
+    weightTn: 0.02297,
+  },
+  {
     code: "10204",
     name: "BOBINA LAC 2.85X1200MM",
     weightTn: 476.56,
@@ -394,19 +399,19 @@ export const PRODUCTS: Product[] = [
     weightTn: 0,
   },
   {
-    "code": "20020097",
-    "name": "TUBO CUAD. NEGRO 2 X 2.0 X 6 MTS (50 X 50) (P.N) (NEGRO)",
-    "weightTn": 0.01825
+    code: "20020097",
+    name: "TUBO CUAD. NEGRO 2 X 2.0 X 6 MTS (50 X 50) (P.N) (NEGRO)",
+    weightTn: 0.01825,
   },
   {
-    "code": "20020100",
-    "name": "TUBO CUAD. NEGRO 2 X 2.5 X 6 MTS (50 X 50) (P.N) (CELESTE)",
-    "weightTn": 0.02263
+    code: "20020100",
+    name: "TUBO CUAD. NEGRO 2 X 2.5 X 6 MTS (50 X 50) (P.N) (CELESTE)",
+    weightTn: 0.02263,
   },
   {
-    "code": "20030194",
-    "name": "TUBO RECT. NEGRO 6 X 2 X 2.5 X 6 MTS (150 X 50) (P.N) (CELESTE)",
-    "weightTn": 0.04617
+    code: "20030194",
+    name: "TUBO RECT. NEGRO 6 X 2 X 2.5 X 6 MTS (150 X 50) (P.N) (CELESTE)",
+    weightTn: 0.04617,
   },
   {
     code: "00003",
