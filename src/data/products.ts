@@ -303,6 +303,21 @@ export const PRODUCTS: Product[] = [
     weightTn: 0.055205,
   },
   {
+    code: "20030116",
+    name: "TUBO RECT. NEGRO 3 X 2 X 2.0 X 6 MTS (75 X 50) (P.N) (NEGRO)",
+    weightTn: 0.02297,
+  },
+  {
+    code: "20030086",
+    name: "TUBO RECT. NEGRO 2 X 1 X 1.5 X 6 MTS (50 X 25) (P.N) (ROJO)",
+    weightTn: 0.0103,
+  },
+  {
+    code: "19020028",
+    name: "TUBO RECT. GALV. 3 X 2 X 2.0 X 6 MTS (75 X 50) (P.I) (VERDE)",
+    weightTn: 0.02297,
+  },
+  {
     code: "10743",
     name: "TUBO CUADRADO GALVANIZADO A500 GRA 50X50X1.8X6M P.T.",
     weightTn: 0.016485,
