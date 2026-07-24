@@ -267,6 +267,11 @@ export const PRODUCTS: Product[] = [
     name: "TUBO RECT. NEGRO 3 X 2 X 2.0 X 6 MTS (75 X 50) (P.N) (NEGRO)",
     weightTn: 0.02297,
   },
+    {
+    code: "20020103",
+    name: "TUBO CUAD. NEGRO 2 X 3.0 X 6 MTS (50 X 50) (P.N) (AMARILLO)",
+    weightTn: 0.02693,
+  },
   {
     code: "10204",
     name: "BOBINA LAC 2.85X1200MM",
