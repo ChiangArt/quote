@@ -230,6 +230,152 @@ const CATALOG_PRODUCTS = Array.from(
   ).values(),
 );
 
+
+type ParsedProductQuery = {
+  original: string;
+  query: string;
+  quantity: number;
+};
+
+function parseProductQueries(value: string): ParsedProductQuery[] {
+  return value
+    .split(/\r?\n|;/)
+    .map((line) => line.trim())
+    .filter(Boolean)
+    .map((original) => {
+      /*
+       * Elimina una cantidad inicial cuando la línea comienza así:
+       * 15 tubos...
+       * 30 und tubos...
+       *
+       * No elimina el primer número cuando forma parte de una medida:
+       * 6 x 4 x 3 mm
+       */
+      const quantityMatch = original.match(
+        /^\s*(\d+(?:[.,]\d+)?)\s+(?!(?:x\b|\d))(?:(?:und|unds|uni|unid|unidad|unidades|pza|pzas)\.?\s+)?/i,
+      );
+
+      const parsedQuantity = quantityMatch
+        ? Number(quantityMatch[1].replace(",", "."))
+        : 1;
+
+      const query = quantityMatch
+        ? original.slice(quantityMatch[0].length).trim()
+        : original;
+
+      return {
+        original,
+        query,
+        quantity:
+          Number.isFinite(parsedQuantity) && parsedQuantity > 0
+            ? parsedQuantity
+            : 1,
+      };
+    })
+    .filter(({ query }) => query.length > 0);
+}
+
+function searchCatalogBySingleQuery(rawQuery: string): Product[] {
+  const normalizedQuery = normalizeCatalogSearch(rawQuery);
+  const compactQuery = normalizeSearchCompact(rawQuery);
+  const codeCandidates = getCodeCandidates(rawQuery);
+  const searchTerms = getSearchTerms(rawQuery);
+
+  return CATALOG_PRODUCTS.map((product) => {
+    const productCode = normalizeProductCode(product.code);
+    const searchableText = normalizeCatalogSearch(
+      `${product.code} ${product.name} ${product.unit ?? ""}`,
+    );
+    const searchableName = normalizeCatalogSearch(product.name);
+    const searchableWords = searchableText.split(" ").filter(Boolean);
+    const searchableCompact = normalizeSearchCompact(
+      `${product.code} ${product.name} ${product.unit ?? ""}`,
+    );
+
+    let score = 0;
+
+    for (const candidate of codeCandidates) {
+      if (candidate === productCode) {
+        score = Math.max(score, 10_000);
+        continue;
+      }
+
+      // Permite FERV-08010002 cuando el catálogo guarda 08010002.
+      if (
+        candidate.length > productCode.length &&
+        candidate.endsWith(productCode)
+      ) {
+        score = Math.max(score, 9_500);
+        continue;
+      }
+
+      // Permite escribir solamente el comienzo o una parte del código.
+      if (candidate.length >= 3 && productCode.startsWith(candidate)) {
+        score = Math.max(score, 8_500);
+        continue;
+      }
+
+      if (candidate.length >= 3 && productCode.includes(candidate)) {
+        score = Math.max(score, 7_500);
+      }
+    }
+
+    const exactPhraseMatch =
+      normalizedQuery.length > 0 && searchableText.includes(normalizedQuery);
+
+    const compactMatch =
+      compactQuery.length >= 3 && searchableCompact.includes(compactQuery);
+
+    const matchesAllTerms =
+      searchTerms.length > 0 &&
+      searchTerms.every((term) => {
+        const compactTerm = normalizeProductCode(term);
+
+        if (
+          productCode.includes(compactTerm) ||
+          searchableText.includes(term) ||
+          searchableCompact.includes(compactTerm)
+        ) {
+          return true;
+        }
+
+        return searchableWords.some((word) => fuzzyWordMatches(term, word));
+      });
+
+    if (
+      score === 0 &&
+      !exactPhraseMatch &&
+      !compactMatch &&
+      !matchesAllTerms
+    ) {
+      return null;
+    }
+
+    if (exactPhraseMatch) score += 5_000;
+    if (compactMatch) score += 4_000;
+    if (searchableName.startsWith(normalizedQuery)) score += 1_000;
+
+    const exactTermMatches = searchTerms.filter(
+      (term) =>
+        searchableWords.includes(term) ||
+        productCode.includes(normalizeProductCode(term)),
+    ).length;
+
+    score += exactTermMatches * 100;
+
+    return { product, score };
+  })
+    .filter(
+      (match): match is { product: Product; score: number } => match !== null,
+    )
+    .sort(
+      (left, right) =>
+        right.score - left.score ||
+        left.product.name.localeCompare(right.product.name),
+    )
+    .map(({ product }) => product);
+}
+
 function normalizeQuoteItem(item: QuoteItem): QuoteItem {
   return {
     ...item,
@@ -399,109 +545,13 @@ function App() {
     };
   }, [client.tipoCambio, items]);
 
-  const filteredCatalog = useMemo(() => {
-    const rawQuery = catalogQuery.trim();
+  const catalogSearchGroups = useMemo(() => {
+    const queries = parseProductQueries(catalogQuery);
 
-    if (!rawQuery) return CATALOG_PRODUCTS;
-
-    const normalizedQuery = normalizeCatalogSearch(rawQuery);
-    const compactQuery = normalizeSearchCompact(rawQuery);
-    const codeCandidates = getCodeCandidates(rawQuery);
-    const searchTerms = getSearchTerms(rawQuery);
-
-    return CATALOG_PRODUCTS.map((product) => {
-      const productCode = normalizeProductCode(product.code);
-      const searchableText = normalizeCatalogSearch(
-        `${product.code} ${product.name} ${product.unit ?? ""}`,
-      );
-      const searchableName = normalizeCatalogSearch(product.name);
-      const searchableWords = searchableText.split(" ").filter(Boolean);
-      const searchableCompact = normalizeSearchCompact(
-        `${product.code} ${product.name} ${product.unit ?? ""}`,
-      );
-
-      let score = 0;
-
-      for (const candidate of codeCandidates) {
-        if (candidate === productCode) {
-          score = Math.max(score, 10_000);
-          continue;
-        }
-
-        // Permite FERV-08010002 cuando el catálogo guarda 08010002.
-        if (
-          candidate.length > productCode.length &&
-          candidate.endsWith(productCode)
-        ) {
-          score = Math.max(score, 9_500);
-          continue;
-        }
-
-        // Permite escribir solamente el comienzo o una parte del código.
-        if (candidate.length >= 3 && productCode.startsWith(candidate)) {
-          score = Math.max(score, 8_500);
-          continue;
-        }
-
-        if (candidate.length >= 3 && productCode.includes(candidate)) {
-          score = Math.max(score, 7_500);
-        }
-      }
-
-      const exactPhraseMatch =
-        normalizedQuery.length > 0 && searchableText.includes(normalizedQuery);
-
-      const compactMatch =
-        compactQuery.length >= 3 && searchableCompact.includes(compactQuery);
-
-      const matchesAllTerms =
-        searchTerms.length > 0 &&
-        searchTerms.every((term) => {
-          const compactTerm = normalizeProductCode(term);
-
-          if (
-            productCode.includes(compactTerm) ||
-            searchableText.includes(term) ||
-            searchableCompact.includes(compactTerm)
-          ) {
-            return true;
-          }
-
-          return searchableWords.some((word) => fuzzyWordMatches(term, word));
-        });
-
-      if (
-        score === 0 &&
-        !exactPhraseMatch &&
-        !compactMatch &&
-        !matchesAllTerms
-      ) {
-        return null;
-      }
-
-      if (exactPhraseMatch) score += 5_000;
-      if (compactMatch) score += 4_000;
-      if (searchableName.startsWith(normalizedQuery)) score += 1_000;
-
-      const exactTermMatches = searchTerms.filter(
-        (term) =>
-          searchableWords.includes(term) ||
-          productCode.includes(normalizeProductCode(term)),
-      ).length;
-
-      score += exactTermMatches * 100;
-
-      return { product, score };
-    })
-      .filter(
-        (match): match is { product: Product; score: number } => match !== null,
-      )
-      .sort(
-        (left, right) =>
-          right.score - left.score ||
-          left.product.name.localeCompare(right.product.name),
-      )
-      .map(({ product }) => product);
+    return queries.map((entry) => ({
+      ...entry,
+      products: searchCatalogBySingleQuery(entry.query).slice(0, 20),
+    }));
   }, [catalogQuery]);
 
   function refreshSavedQuotes() {
@@ -570,8 +620,21 @@ function App() {
     });
   }
 
-  function handleAddProduct(product: Product) {
-    if (items.some((it) => it.productCode === product.code)) {
+  function handleAddProduct(product: Product, requestedQty = 1) {
+    const weightTn = Number(product.weightTn ?? 0);
+    const normalizedRequestedQty =
+      Number.isFinite(requestedQty) && requestedQty > 0 ? requestedQty : 1;
+
+    const alreadyAdded = items.some(
+      (item) =>
+        normalizeProductCode(item.productCode) ===
+          normalizeProductCode(product.code) &&
+        normalizeCatalogSearch(item.name) ===
+          normalizeCatalogSearch(product.name) &&
+        Math.abs(item.weightTn - weightTn) < 0.000000001,
+    );
+
+    if (alreadyAdded) {
       setUiMessage({
         text: `El producto ${product.code} ya fue agregado. No se permite duplicar.`,
         type: "error",
@@ -587,7 +650,6 @@ function App() {
 
     const profitPercent = DEFAULT_PROFIT_PERCENT;
     const unitPriceUsd = calculateClientPrice(supplierPriceUsd, profitPercent);
-    const weightTn = Number(product.weightTn ?? 0);
 
     setUiMessage(null);
 
@@ -602,7 +664,7 @@ function App() {
         randomCode: randomShortCode(),
         productCode: product.code,
         name: product.name,
-        qty: 1,
+        qty: normalizedRequestedQty,
         weightTn,
 
         supplierPriceUsd,
@@ -838,19 +900,68 @@ function App() {
                 Buscar producto
               </label>
 
-              <input
-                className="w-full rounded-none border border-slate-300 bg-white px-3 py-2 text-sm outline-none focus:border-slate-500"
+              <textarea
+                rows={4}
+                className="w-full resize-y rounded-none border border-slate-300 bg-white px-3 py-2 text-sm outline-none focus:border-slate-500"
                 value={catalogQuery}
                 onChange={(e) => setCatalogQuery(e.target.value)}
-                placeholder="Ej: código, PLANCHA, BARRA, TUBO..."
+                placeholder={`Ingrese un producto por línea:
+15 tubos de 6 x 4 x 3 mm
+30 tubos de 3 x 2 x 2 mm
+20030116`}
               />
+
+              <div className="mt-2 text-[11px] text-slate-500">
+                Puedes buscar varios productos a la vez. Escribe uno por línea o
+                sepáralos con punto y coma.
+              </div>
 
               <div style={{ height: 12 }} />
 
-              <ProductCatalog
-                products={filteredCatalog}
-                onAdd={handleAddProduct}
-              />
+              {!catalogQuery.trim() ? (
+                <ProductCatalog
+                  products={CATALOG_PRODUCTS}
+                  onAdd={(product) => handleAddProduct(product)}
+                />
+              ) : (
+                <div className="flex flex-col gap-4">
+                  {catalogSearchGroups.map((group, index) => (
+                    <div
+                      key={`${group.original}-${index}`}
+                      className="border border-slate-200 bg-slate-50 p-3"
+                    >
+                      <div className="mb-2 flex items-start justify-between gap-2">
+                        <div>
+                          <div className="text-xs font-extrabold text-slate-800">
+                            Búsqueda {index + 1}: {group.query}
+                          </div>
+
+                          <div className="text-[11px] text-slate-500">
+                            Cantidad solicitada: {group.quantity}
+                          </div>
+                        </div>
+
+                        <span className="shrink-0 text-[11px] font-semibold text-slate-600">
+                          {group.products.length} resultado(s)
+                        </span>
+                      </div>
+
+                      {group.products.length > 0 ? (
+                        <ProductCatalog
+                          products={group.products}
+                          onAdd={(product) =>
+                            handleAddProduct(product, group.quantity)
+                          }
+                        />
+                      ) : (
+                        <div className="border border-amber-200 bg-amber-50 px-3 py-2 text-xs text-amber-800">
+                          No se encontraron coincidencias para este producto.
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           </section>
         </aside>
