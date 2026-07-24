@@ -258,6 +258,11 @@ export const PRODUCTS: Product[] = [
     weightTn: 502.28,
   },
   {
+    code: "20020011",
+    name: "TUBO CUAD. NEGRO 1 X 2.0 X 6 MTS (25 X 25) (P.N) (NEGRO)",
+    weightTn: 0.00883,
+  },
+  {
     code: "10204",
     name: "BOBINA LAC 2.85X1200MM",
     weightTn: 476.56,
