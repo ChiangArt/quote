@@ -7,61 +7,115 @@ export function BankDetails() {
 
       {/* INTERBANK */}
       <div className="mb-1 text-sm font-semibold">BANCO INTERBANK</div>
-      <table className="w-full border-collapse text-sm mb-2">
+
+      <table className="mb-2 w-full border-collapse text-sm">
         <thead>
           <tr>
-            <th className="border border-slate-300 bg-slate-100 px-2 py-1 text-left">Tipo</th>
-            <th className="border border-slate-300 bg-slate-100 px-2 py-1 text-left">Moneda</th>
-            <th className="border border-slate-300 bg-slate-100 px-2 py-1 text-left">N° Cuenta</th>
+            <th className="border border-slate-300 bg-slate-100 px-2 py-1 text-left">
+              Tipo
+            </th>
+            <th className="border border-slate-300 bg-slate-100 px-2 py-1 text-left">
+              Moneda
+            </th>
+            <th className="border border-slate-300 bg-slate-100 px-2 py-1 text-left">
+              N° Cuenta
+            </th>
           </tr>
         </thead>
+
         <tbody>
           <tr>
-            <td className="border border-slate-300 px-2 py-1">Cta Corriente</td>
+            <td className="border border-slate-300 px-2 py-1">
+              Cta. corriente
+            </td>
             <td className="border border-slate-300 px-2 py-1">Soles</td>
-            <td className="border border-slate-300 px-2 py-1">200-3008316129</td>
+            <td className="border border-slate-300 px-2 py-1">
+              200-3008316129
+            </td>
           </tr>
+
           <tr>
             <td className="border border-slate-300 px-2 py-1">CCI</td>
             <td className="border border-slate-300 px-2 py-1">Soles</td>
-            <td className="border border-slate-300 px-2 py-1">003-200-003008316129-36</td>
+            <td className="border border-slate-300 px-2 py-1">
+              003-200-003008316129-36
+            </td>
           </tr>
+
           <tr>
-            <td className="border border-slate-300 px-2 py-1">Cta Corriente</td>
+            <td className="border border-slate-300 px-2 py-1">
+              Cta. corriente
+            </td>
             <td className="border border-slate-300 px-2 py-1">Dólares</td>
-            <td className="border border-slate-300 px-2 py-1">200-3008316136</td>
+            <td className="border border-slate-300 px-2 py-1">
+              200-3008316136
+            </td>
           </tr>
+
           <tr>
             <td className="border border-slate-300 px-2 py-1">CCI</td>
             <td className="border border-slate-300 px-2 py-1">Dólares</td>
-            <td className="border border-slate-300 px-2 py-1">003-200-003008316136-31</td>
+            <td className="border border-slate-300 px-2 py-1">
+              003-200-003008316136-31
+            </td>
           </tr>
         </tbody>
       </table>
 
       {/* BCP */}
       <div className="mb-1 text-sm font-semibold">BANCO BCP</div>
+
       <table className="w-full border-collapse text-sm">
         <thead>
           <tr>
-            <th className="border border-slate-300 bg-slate-100 px-2 py-1 text-left">Tipo</th>
-            <th className="border border-slate-300 bg-slate-100 px-2 py-1 text-left">Moneda</th>
-            <th className="border border-slate-300 bg-slate-100 px-2 py-1 text-left">N° Cuenta</th>
+            <th className="border border-slate-300 bg-slate-100 px-2 py-1 text-left">
+              Tipo
+            </th>
+            <th className="border border-slate-300 bg-slate-100 px-2 py-1 text-left">
+              Moneda
+            </th>
+            <th className="border border-slate-300 bg-slate-100 px-2 py-1 text-left">
+              N° Cuenta
+            </th>
           </tr>
         </thead>
+
         <tbody>
           <tr>
-            <td className="border border-slate-300 px-2 py-1">Cta Corriente</td>
+            <td className="border border-slate-300 px-2 py-1">
+              Cta. corriente
+            </td>
             <td className="border border-slate-300 px-2 py-1">Soles</td>
-            <td className="border border-slate-300 px-2 py-1">191-7381941-0-58</td>
+            <td className="border border-slate-300 px-2 py-1">
+              191-7381941-0-58
+            </td>
           </tr>
+
           <tr>
             <td className="border border-slate-300 px-2 py-1">CCI</td>
             <td className="border border-slate-300 px-2 py-1">Soles</td>
-            <td className="border border-slate-300 px-2 py-1">00219100738194105857</td>
+            <td className="border border-slate-300 px-2 py-1">
+              00219100738194105857
+            </td>
+          </tr>
+
+          <tr>
+            <td className="border border-slate-300 px-2 py-1">
+              Cta. corriente
+            </td>
+            <td className="border border-slate-300 px-2 py-1">Dólares</td>
+            <td className="border border-slate-300 px-2 py-1">1917416780178</td>
+          </tr>
+
+          <tr>
+            <td className="border border-slate-300 px-2 py-1">CCI</td>
+            <td className="border border-slate-300 px-2 py-1">Dólares</td>
+            <td className="border border-slate-300 px-2 py-1">
+              00219100741678017851
+            </td>
           </tr>
         </tbody>
       </table>
     </div>
-  )
+  );
 }
