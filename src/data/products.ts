@@ -267,10 +267,20 @@ export const PRODUCTS: Product[] = [
     name: "TUBO RECT. NEGRO 3 X 2 X 2.0 X 6 MTS (75 X 50) (P.N) (NEGRO)",
     weightTn: 0.02297,
   },
-    {
+  {
     code: "20020103",
     name: "TUBO CUAD. NEGRO 2 X 3.0 X 6 MTS (50 X 50) (P.N) (AMARILLO)",
     weightTn: 0.02693,
+  },
+  {
+    code: "19020020",
+    name: "TUBO RECT. GALV. 2 X 1 X 2.0 X 6 MTS (50 X 25) (P.N.) (NEGRO)",
+    weightTn: 0.01395,
+  },
+  {
+    code: "19020019",
+    name: "TUBO RECT. GALV. 2 X 1 X 2.0 X 6 MTS (50 X 25) (P.I.) (VERDE)",
+    weightTn: 0.01355,
   },
   {
     code: "10204",
