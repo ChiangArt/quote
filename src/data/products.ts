@@ -288,6 +288,11 @@ export const PRODUCTS: Product[] = [
     weightTn: 476.56,
   },
   {
+    code: "CAL007",
+    name: "CALAMINA RAL 3002 0.22 X 800 MM X 3600 MM",
+    weightTn: 0.00485,
+  },
+  {
     code: "6747",
     name: "TUBO ACERO LAC A500 GRA Ø2 1/2´´X2.0X6M P.T.",
     weightTn: 0.021009,
