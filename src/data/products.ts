@@ -318,6 +318,11 @@ export const PRODUCTS: Product[] = [
     weightTn: 0.02297,
   },
   {
+    code: "08010010",
+    name: "TORNILLO AUTOPERFORANTE 3/4 X 12 (CIENTO)",
+    weightTn: 0.0005,
+  },
+  {
     code: "10743",
     name: "TUBO CUADRADO GALVANIZADO A500 GRA 50X50X1.8X6M P.T.",
     weightTn: 0.016485,
