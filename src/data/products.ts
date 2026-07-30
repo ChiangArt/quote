@@ -35,6 +35,16 @@ export const PRODUCTS: Product[] = [
     weightTn: 0.00498,
   },
   {
+    code: "20030002",
+    name: "TUBO RECT. NEGRO 3 X 2 X 1.8 X 6 MTS (75 X 50) (P.N) (BLANCO)",
+    weightTn: 0.02115,
+  },
+  {
+    code: "20030152",
+    name: "TUBO RECT. NEGRO 40 X 60 X 1.8 X 6 MTS (P.N) (BLANCO)",
+    weightTn: 0.01648,
+  },
+  {
     code: "1340",
     name: "PLANCHA LAF A1008 1.00X1200X2400MM P.T.",
     weightTn: 0.022608,
