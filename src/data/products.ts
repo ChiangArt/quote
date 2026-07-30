@@ -45,6 +45,48 @@ export const PRODUCTS: Product[] = [
     weightTn: 0.01648,
   },
   {
+    code: "01050025",
+    name: "SOLD. SUPERCITO E-7018 3/32 KG.",
+    unit: "Kg",
+    weightTn: 0.001,
+  },
+  {
+    code: "01050020",
+    name: "SOLD. PUNTO AZUL E-6011-1/8 KG.",
+    unit: "Kg",
+    weightTn: 0.001,
+  },
+  {
+    code: "01030036",
+    name: "DISCO DE CORTE 4.1/2 X (1.0MM) - DRAXOR",
+    unit: "Uni",
+    weightTn: 0.0005,
+  },
+  {
+    code: "01030012",
+    name: "DISCO DE CORTE 14 (NORTON)",
+    unit: "Uni",
+    weightTn: 0.0005,
+  },
+  {
+    code: "101101101017",
+    name: 'DISCO DE CORTE NORTON 14" X 7/64 X 1 BNA 32',
+    unit: "Uni",
+    weightTn: 0.0005,
+  },
+  {
+    code: "101101101018",
+    name: 'DISCO DE CORTE NORTON 4 1/2" X 3/64 X 7/8 BNA 12 NF',
+    unit: "Uni",
+    weightTn: 0.0005,
+  },
+  {
+    code: "101101101019",
+    name: 'DISCO DE CORTE NORTON 7" X 1/16 X 7/8 BNA 12',
+    unit: "Uni",
+    weightTn: 0.0005,
+  },
+  {
     code: "1340",
     name: "PLANCHA LAF A1008 1.00X1200X2400MM P.T.",
     weightTn: 0.022608,
