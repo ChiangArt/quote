@@ -13,6 +13,28 @@ export const PRODUCTS: Product[] = [
     weightTn: 45.785,
   },
   {
+    code: "19010052",
+    name: "TUBO CUAD. GALV. 2 X 2.0 X 6 MTS (50MM) (P.I) (VERDE)",
+    weightTn: 0.01826,
+  },
+  {
+    code: "19010053",
+    name: "TUBO CUAD. GALV. 2 X 2.0 X 6 MTS (50MM) (P.N) (NEGRO)",
+    weightTn: 0.01881,
+  },
+  {
+    code: "0300123",
+    name: "COBERTURA ALUZINC AZUL 0.40MM RAL-5002 X 6.00 M",
+    unit: "Uni",
+    weightTn: 0.02358,
+  },
+  {
+    code: "CAL009",
+    name: "CALAMINA GALVANIZADA 0.22 X 800MM X 3600MM",
+    unit: "Uni",
+    weightTn: 0.00498,
+  },
+  {
     code: "1340",
     name: "PLANCHA LAF A1008 1.00X1200X2400MM P.T.",
     weightTn: 0.022608,
