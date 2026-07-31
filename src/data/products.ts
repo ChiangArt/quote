@@ -80,10 +80,15 @@ export const PRODUCTS: Product[] = [
     weightTn: 0.0005,
   },
   {
-  code: "0300117",
-  name: "COBERTURA ALUZINC AZUL 0.30MM RAL-5002 CURVO MODELO TR4",
-  weightTn: 0.00295,
-},
+    code: "0300117",
+    name: "COBERTURA ALUZINC AZUL 0.30MM RAL-5002 CURVO MODELO TR4",
+    weightTn: 0.00295,
+  },
+  {
+    code: "1403005",
+    name: "BASE ZINCROMATO VERDE - GALÓN (UN 1263 CLASE 3 C.F1 GRUPO EMB III)",
+    weightTn: 0,
+  },
   {
     code: "1340",
     name: "PLANCHA LAF A1008 1.00X1200X2400MM P.T.",
