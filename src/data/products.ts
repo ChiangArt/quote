@@ -75,6 +75,21 @@ export const PRODUCTS: Product[] = [
     weightTn: 0.0005,
   },
   {
+    code: "19020041",
+    name: "TUBO RECT. GALV. 40 X 80 X 1.5 X 6 MTS (P.N) (ROJO)",
+    weightTn: 0.01712,
+  },
+  {
+    code: "22000012",
+    name: "PLANCHA GALV. (0.9) 1200 X 2400 (P.N)",
+    weightTn: 0.02087,
+  },
+  {
+    code: "13010016",
+    name: "ANGULO 2.0MM X 38MM (1.1/2 IND) X 6 MTS (P.I)",
+    weightTn: 0.0073,
+  },
+  {
     code: "101101101",
     name: 'DISCO DE CORTE NORTON 7" X 1/16 X 7/8 BNA 12',
     weightTn: 0.0005,
