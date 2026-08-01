@@ -90,6 +90,18 @@ export const PRODUCTS: Product[] = [
     weightTn: 0.0073,
   },
   {
+  code: "20020103",
+  name: "TUBO CUAD. NEGRO 2 X 3.0 X 6 MTS (50 X 50) (P.N) (AMARILLO)",
+  unit: "Uni",
+  weightTn: 0.02693,
+},
+{
+  code: "20020097",
+  name: "TUBO CUAD. NEGRO 2 X 2.0 X 6 MTS (50 X 50) (P.N) (NEGRO)",
+  unit: "Uni",
+  weightTn: 0.01825,
+},
+  {
     code: "101101101",
     name: 'DISCO DE CORTE NORTON 7" X 1/16 X 7/8 BNA 12',
     weightTn: 0.0005,
