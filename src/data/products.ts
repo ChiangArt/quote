@@ -89,18 +89,13 @@ export const PRODUCTS: Product[] = [
     name: "ANGULO 2.0MM X 38MM (1.1/2 IND) X 6 MTS (P.I)",
     weightTn: 0.0073,
   },
+
   {
-  code: "20020103",
-  name: "TUBO CUAD. NEGRO 2 X 3.0 X 6 MTS (50 X 50) (P.N) (AMARILLO)",
-  unit: "Uni",
-  weightTn: 0.02693,
-},
-{
-  code: "20020097",
-  name: "TUBO CUAD. NEGRO 2 X 2.0 X 6 MTS (50 X 50) (P.N) (NEGRO)",
-  unit: "Uni",
-  weightTn: 0.01825,
-},
+    code: "20020097",
+    name: "TUBO CUAD. NEGRO 2 X 2.0 X 6 MTS (50 X 50) (P.N) (NEGRO)",
+    unit: "Uni",
+    weightTn: 0.01825,
+  },
   {
     code: "101101101",
     name: 'DISCO DE CORTE NORTON 7" X 1/16 X 7/8 BNA 12',
@@ -542,11 +537,7 @@ export const PRODUCTS: Product[] = [
     name: "DISCO DE SIERRA STANLEY 7-1/4 X 40D",
     weightTn: 0,
   },
-  {
-    code: "20020097",
-    name: "TUBO CUAD. NEGRO 2 X 2.0 X 6 MTS (50 X 50) (P.N) (NEGRO)",
-    weightTn: 0.01825,
-  },
+
   {
     code: "20020100",
     name: "TUBO CUAD. NEGRO 2 X 2.5 X 6 MTS (50 X 50) (P.N) (CELESTE)",
