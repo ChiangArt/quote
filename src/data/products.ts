@@ -983,10 +983,10 @@ export const PRODUCTS: Product[] = [
     name: "CANALETA SEGÚN DISEÑO GALVANIZADA 0.90 MM X 3000 MM",
     weightTn: 0.01295,
   },
-    {
+  {
     code: "4211112",
     name: "Olimpica  en calibre 12",
-    weightTn: 0,
+    weightTn: 0.076,
   },
   {
     code: "19020035",
