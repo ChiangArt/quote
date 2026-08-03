@@ -979,6 +979,11 @@ export const PRODUCTS: Product[] = [
     weightTn: 0.03472,
   },
   {
+    code: "4211",
+    name: "CANALETA SEGÚN DISEÑO GALVANIZADA 0.90 MM X 3000 MM",
+    weightTn: 0.01295,
+  },
+  {
     code: "19020035",
     name: "TUBO RECT. GALV. 40 X 60 X 1.8 X 6 MTS (P.N) (BLANCO)",
     weightTn: 0.01698,
