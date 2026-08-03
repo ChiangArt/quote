@@ -22,12 +22,7 @@ export const PRODUCTS: Product[] = [
     name: "TUBO CUAD. GALV. 2 X 2.0 X 6 MTS (50MM) (P.N) (NEGRO)",
     weightTn: 0.01881,
   },
-  {
-    code: "0300123",
-    name: "COBERTURA ALUZINC AZUL 0.40MM RAL-5002 X 6.00 M",
-    unit: "Uni",
-    weightTn: 0.02358,
-  },
+
   {
     code: "CAL009",
     name: "CALAMINA GALVANIZADA 0.22 X 800MM X 3600MM",
@@ -569,8 +564,29 @@ export const PRODUCTS: Product[] = [
     weightTn: 0,
   },
   {
+    code: "20030134",
+    name: "TUBO RECT. NEGRO 4 X 2 X 3.0 X 6 MTS (100 X 50) (P.N) (AMARILLO)",
+    weightTn: 0.04107,
+  },
+  {
+    code: "20030173",
+    name: "TUBO RECT. NEGRO 40 X 80 X 2.5 X 6 MTS (P.N) (CELESTE)",
+    weightTn: 0.02734,
+  },
+  {
+    code: "20030092",
+    name: "TUBO RECT. NEGRO 2 X 1 X 2.0 X 6 MTS (50 X 25) (P.N) (NEGRO)",
+    weightTn: 0.01354,
+  },
+  {
+    code: "18010040",
+    name: "TUBO CUAD. ELECT. 3/4 X 1.5 X 6 MTS (ROJO)",
+    weightTn: 0.00505,
+  },
+  {
     code: "0300123",
     name: "COBERTURA ALUZINC AZUL 0.40MM RAL-5002",
+    unit: "mt",
     weightTn: 0.02751,
   },
   {
