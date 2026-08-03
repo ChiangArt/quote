@@ -963,16 +963,21 @@ export const PRODUCTS: Product[] = [
     name: "TUBO RECTANGULAR LAC A500 100 X 50 X 4.0 MM X 6 MTS (2 X 4)",
     weightTn: 0.05351,
   },
-    {
+  {
     code: "11111234",
     name: "SINCROMATO",
     weightTn: 0,
   },
   {
-  code: "CAN090240",
-  name: "CANALETA GALVANIZADA 0.90 MM X 2.40 M",
-  weightTn: 0,
-},
+    code: "CAN090240",
+    name: "CANALETA GALVANIZADA 0.90 MM X 2.40 M",
+    weightTn: 0,
+  },
+  {
+    code: "15020005",
+    name: "PLANCHA ESTRIADA (1.5) 1200 X 2400 (P.I)",
+    weightTn: 0.03472,
+  },
   {
     code: "19020035",
     name: "TUBO RECT. GALV. 40 X 60 X 1.8 X 6 MTS (P.N) (BLANCO)",
