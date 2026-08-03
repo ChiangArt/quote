@@ -583,12 +583,7 @@ export const PRODUCTS: Product[] = [
     name: "TUBO CUAD. ELECT. 3/4 X 1.5 X 6 MTS (ROJO)",
     weightTn: 0.00505,
   },
-  {
-    code: "0300123",
-    name: "COBERTURA ALUZINC AZUL 0.40MM RAL-5002",
-    unit: "mt",
-    weightTn: 0.02751,
-  },
+
   {
     code: "10759",
     name: "TUBO CUADRADO GALVANIZADO A500 GRA 100X100X3.0X6M P.T.",
@@ -930,7 +925,54 @@ export const PRODUCTS: Product[] = [
     code: "09010007",
     name: "CODO SOLD. SCH-40 - 90°-1/2",
     weightTn: 0.00006,
-  },
+  },{
+  code: "20030134",
+  name: "TUBO RECT. NEGRO 4 X 2 X 3.0 X 6 MTS (100 X 50) (P.N) (AMARILLO)",
+  weightTn: 0.04107,
+},
+{
+  code: "20030173",
+  name: "TUBO RECT. NEGRO 40 X 80 X 2.5 X 6 MTS (P.N) (CELESTE)",
+  weightTn: 0.02734,
+},
+{
+  code: "20030092",
+  name: "TUBO RECT. NEGRO 2 X 1 X 2.0 X 6 MTS (50 X 25) (P.N) (NEGRO)",
+  weightTn: 0.01354,
+},
+
+{
+  code: "0300123",
+  name: "COBERTURA ALUZINC AZUL 0.40MM RAL-5002 MODELO TR4",
+  unit: "mt",
+  weightTn: 0.00393,
+},
+{
+  code: "19020044",
+  name: "TUBO RECT. GALV. 40 X 80 X 1.8 X 6 MTS (P.N) (BLANCO)",
+  weightTn: 0.02046,
+},
+{
+  code: "19020035",
+  name: "TUBO RECT. GALV. 40 X 60 X 1.8 X 6 MTS (P.N) (BLANCO)",
+  weightTn: 0.01698,
+},
+{
+  code: "19010032",
+  name: "TUBO CUAD. GALV. 1.1/2 X 1.8 X 6 MTS (38MM) (P.N) (BLANCO)",
+  weightTn: 0.0128,
+},
+{
+  code: "25000000",
+  name: "PLANCHA ESTRIADA (2.0) 1200 X 2400 (P.N)",
+  weightTn: 0.04689,
+},
+{
+  code: "15040007",
+  name: "PLANCHA GALV. (0.5) 1200 X 2400 (P.I)",
+  weightTn: 0.01182,
+},
+
   {
     code: "09010026",
     name: "TAPON CAP. SOLDABLE 6",
