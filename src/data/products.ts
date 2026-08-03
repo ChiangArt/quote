@@ -959,10 +959,15 @@ export const PRODUCTS: Product[] = [
     weightTn: 0.008,
   },
   {
-  code: "803014357",
-  name: "TUBO RECTANGULAR LAC A500 100 X 50 X 4.0 MM X 6 MTS (2 X 4)",
-  weightTn: 0.05351,
-},
+    code: "803014357",
+    name: "TUBO RECTANGULAR LAC A500 100 X 50 X 4.0 MM X 6 MTS (2 X 4)",
+    weightTn: 0.05351,
+  },
+    {
+    code: "11111234",
+    name: "SINCROMATO",
+    weightTn: 0,
+  },
   {
     code: "19020035",
     name: "TUBO RECT. GALV. 40 X 60 X 1.8 X 6 MTS (P.N) (BLANCO)",
