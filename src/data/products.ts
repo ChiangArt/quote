@@ -989,6 +989,11 @@ export const PRODUCTS: Product[] = [
     weightTn: 0.076,
   },
   {
+  code: "20020097",
+  name: "TUBO CUADRADO NEGRO 2 X 2 X 2.0 MM X 6 MTS (50 X 50) (P.N) (NEGRO)",
+  weightTn: 0.01825,
+},
+  {
     code: "19020035",
     name: "TUBO RECT. GALV. 40 X 60 X 1.8 X 6 MTS (P.N) (BLANCO)",
     weightTn: 0.01698,
