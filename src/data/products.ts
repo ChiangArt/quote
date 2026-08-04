@@ -998,6 +998,24 @@ export const PRODUCTS: Product[] = [
     name: "TUBO RECT. NEGRO 3 X 2 X 2.0 X 6 MTS (75 X 50) (P.N) (NEGRO)",
     weightTn: 0.02297,
   },
+  {
+  code: "03000052",
+  name: "COBERTURA ALUZINC ROJO 0.30 MM RAL-3020",
+  unit: "mt",
+  weightTn: 0.00295,
+},
+{
+  code: "03000062",
+  name: "COBERTURA ALUZINC ROJO 0.35 MM RAL-3020 MODELO CR5",
+  unit: "mt",
+  weightTn: 0.00344,
+},
+{
+  code: "03000082",
+  name: "COBERTURA ALUZINC ROJO 0.40 MM RAL-3020",
+  unit: "mt",
+  weightTn: 0.00393,
+},
     {
     code: "4938",
     name: "TUBO ACERO RECTANGULAR LAC A500 GRA 50X150X3.0X6.0M P.",
