@@ -470,6 +470,9 @@ function App() {
   }));
 
   const [items, setItems] = useState<QuoteItem[]>([]);
+  const [profitPercentInputs, setProfitPercentInputs] = useState<
+    Record<string, string>
+  >({});
 
   const [savedQuotes, setSavedQuotes] = useState<SavedQuote[]>(() =>
     getSavedQuotes(),
@@ -576,6 +579,7 @@ function App() {
     refreshSavedQuotes();
 
     setItems([]);
+    setProfitPercentInputs({});
 
     setClient((prev) => ({
       ...prev,
@@ -597,6 +601,7 @@ function App() {
     setSellerCode(quote.sellerCode);
     setClient(quote.client);
     setItems(quote.items.map(normalizeQuoteItem));
+    setProfitPercentInputs({});
 
     const numberPart = Number(quote.quoteNumber.split("-").pop());
 
@@ -679,6 +684,11 @@ function App() {
 
   function handleRemoveItem(id: string) {
     setItems((prev) => prev.filter((it) => it.id !== id));
+    setProfitPercentInputs((prev) => {
+      const next = { ...prev };
+      delete next[id];
+      return next;
+    });
   }
 
   function handleUpdateItem(
@@ -716,13 +726,22 @@ function App() {
   }
 
   function handleProfitPercentChange(id: string, value: string) {
-    if (!/^\d*\.?\d*$/.test(value)) return;
+    if (!/^\d*(?:[.,]\d*)?$/.test(value)) return;
+
+    setProfitPercentInputs((prev) => ({ ...prev, [id]: value }));
+
+    const normalizedValue = value.replace(",", ".");
+    const profitPercent =
+      normalizedValue === "" || normalizedValue === "."
+        ? 0
+        : Number(normalizedValue);
+
+    if (!Number.isFinite(profitPercent)) return;
 
     setItems((prev) =>
       prev.map((it) => {
         if (it.id !== id) return it;
 
-        const profitPercent = value === "" ? 0 : Number(value);
         const unitPriceUsd = calculateClientPrice(
           it.supplierPriceUsd,
           profitPercent,
@@ -735,6 +754,14 @@ function App() {
         };
       }),
     );
+  }
+
+  function handleProfitPercentBlur(id: string) {
+    setProfitPercentInputs((prev) => {
+      const next = { ...prev };
+      delete next[id];
+      return next;
+    });
   }
 
   useEffect(() => {
@@ -1127,12 +1154,17 @@ function App() {
 
                         <td className="border border-slate-300 px-2 py-1 text-right">
                           <input
+                            type="text"
                             className="w-full rounded-none border border-slate-300 bg-white px-2 py-1 text-right text-xs outline-none focus:border-slate-500"
                             inputMode="decimal"
-                            value={String(it.profitPercent)}
+                            value={
+                              profitPercentInputs[it.id] ??
+                              String(it.profitPercent)
+                            }
                             onChange={(e) =>
                               handleProfitPercentChange(it.id, e.target.value)
                             }
+                            onBlur={() => handleProfitPercentBlur(it.id)}
                           />
                         </td>
 
