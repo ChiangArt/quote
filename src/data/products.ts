@@ -998,6 +998,11 @@ export const PRODUCTS: Product[] = [
     name: "TUBO RECT. NEGRO 3 X 2 X 2.0 X 6 MTS (75 X 50) (P.N) (NEGRO)",
     weightTn: 0.02297,
   },
+    {
+    code: "4938",
+    name: "TUBO ACERO RECTANGULAR LAC A500 GRA 50X150X3.0X6.0M P.",
+    weightTn: 0.0551,
+  },
   {
     code: "19020035",
     name: "TUBO RECT. GALV. 40 X 60 X 1.8 X 6 MTS (P.N) (BLANCO)",
