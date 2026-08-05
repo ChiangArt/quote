@@ -28,6 +28,11 @@ export const PRODUCTS: Product[] = [
     weightTn: 0.026,
   },
   {
+    code: "15050007",
+    name: "PLANCHA LAC 2.0 X 1200 X 2400 MM (P.I)",
+    weightTn: 0.04522,
+  },
+  {
     code: "19010053",
     name: "TUBO CUAD. GALV. 2 X 2.0 X 6 MTS (50MM) (P.N) (NEGRO)",
     weightTn: 0.01881,
