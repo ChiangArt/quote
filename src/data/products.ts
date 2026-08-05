@@ -37,7 +37,7 @@ export const PRODUCTS: Product[] = [
     name: "TUBO CUAD. GALV. 2 X 1.5 X 6 MTS (50 MM) (P.N) (ROJO)",
     weightTn: 0.01421,
   },
-    {
+  {
     code: "00012345",
     name: "MALLA OLIMPICA GALVANIZADA N 10 COCADA 2'' X 2' ALTO 2.35 X 20 MTS",
     weightTn: 0,
@@ -98,6 +98,11 @@ export const PRODUCTS: Product[] = [
     code: "19020041",
     name: "TUBO RECT. GALV. 40 X 80 X 1.5 X 6 MTS (P.N) (ROJO)",
     weightTn: 0.01712,
+  },
+  {
+    code: "19020046",
+    name: "TUBO RECT. GALV. 40 X 80 X 2.0 X 6 MTS (P.I) (VERDE)",
+    weightTn: 0.02203,
   },
   {
     code: "22000012",
