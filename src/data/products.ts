@@ -974,7 +974,7 @@ export const PRODUCTS: Product[] = [
 
   {
     code: "0300123",
-    name: "COBERTURA ALUZINC AZUL 0.40MM RAL-5002 MODELO TR4",
+    name: "COBERTURA ALUZINC AZUL 0.40MM RAL-5002 MODELO TR4 6MTS LARGO",
     unit: "mt",
     weightTn: 0.00393,
   },
