@@ -18,6 +18,16 @@ export const PRODUCTS: Product[] = [
     weightTn: 0.01826,
   },
   {
+    code: "24000011",
+    name: "PLANCHA LAF 1.15 X 1200 X 2400 MM (P.N)",
+    weightTn: 0.026,
+  },
+  {
+    code: "15070007",
+    name: "PLANCHA LAF 1.15 X 1200 X 2400 MM (P.I)",
+    weightTn: 0.026,
+  },
+  {
     code: "19010053",
     name: "TUBO CUAD. GALV. 2 X 2.0 X 6 MTS (50MM) (P.N) (NEGRO)",
     weightTn: 0.01881,
@@ -999,24 +1009,24 @@ export const PRODUCTS: Product[] = [
     weightTn: 0.02297,
   },
   {
-  code: "03000052",
-  name: "COBERTURA ALUZINC ROJO 0.30 MM RAL-3020",
-  unit: "mt",
-  weightTn: 0.00295,
-},
-{
-  code: "03000062",
-  name: "COBERTURA ALUZINC ROJO 0.35 MM RAL-3020 MODELO CR5",
-  unit: "mt",
-  weightTn: 0.00344,
-},
-{
-  code: "03000082",
-  name: "COBERTURA ALUZINC ROJO 0.40 MM RAL-3020",
-  unit: "mt",
-  weightTn: 0.00393,
-},
-    {
+    code: "03000052",
+    name: "COBERTURA ALUZINC ROJO 0.30 MM RAL-3020",
+    unit: "mt",
+    weightTn: 0.00295,
+  },
+  {
+    code: "03000062",
+    name: "COBERTURA ALUZINC ROJO 0.35 MM RAL-3020 MODELO CR5",
+    unit: "mt",
+    weightTn: 0.00344,
+  },
+  {
+    code: "03000082",
+    name: "COBERTURA ALUZINC ROJO 0.40 MM RAL-3020",
+    unit: "mt",
+    weightTn: 0.00393,
+  },
+  {
     code: "4938",
     name: "TUBO ACERO RECTANGULAR LAC A500 GRA 50X150X3.0X6.0M P.",
     weightTn: 0.0551,
