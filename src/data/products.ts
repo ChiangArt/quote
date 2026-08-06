@@ -979,6 +979,18 @@ export const PRODUCTS: Product[] = [
     weightTn: 0.00393,
   },
   {
+    code: "0300123",
+    name: "COBERTURA ALUZINC AZUL 0.40 MM RAL 5002 MODELO CURVO, LARGO 3.60 M",
+    weightTn: 0.00393,
+    unit: "mt",
+  },
+  {
+    code: "0300120",
+    name: "COBERTURA ALUZINC AZUL 0.35 MM RAL 5002 MODELO CURVO, LARGO 3.60 M",
+    weightTn: 0.00344,
+    unit: "mt",
+  },
+  {
     code: "19020044",
     name: "TUBO RECT. GALV. 40 X 80 X 1.8 X 6 MTS (P.N) (BLANCO)",
     weightTn: 0.02046,
