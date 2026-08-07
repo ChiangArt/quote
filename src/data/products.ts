@@ -1134,11 +1134,7 @@ export const PRODUCTS: Product[] = [
     name: "COBERTURA ALUZINC ROJO 0.40MM RAL - 3020 TR4 LARGO 6.00 MT",
     weightTn: 0.02358,
   },
-  {
-    code: "19010068",
-    name: "TUBO CUAD. GALV. 4 X 2.0 X 6 MTS (100MM) (P.N) (NEGRO)",
-    weightTn: 0.03822,
-  },
+
   {
     code: "09010018",
     name: "TAPON CAP. SOLDABLE 1",
