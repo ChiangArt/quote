@@ -1146,6 +1146,56 @@ export const PRODUCTS: Product[] = [
     weightTn: 0.0114,
   },
   {
+    "code": "02010022",
+    "name": "CARTERA DESCANSO LADO DERECHO",
+    "weightTn": 0.0007
+  },
+  {
+    "code": "02010045",
+    "name": "TAMBOR 1.2 MM + GANCHO",
+    "weightTn": 0.0008
+  },
+  {
+    "code": "20010027",
+    "name": "TUBO RED. LAC. 1 X 3.0 X 6.0 MTS (33MM) (P.N) (AMARILLO)",
+    "weightTn": 0.01363
+  },
+  {
+    "code": "02010013",
+    "name": "BALLETAS EXTRA (0.6) [10 CM] X 6 MTS",
+    "weightTn": 0.00562
+  },
+  {
+    "code": "14000001",
+    "name": "ANGULO 1.1/2 X 1/8 (NORMAL) X 6 MTS (P.N)",
+    "weightTn": 0.01049
+  },
+  {
+    "code": "19010020",
+    "name": "TUBO CUAD. GALV. 1 X 1.5 X 6 MTS (25MM) (P.N) (ROJO)",
+    "weightTn": 0.00694
+  },
+  {
+    "code": "20020020",
+    "name": "TUBO CUAD. NEGRO 1.1/2 X 1.5 X 6 MTS (38 X 38) (P.N) (ROJO)",
+    "weightTn": 0.01098
+  },
+  {
+    "code": "24000010",
+    "name": "PLANCHA LAF. (1.0) 1200 X 2400 (1/24) (P.N)",
+    "weightTn": 0.02261
+  },
+  {
+    "code": "19010011",
+    "name": "TUBO CUAD. GALV. 1.1/4 X 1.5 X 6 MTS (30MM) (P.N) (ROJO)",
+    "weightTn": 0.00839
+  },
+  {
+    "code": "01050009",
+    "name": "SOLD. CELLOCORD-AP E-6011-1/8 KG",
+    "weightTn": 0.001
+  },
+  {
     code: "PLAR005",
     name: "PANEL TERMOACUSTICO K5 ASA UPVC AZUL 1.5MM X 1075MM X 6000MM",
     weightTn: 0.01818,
