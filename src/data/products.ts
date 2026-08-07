@@ -991,6 +991,16 @@ export const PRODUCTS: Product[] = [
     unit: "mt",
   },
   {
+    "code": "19010068",
+    "name": "TUBO CUAD. GALV. 4 X 2.0 X 6 MTS (100MM) (P.N) (NEGRO)",
+    "weightTn": 0.03822
+  },
+  {
+    "code": "19020044",
+    "name": "TUBO RECT GALV. 40 X 80 X 1.8 X 6 MTS (P.N) (BLANCO)",
+    "weightTn": 0.02046
+  },
+  {
     code: "19020044",
     name: "TUBO RECT. GALV. 40 X 80 X 1.8 X 6 MTS (P.N) (BLANCO)",
     weightTn: 0.02046,
