@@ -422,6 +422,15 @@ export const PRODUCTS: Product[] = [
     weightTn: 0.021009,
   },
   {
+  "code": "43002134",
+  "name": "RT. 75 X 50 X 2.00 X 6.00 LAC",
+  "weightTn": 0.023
+},{
+  "code": "43000672",
+  "name": "RT. 80 X 40 X 1.80 X 6.00 LAC",
+  "weightTn": 0.01932
+},
+  {
     code: "9255",
     name: "TUBO ACERO CUADRADO LAC A500 GRA 100X3.0X6.0M P.T.",
     weightTn: 0.055205,
