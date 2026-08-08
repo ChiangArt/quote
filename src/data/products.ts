@@ -422,14 +422,20 @@ export const PRODUCTS: Product[] = [
     weightTn: 0.021009,
   },
   {
-  "code": "43002134",
-  "name": "RT. 75 X 50 X 2.00 X 6.00 LAC",
-  "weightTn": 0.023
-},{
-  "code": "43000672",
-  "name": "RT. 80 X 40 X 1.80 X 6.00 LAC",
-  "weightTn": 0.01932
-},
+    code: "43002134",
+    name: "RT. 75 X 50 X 2.00 X 6.00 LAC",
+    weightTn: 0.023,
+  },
+  {
+    code: "43000672",
+    name: "RT. 80 X 40 X 1.80 X 6.00 LAC",
+    weightTn: 0.01932,
+  },
+  {
+    code: "43000736",
+    name: "CD 1 X 2.00 X 6.00 LAC",
+    weightTn: 0.00834,
+  },
   {
     code: "9255",
     name: "TUBO ACERO CUADRADO LAC A500 GRA 100X3.0X6.0M P.T.",
@@ -1000,14 +1006,14 @@ export const PRODUCTS: Product[] = [
     unit: "mt",
   },
   {
-    "code": "19010068",
-    "name": "TUBO CUAD. GALV. 4 X 2.0 X 6 MTS (100MM) (P.N) (NEGRO)",
-    "weightTn": 0.03822
+    code: "19010068",
+    name: "TUBO CUAD. GALV. 4 X 2.0 X 6 MTS (100MM) (P.N) (NEGRO)",
+    weightTn: 0.03822,
   },
   {
-    "code": "19020044",
-    "name": "TUBO RECT GALV. 40 X 80 X 1.8 X 6 MTS (P.N) (BLANCO)",
-    "weightTn": 0.02046
+    code: "19020044",
+    name: "TUBO RECT GALV. 40 X 80 X 1.8 X 6 MTS (P.N) (BLANCO)",
+    weightTn: 0.02046,
   },
   {
     code: "19020044",
@@ -1155,54 +1161,54 @@ export const PRODUCTS: Product[] = [
     weightTn: 0.0114,
   },
   {
-    "code": "02010022",
-    "name": "CARTERA DESCANSO LADO DERECHO",
-    "weightTn": 0.0007
+    code: "02010022",
+    name: "CARTERA DESCANSO LADO DERECHO",
+    weightTn: 0.0007,
   },
   {
-    "code": "02010045",
-    "name": "TAMBOR 1.2 MM + GANCHO",
-    "weightTn": 0.0008
+    code: "02010045",
+    name: "TAMBOR 1.2 MM + GANCHO",
+    weightTn: 0.0008,
   },
   {
-    "code": "20010027",
-    "name": "TUBO RED. LAC. 1 X 3.0 X 6.0 MTS (33MM) (P.N) (AMARILLO)",
-    "weightTn": 0.01363
+    code: "20010027",
+    name: "TUBO RED. LAC. 1 X 3.0 X 6.0 MTS (33MM) (P.N) (AMARILLO)",
+    weightTn: 0.01363,
   },
   {
-    "code": "02010013",
-    "name": "BALLETAS EXTRA (0.6) [10 CM] X 6 MTS",
-    "weightTn": 0.00562
+    code: "02010013",
+    name: "BALLETAS EXTRA (0.6) [10 CM] X 6 MTS",
+    weightTn: 0.00562,
   },
   {
-    "code": "14000001",
-    "name": "ANGULO 1.1/2 X 1/8 (NORMAL) X 6 MTS (P.N)",
-    "weightTn": 0.01049
+    code: "14000001",
+    name: "ANGULO 1.1/2 X 1/8 (NORMAL) X 6 MTS (P.N)",
+    weightTn: 0.01049,
   },
   {
-    "code": "19010020",
-    "name": "TUBO CUAD. GALV. 1 X 1.5 X 6 MTS (25MM) (P.N) (ROJO)",
-    "weightTn": 0.00694
+    code: "19010020",
+    name: "TUBO CUAD. GALV. 1 X 1.5 X 6 MTS (25MM) (P.N) (ROJO)",
+    weightTn: 0.00694,
   },
   {
-    "code": "20020020",
-    "name": "TUBO CUAD. NEGRO 1.1/2 X 1.5 X 6 MTS (38 X 38) (P.N) (ROJO)",
-    "weightTn": 0.01098
+    code: "20020020",
+    name: "TUBO CUAD. NEGRO 1.1/2 X 1.5 X 6 MTS (38 X 38) (P.N) (ROJO)",
+    weightTn: 0.01098,
   },
   {
-    "code": "24000010",
-    "name": "PLANCHA LAF. (1.0) 1200 X 2400 (1/24) (P.N)",
-    "weightTn": 0.02261
+    code: "24000010",
+    name: "PLANCHA LAF. (1.0) 1200 X 2400 (1/24) (P.N)",
+    weightTn: 0.02261,
   },
   {
-    "code": "19010011",
-    "name": "TUBO CUAD. GALV. 1.1/4 X 1.5 X 6 MTS (30MM) (P.N) (ROJO)",
-    "weightTn": 0.00839
+    code: "19010011",
+    name: "TUBO CUAD. GALV. 1.1/4 X 1.5 X 6 MTS (30MM) (P.N) (ROJO)",
+    weightTn: 0.00839,
   },
   {
-    "code": "01050009",
-    "name": "SOLD. CELLOCORD-AP E-6011-1/8 KG",
-    "weightTn": 0.001
+    code: "01050009",
+    name: "SOLD. CELLOCORD-AP E-6011-1/8 KG",
+    weightTn: 0.001,
   },
   {
     code: "PLAR005",
