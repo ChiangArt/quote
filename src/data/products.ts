@@ -466,6 +466,12 @@ export const PRODUCTS: Product[] = [
     weightTn: 0.02166,
   },
   {
+  "code": "19020032",
+  "name": "TUBO RECT. GALV. 40 X 60 X 1.5 X 6 MTS (P.N) (ROJO)",
+  "unit": "Uni",
+  "weightTn": 0.01421
+},
+  {
     code: "20030116",
     name: "TUBO RECT. NEGRO 3 X 2 X 2.0 X 6 MTS (75 X 50) (P.N) (NEGRO)",
     weightTn: 0.02297,
