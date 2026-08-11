@@ -1451,6 +1451,12 @@ export const PRODUCTS: Product[] = [
     "weightTn": 0.0162
   },
   {
+  "code": "5539",
+  "name": "TUBO RECTANGULAR GALVANIZADO 120 A500 GRA 50X100X4.5X6M",
+  "unit": "Uni",
+  "weightTn": 0.06244
+},
+  {
     code: "20030158",
     name: "TUBO RECT. NEGRO 40 X 60 X 2.5 X 6 MTS (P.N) (CELESTE)",
     weightTn: 0.012,
