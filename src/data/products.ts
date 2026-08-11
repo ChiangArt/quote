@@ -441,23 +441,29 @@ export const PRODUCTS: Product[] = [
     name: "CD. 2 X 1.80 X 6.00 LAC",
     weightTn: 0.0162,
   },
-  
+
   {
     code: "9255",
     name: "TUBO ACERO CUADRADO LAC A500 GRA 100X3.0X6.0M P.T.",
     weightTn: 0.055205,
   },
-    {
-    "code": "43000699",
-    "name": "RT 80 X 40 X 1.50 X 6.00 GAL",
-    "unit": "Uni",
-    "weightTn": 0.0162
+  {
+    code: "43000699",
+    name: "RT 80 X 40 X 1.50 X 6.00 GAL",
+    unit: "Uni",
+    weightTn: 0.0162,
   },
   {
-    "code": "43003530",
-    "name": "CD 75 X 1.80 X 6.00 GAL",
-    "unit": "Uni",
-    "weightTn": 0.02518
+    code: "43003530",
+    name: "CD 75 X 1.80 X 6.00 GAL",
+    unit: "Uni",
+    weightTn: 0.02518,
+  },
+  {
+    code: "43000701",
+    name: "RT 80 X 40 X 2.00 X 6.00 GAL",
+    unit: "Uni",
+    weightTn: 0.02166,
   },
   {
     code: "20030116",
