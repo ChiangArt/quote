@@ -1420,6 +1420,36 @@ export const PRODUCTS: Product[] = [
     name: "BARRA DE CONSTRUCCION ASTM A615/A706 GR60 1/2 X 9M",
     weightTn: 0.008621,
   },
+   {
+    "code": "43002602",
+    "name": "RT ESTR 75 X 50 X 1.80 X 6.00 GAL",
+    "unit": "Uni",
+    "weightTn": 0.02088
+  },
+  {
+    "code": "43000722",
+    "name": "RT 2 X 1 X 1.50 X 6.00 GAL",
+    "unit": "Uni",
+    "weightTn": 0.01014
+  },
+  {
+    "code": "43000812",
+    "name": "RT 2 X 1 X 1.80 X 6.00 GAL",
+    "unit": "Uni",
+    "weightTn": 0.01242
+  },
+  {
+    "code": "43000775",
+    "name": "CD 2 X 1.50 X 6.00 GAL",
+    "unit": "Uni",
+    "weightTn": 0.01362
+  },
+  {
+    "code": "43002590",
+    "name": "CD 2 X 1.80 X 6.00 GAL",
+    "unit": "Uni",
+    "weightTn": 0.0162
+  },
   {
     code: "20030158",
     name: "TUBO RECT. NEGRO 40 X 60 X 2.5 X 6 MTS (P.N) (CELESTE)",
