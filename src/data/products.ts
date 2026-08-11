@@ -466,11 +466,11 @@ export const PRODUCTS: Product[] = [
     weightTn: 0.02166,
   },
   {
-  "code": "19020032",
-  "name": "TUBO RECT. GALV. 40 X 60 X 1.5 X 6 MTS (P.N) (ROJO)",
-  "unit": "Uni",
-  "weightTn": 0.01421
-},
+    code: "19020032",
+    name: "TUBO RECT. GALV. 40 X 60 X 1.5 X 6 MTS (P.N) (ROJO)",
+    unit: "Uni",
+    weightTn: 0.01421,
+  },
   {
     code: "20030116",
     name: "TUBO RECT. NEGRO 3 X 2 X 2.0 X 6 MTS (75 X 50) (P.N) (NEGRO)",
@@ -1102,12 +1102,6 @@ export const PRODUCTS: Product[] = [
     weightTn: 0.00295,
   },
   {
-    code: "03000062",
-    name: "COBERTURA ALUZINC ROJO 0.35 MM RAL-3020 MODELO CR5",
-    unit: "mt",
-    weightTn: 0.00344,
-  },
-  {
     code: "03000082",
     name: "COBERTURA ALUZINC ROJO 0.40 MM RAL-3020",
     unit: "mt",
@@ -1418,13 +1412,18 @@ export const PRODUCTS: Product[] = [
   },
   {
     code: "03000062",
-    name: "COBERTURA ALUZINC ROJO 0.35MM RAL-3020 MODELO TR4",
+    name: "COBERTURA ALUZINC ROJO 0.35MM RAL-3020 MODELO TR4 LARGO 6M",
     weightTn: 0.02064,
   },
   {
     code: "6355",
     name: "BARRA DE CONSTRUCCION ASTM A615/A706 GR60 1/2 X 9M",
     weightTn: 0.008621,
+  },
+  {
+    code: "20030158",
+    name: "TUBO RECT. NEGRO 40 X 60 X 2.5 X 6 MTS (P.N) (CELESTE)",
+    weightTn: 0.012,
   },
   {
     code: "6356",
