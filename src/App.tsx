@@ -473,6 +473,9 @@ function App() {
   const [profitPercentInputs, setProfitPercentInputs] = useState<
     Record<string, string>
   >({});
+  const [manualNumberInputs, setManualNumberInputs] = useState<
+    Record<string, string>
+  >({});
 
   const [savedQuotes, setSavedQuotes] = useState<SavedQuote[]>(() =>
     getSavedQuotes(),
@@ -580,6 +583,7 @@ function App() {
 
     setItems([]);
     setProfitPercentInputs({});
+    setManualNumberInputs({});
 
     setClient((prev) => ({
       ...prev,
@@ -602,6 +606,7 @@ function App() {
     setClient(quote.client);
     setItems(quote.items.map(normalizeQuoteItem));
     setProfitPercentInputs({});
+    setManualNumberInputs({});
 
     const numberPart = Number(quote.quoteNumber.split("-").pop());
 
@@ -682,6 +687,36 @@ function App() {
     ]);
   }
 
+  function handleAddManualItem() {
+    const id =
+      typeof crypto !== "undefined" && "randomUUID" in crypto
+        ? crypto.randomUUID()
+        : `${Date.now()}-${Math.random().toString(16).slice(2)}`;
+
+    setItems((prev) => [
+      ...prev,
+      {
+        id,
+        isManual: true,
+        randomCode: randomShortCode(),
+        productCode: "",
+        name: "",
+        qty: 1,
+        weightTn: 0,
+        supplierPriceUsd: 0,
+        supplierPriceUpdatedAt: new Date().toISOString().slice(0, 10),
+        supplierPriceValidDays: 10,
+        profitPercent: DEFAULT_PROFIT_PERCENT,
+        unitPriceUsd: 0,
+      },
+    ]);
+
+    setUiMessage({
+      text: "Ítem manual agregado. Complete todos los campos de la fila.",
+      type: "info",
+    });
+  }
+
   function handleRemoveItem(id: string) {
     setItems((prev) => prev.filter((it) => it.id !== id));
     setProfitPercentInputs((prev) => {
@@ -689,6 +724,11 @@ function App() {
       delete next[id];
       return next;
     });
+    setManualNumberInputs((prev) =>
+      Object.fromEntries(
+        Object.entries(prev).filter(([key]) => !key.startsWith(`${id}:`)),
+      ),
+    );
   }
 
   function handleUpdateItem(
@@ -696,6 +736,8 @@ function App() {
     patch: Partial<
       Pick<
         QuoteItem,
+        | "productCode"
+        | "name"
         | "qty"
         | "weightTn"
         | "supplierPriceUsd"
@@ -760,6 +802,45 @@ function App() {
     setProfitPercentInputs((prev) => {
       const next = { ...prev };
       delete next[id];
+      return next;
+    });
+  }
+
+  function handleManualNumberChange(
+    item: QuoteItem,
+    field: "weightTn" | "supplierPriceUsd",
+    value: string,
+  ) {
+    if (!/^\d*(?:[.,]\d*)?$/.test(value)) return;
+
+    const inputKey = `${item.id}:${field}`;
+    setManualNumberInputs((prev) => ({ ...prev, [inputKey]: value }));
+
+    const normalizedValue = value.replace(",", ".");
+    const numberValue =
+      normalizedValue === "" || normalizedValue === "."
+        ? 0
+        : Number(normalizedValue);
+
+    if (!Number.isFinite(numberValue)) return;
+
+    if (field === "supplierPriceUsd") {
+      handleUpdateItem(item.id, {
+        supplierPriceUsd: numberValue,
+        supplierPriceUpdatedAt: new Date().toISOString().slice(0, 10),
+        unitPriceUsd: calculateClientPrice(numberValue, item.profitPercent),
+      });
+      return;
+    }
+
+    handleUpdateItem(item.id, { weightTn: numberValue });
+  }
+
+  function handleManualNumberBlur(id: string, field: string) {
+    const inputKey = `${id}:${field}`;
+    setManualNumberInputs((prev) => {
+      const next = { ...prev };
+      delete next[inputKey];
       return next;
     });
   }
@@ -999,6 +1080,13 @@ function App() {
               <div>
                 <div className="text-sm font-extrabold">Items</div>
               </div>
+              <button
+                type="button"
+                className="border border-slate-800 bg-slate-800 px-3 py-1.5 text-xs font-bold text-white hover:bg-slate-700"
+                onClick={handleAddManualItem}
+              >
+                + Agregar ítem manual
+              </button>
             </div>
 
             <div className="p-4">
@@ -1042,11 +1130,37 @@ function App() {
                         </td>
 
                         <td className="border border-slate-300 px-2 py-1">
-                          {it.productCode}
+                          {it.isManual ? (
+                            <input
+                              type="text"
+                              className="w-full min-w-20 border border-slate-300 bg-white px-2 py-1 text-xs outline-none focus:border-slate-500"
+                              value={it.productCode}
+                              placeholder="Código"
+                              onChange={(e) =>
+                                handleUpdateItem(it.id, {
+                                  productCode: e.target.value,
+                                })
+                              }
+                            />
+                          ) : (
+                            it.productCode
+                          )}
                         </td>
 
                         <td className="border border-slate-300 px-2 py-1">
-                          {it.name}
+                          {it.isManual ? (
+                            <input
+                              type="text"
+                              className="w-full min-w-48 border border-slate-300 bg-white px-2 py-1 text-xs outline-none focus:border-slate-500"
+                              value={it.name}
+                              placeholder="Descripción del producto"
+                              onChange={(e) =>
+                                handleUpdateItem(it.id, { name: e.target.value })
+                              }
+                            />
+                          ) : (
+                            it.name
+                          )}
                         </td>
 
                         <td className="border border-slate-300 px-2 py-1 text-right">
@@ -1067,7 +1181,31 @@ function App() {
                         </td>
 
                         <td className="border border-slate-300 px-2 py-1 text-right">
-                          {(it.weightTn * it.qty).toFixed(6)}
+                          {it.isManual ? (
+                            <input
+                              type="text"
+                              inputMode="decimal"
+                              className="w-full min-w-20 border border-slate-300 bg-white px-2 py-1 text-right text-xs outline-none focus:border-slate-500"
+                              value={
+                                manualNumberInputs[`${it.id}:weightTn`] ??
+                                (it.weightTn ? String(it.weightTn) : "")
+                              }
+                              placeholder="0.000000"
+                              title="Peso unitario en toneladas"
+                              onChange={(e) =>
+                                handleManualNumberChange(
+                                  it,
+                                  "weightTn",
+                                  e.target.value,
+                                )
+                              }
+                              onBlur={() =>
+                                handleManualNumberBlur(it.id, "weightTn")
+                              }
+                            />
+                          ) : (
+                            (it.weightTn * it.qty).toFixed(6)
+                          )}
                         </td>
 
                         <td className="border border-slate-300 px-2 py-1 text-right">

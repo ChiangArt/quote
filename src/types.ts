@@ -11,6 +11,7 @@
 
 export type QuoteItem = {
   id: string;
+  isManual?: boolean;
   randomCode: string;
   productCode: string;
   name: string;
