@@ -1209,6 +1209,36 @@ function App() {
                         </td>
 
                         <td className="border border-slate-300 px-2 py-1 text-right">
+                          {it.isManual ? (
+                            <input
+                              type="text"
+                              inputMode="decimal"
+                              className="w-full min-w-24 border border-slate-300 bg-white px-2 py-1 text-right text-xs outline-none focus:border-slate-500"
+                              value={
+                                manualNumberInputs[
+                                  `${it.id}:supplierPriceUsd`
+                                ] ??
+                                (it.supplierPriceUsd
+                                  ? it.supplierPriceUsd.toFixed(2)
+                                  : "")
+                              }
+                              placeholder="0.00"
+                              onChange={(e) =>
+                                handleManualNumberChange(
+                                  it,
+                                  "supplierPriceUsd",
+                                  e.target.value,
+                                )
+                              }
+                              onBlur={() =>
+                                handleManualNumberBlur(
+                                  it.id,
+                                  "supplierPriceUsd",
+                                )
+                              }
+                            />
+                          ) : (
+                            <>
                           <div className="mb-1">
                             <div
                               className={`text-[10px] font-bold ${
@@ -1288,6 +1318,8 @@ function App() {
                           >
                             Actualizar precio
                           </button>
+                            </>
+                          )}
                         </td>
 
                         <td className="border border-slate-300 px-2 py-1 text-right">
